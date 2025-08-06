@@ -45,9 +45,69 @@ scan with {:
 	return s;
 :}
 
-terminal PROG;
+/* Program = "program" ident {ConstDecl | VarDecl | RecordDecl} "{" {MethodDecl} "}". */
+
+terminal PROG, OPBRACKET, CLBRACKET, CONST, SEMI, ASSIGN, COMMA, OPSQBRACKET, CLSQBRACKET;
 terminal String IDENT;
+terminal Integer NUMBER,BOOL;
+terminal Character CHARACTER;
 
 nonterminal Program Program;
+nonterminal ConVarDecList ConVarDecList;
+nonterminal MethodDecList MethodDecList;
+nonterminal ConDecList ConDecList;
+nonterminal VarDecList VarDecList;
+nonterminal ConDecl ConDecl;
+nonterminal Constant Constant;
+nonterminal 
+ConDeclMore ConDeclMore;
+nonterminal Type Type;
+nonterminal VarDecListBracket VarDecListBracket;
+nonterminal VarDecMore VarDecMore;
 
-Program ::= (Program) PROG IDENT:I1 {: RESULT=new Program(I1); RESULT.setLine(I1left); :};
+
+Program ::= (Program) PROG IDENT:I1 ConVarDecList:C2 OPBRACKET MethodDecList:M3 CLBRACKET {: RESULT=new Program(I1, C2, M3); RESULT.setLine(I1left); :};
+
+ConVarDecList ::=   (ConVarDecList_con) ConVarDecList:C1 ConDecList:C2 {: RESULT=new ConVarDecList_con(C1, C2); RESULT.setLine(C1left); :}
+					|
+					(ConVarDecList_var) ConVarDecList:C1 VarDecList:V2 {: RESULT=new ConVarDecList_var(C1, V2); RESULT.setLine(C1left); :}
+					|
+					(ConVarDecList_epsilon) {: RESULT=new ConVarDecList_epsilon(); :} /*epsilon*/
+					;
+
+ConDecList ::= (ConDecList) CONST Type:T1 ConDecl:C2 ConDeclMore:C3 SEMI {: RESULT=new ConDecList(T1, C2, C3); RESULT.setLine(T1left); :};
+
+Type ::= (Type) IDENT:I1 {: RESULT=new Type(I1); RESULT.setLine(I1left); :};
+
+ConDecl ::= (ConDecl) IDENT:I1 ASSIGN Constant:C2 {: RESULT=new ConDecl(I1, C2); RESULT.setLine(I1left); :};
+
+ConDeclMore::= (ConDeclMore_comma) COMMA ConDecl:C1 ConDeclMore:C2 {: RESULT=new ConDeclMore_comma(C1, C2); RESULT.setLine(C1left); :}
+				|
+				(ConDeclMore_e) {: RESULT=new ConDeclMore_e(); :} /*epsilon*/
+				;
+				
+Constant ::= (Constant_n) NUMBER:N1 {: RESULT=new Constant_n(N1); RESULT.setLine(N1left); :}
+			|
+			(Constant_c) CHARACTER:C1 {: RESULT=new Constant_c(C1); RESULT.setLine(C1left); :}
+			|
+			(Constant_b) BOOL:B1 {: RESULT=new Constant_b(B1); RESULT.setLine(B1left); :}
+			;
+/*int a; char b[]; char c,b,d,a[],g,p[]; */
+
+VarDecList ::= (VarDecList) Type:T1 IDENT:I2 VarDecListBracket:V3 VarDecMore:V4 SEMI {: RESULT=new VarDecList(T1, I2, V3, V4); RESULT.setLine(T1left); :};
+
+VarDecListBracket ::=   (VarDecListBracket_b) OPSQBRACKET CLSQBRACKET {: RESULT=new VarDecListBracket_b(); :}
+						|
+						(VarDecListBracket_e) {: RESULT=new VarDecListBracket_e(); :}/*epsilon*/
+						;
+
+VarDecMore ::= 	(VarDecMore_m) COMMA IDENT:I1 VarDecListBracket:V2 VarDecMore:V3 {: RESULT=new VarDecMore_m(I1, V2, V3); RESULT.setLine(I1left); :}
+				|
+				(VarDecMore_e) {: RESULT=new VarDecMore_e(); :}/*epsilon*/
+				;
+
+
+
+
+
+

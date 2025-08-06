@@ -28,7 +28,6 @@ import java_cup.runtime.Symbol;
 
 %%
 
-//TODO: uneti sve preostale tokene za B nivo
 
 " " { }
 "\b" { }
@@ -38,8 +37,6 @@ import java_cup.runtime.Symbol;
 
 
 
-//program, break, class, else, const, if, new, print, read, return, void,
-//extends, continue, union, do, while, map, interface
 
 
 "//" 						  {yybegin(COMMENT);}
@@ -81,7 +78,7 @@ import java_cup.runtime.Symbol;
 "||"	 					  {return new_symbol(sym.OR, yytext());}
 "="	 					      {return new_symbol(sym.ASSIGN, yytext());}
 "--"	 					  {return new_symbol(sym.DEC, yytext());}
-";"	 					  	  {return new_symbol(sym.SEMICOLON, yytext());}
+";"	 					  	  {return new_symbol(sym.SEMI, yytext());}
 ":"	 						  {return new_symbol(sym.COLON, yytext());}
 ","	 					  	  {return new_symbol(sym.COMMA, yytext());}
 "."	 					      {return new_symbol(sym.DOT, yytext());}

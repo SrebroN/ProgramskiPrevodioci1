@@ -45,9 +45,14 @@ scan with {:
 	return s;
 :}
 
-terminal PROG;
+terminal PROG,OPBRACKET,CLBRACKET;
 terminal String IDENT;
 
 nonterminal Program Program;
+nonterminal ConVarDecList ConVarDecList;
+nonterminal MethodDeclList MethodDeclList;
 
-Program ::= (Program) PROG IDENT:I1 {: RESULT=new Program(I1); RESULT.setLine(I1left); :};
+/* Program = "program" ident {ConstDecl | VarDecl | RecordDecl} "{" {MethodDecl} "}". */
+
+Program ::= (Program) PROG IDENT:I1 ConVarDecList:C2 OPBRACKET MethodDeclList:M3 CLBRACKET {: RESULT=new Program(I1, C2, M3); RESULT.setLine(I1left); :};
+

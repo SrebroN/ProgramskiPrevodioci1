@@ -5,28 +5,16 @@
 
 package src.rs.ac.bg.etf.pp1.ast;
 
-public class Program implements SyntaxNode {
+public class ConVarDecList_var extends ConVarDecList {
 
-    private SyntaxNode parent;
-    private int line;
-    private String I1;
     private ConVarDecList ConVarDecList;
-    private MethodDecList MethodDecList;
+    private VarDecList VarDecList;
 
-    public Program (String I1, ConVarDecList ConVarDecList, MethodDecList MethodDecList) {
-        this.I1=I1;
+    public ConVarDecList_var (ConVarDecList ConVarDecList, VarDecList VarDecList) {
         this.ConVarDecList=ConVarDecList;
         if(ConVarDecList!=null) ConVarDecList.setParent(this);
-        this.MethodDecList=MethodDecList;
-        if(MethodDecList!=null) MethodDecList.setParent(this);
-    }
-
-    public String getI1() {
-        return I1;
-    }
-
-    public void setI1(String I1) {
-        this.I1=I1;
+        this.VarDecList=VarDecList;
+        if(VarDecList!=null) VarDecList.setParent(this);
     }
 
     public ConVarDecList getConVarDecList() {
@@ -37,28 +25,12 @@ public class Program implements SyntaxNode {
         this.ConVarDecList=ConVarDecList;
     }
 
-    public MethodDecList getMethodDecList() {
-        return MethodDecList;
+    public VarDecList getVarDecList() {
+        return VarDecList;
     }
 
-    public void setMethodDecList(MethodDecList MethodDecList) {
-        this.MethodDecList=MethodDecList;
-    }
-
-    public SyntaxNode getParent() {
-        return parent;
-    }
-
-    public void setParent(SyntaxNode parent) {
-        this.parent=parent;
-    }
-
-    public int getLine() {
-        return line;
-    }
-
-    public void setLine(int line) {
-        this.line=line;
+    public void setVarDecList(VarDecList VarDecList) {
+        this.VarDecList=VarDecList;
     }
 
     public void accept(Visitor visitor) {
@@ -67,28 +39,25 @@ public class Program implements SyntaxNode {
 
     public void childrenAccept(Visitor visitor) {
         if(ConVarDecList!=null) ConVarDecList.accept(visitor);
-        if(MethodDecList!=null) MethodDecList.accept(visitor);
+        if(VarDecList!=null) VarDecList.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(ConVarDecList!=null) ConVarDecList.traverseTopDown(visitor);
-        if(MethodDecList!=null) MethodDecList.traverseTopDown(visitor);
+        if(VarDecList!=null) VarDecList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(ConVarDecList!=null) ConVarDecList.traverseBottomUp(visitor);
-        if(MethodDecList!=null) MethodDecList.traverseBottomUp(visitor);
+        if(VarDecList!=null) VarDecList.traverseBottomUp(visitor);
         accept(visitor);
     }
 
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("Program(\n");
-
-        buffer.append(" "+tab+I1);
-        buffer.append("\n");
+        buffer.append("ConVarDecList_var(\n");
 
         if(ConVarDecList!=null)
             buffer.append(ConVarDecList.toString("  "+tab));
@@ -96,14 +65,14 @@ public class Program implements SyntaxNode {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(MethodDecList!=null)
-            buffer.append(MethodDecList.toString("  "+tab));
+        if(VarDecList!=null)
+            buffer.append(VarDecList.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [Program]");
+        buffer.append(") [ConVarDecList_var]");
         return buffer.toString();
     }
 }

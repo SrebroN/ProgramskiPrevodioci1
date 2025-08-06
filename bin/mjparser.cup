@@ -45,9 +45,58 @@ scan with {:
 	return s;
 :}
 
-terminal PROG;
+/* Program = "program" ident {ConstDecl | VarDecl | RecordDecl} "{" {MethodDecl} "}". */
+
+terminal PROG, OPBRACKET, CLBRACKET, CONST, SEMI, ASSIGN, COMMA, OPSQBRACKET, CLSQBRACKET;
 terminal String IDENT;
+terminal Integer NUMBER,BOOL;
+terminal Character CHARACTER;
 
-nonterminal Program;
+nonterminal Program, ConVarDecList, MethodDecList, ConDecList, VarDecList, ConDecl, Constant, 
+ConDeclMore, Type, VarDecListBracket, VarDecMore;
 
-Program ::= (Program) PROG IDENT;
+
+Program ::= (Program) PROG IDENT ConVarDecList OPBRACKET MethodDecList CLBRACKET;
+
+ConVarDecList ::=   (ConVarDecList_con) ConVarDecList ConDecList
+					|
+					(ConVarDecList_var) ConVarDecList VarDecList
+					|
+					(ConVarDecList_epsilon) /*epsilon*/
+					;
+
+ConDecList ::= (ConDecList) CONST Type ConDecl ConDeclMore SEMI;
+
+Type ::= (Type) IDENT;
+
+ConDecl ::= (ConDecl) IDENT ASSIGN Constant;
+
+ConDeclMore::= (ConDeclMore_comma) COMMA ConDecl ConDeclMore
+				|
+				(ConDeclMore_e) /*epsilon*/
+				;
+				
+Constant ::= (Constant_n) NUMBER
+			|
+			(Constant_c) CHARACTER
+			|
+			(Constant_b) BOOL
+			;
+
+VarDecList ::= (VarDecList) Type IDENT VarDecListBracket VarDecMore SEMI;
+
+VarDecListBracket ::=   (VarDecListBracket_b) OPSQBRACKET CLSQBRACKET
+						|
+						(VarDecListBracket_e)/*epsilon*/
+						;
+
+VarDecMore ::= 	(VarDecMore_m) COMMA IDENT VarDecListBracket VarDecMore
+				|
+				(VarDecMore_e)/*epsilon*/
+				;
+
+
+
+
+
+
