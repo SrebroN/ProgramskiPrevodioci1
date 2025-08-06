@@ -4,6 +4,8 @@
 	<target name="delete">
 		<delete>
 			<fileset dir="src/rs/ac/bg/etf/pp1">
+				<exclude name="util/Log4Utils.java">
+					</exclude>
 			</fileset>
 		</delete>
 	</target>
