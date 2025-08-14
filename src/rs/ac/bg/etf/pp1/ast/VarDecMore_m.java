@@ -1,20 +1,20 @@
 // generated with ast extension for cup
 // version 0.8
-// 6/7/2025 19:6:28
+// 14/7/2025 14:16:26
 
 
-package src.rs.ac.bg.etf.pp1.ast;
+package rs.ac.bg.etf.pp1.ast;
 
 public class VarDecMore_m extends VarDecMore {
 
     private String I1;
-    private VarDecListBracket VarDecListBracket;
+    private Brackets Brackets;
     private VarDecMore VarDecMore;
 
-    public VarDecMore_m (String I1, VarDecListBracket VarDecListBracket, VarDecMore VarDecMore) {
+    public VarDecMore_m (String I1, Brackets Brackets, VarDecMore VarDecMore) {
         this.I1=I1;
-        this.VarDecListBracket=VarDecListBracket;
-        if(VarDecListBracket!=null) VarDecListBracket.setParent(this);
+        this.Brackets=Brackets;
+        if(Brackets!=null) Brackets.setParent(this);
         this.VarDecMore=VarDecMore;
         if(VarDecMore!=null) VarDecMore.setParent(this);
     }
@@ -27,12 +27,12 @@ public class VarDecMore_m extends VarDecMore {
         this.I1=I1;
     }
 
-    public VarDecListBracket getVarDecListBracket() {
-        return VarDecListBracket;
+    public Brackets getBrackets() {
+        return Brackets;
     }
 
-    public void setVarDecListBracket(VarDecListBracket VarDecListBracket) {
-        this.VarDecListBracket=VarDecListBracket;
+    public void setBrackets(Brackets Brackets) {
+        this.Brackets=Brackets;
     }
 
     public VarDecMore getVarDecMore() {
@@ -48,18 +48,18 @@ public class VarDecMore_m extends VarDecMore {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(VarDecListBracket!=null) VarDecListBracket.accept(visitor);
+        if(Brackets!=null) Brackets.accept(visitor);
         if(VarDecMore!=null) VarDecMore.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(VarDecListBracket!=null) VarDecListBracket.traverseTopDown(visitor);
+        if(Brackets!=null) Brackets.traverseTopDown(visitor);
         if(VarDecMore!=null) VarDecMore.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(VarDecListBracket!=null) VarDecListBracket.traverseBottomUp(visitor);
+        if(Brackets!=null) Brackets.traverseBottomUp(visitor);
         if(VarDecMore!=null) VarDecMore.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -72,8 +72,8 @@ public class VarDecMore_m extends VarDecMore {
         buffer.append(" "+tab+I1);
         buffer.append("\n");
 
-        if(VarDecListBracket!=null)
-            buffer.append(VarDecListBracket.toString("  "+tab));
+        if(Brackets!=null)
+            buffer.append(Brackets.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

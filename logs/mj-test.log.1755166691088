@@ -1,0 +1,11 @@
+INFO  12:17:39,302 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  12:17:39,409 - #6 program
+INFO  12:17:39,409 - #2 Dzei
+INFO  12:17:39,410 - #2 int
+INFO  12:17:39,411 - #2 x
+INFO  12:17:39,413 - #10 ;
+INFO  12:17:39,416 - #2 wdaw
+INFO  12:17:39,418 - #7 {
+ERROR 12:17:39,418 - 
+Sintaksna greska na liniji 4
+ERROR 12:17:39,419 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 4

@@ -1,0 +1,159 @@
+INFO  12:18:11,094 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  12:18:11,171 - #6 program
+INFO  12:18:11,171 - #2 Dzei
+INFO  12:18:11,171 - #2 int
+INFO  12:18:11,172 - #2 x
+INFO  12:18:11,173 - #10 ;
+INFO  12:18:11,176 - #7 {
+INFO  12:18:11,178 - #17 void
+INFO  12:18:11,179 - #2 main
+INFO  12:18:11,180 - #15 (
+INFO  12:18:11,181 - #16 )
+INFO  12:18:11,182 - #7 {
+INFO  12:18:11,185 - #2 a
+INFO  12:18:11,186 - #42 ++
+INFO  12:18:11,230 - #10 ;
+INFO  12:18:11,249 - #2 b
+INFO  12:18:11,250 - #11 =
+INFO  12:18:11,250 - #3 3
+INFO  12:18:11,269 - #10 ;
+INFO  12:18:11,330 - #35 do
+INFO  12:18:11,331 - #7 {
+INFO  12:18:11,331 - #45 print
+INFO  12:18:11,331 - #15 (
+INFO  12:18:11,332 - #5 x
+INFO  12:18:11,332 - #16 )
+INFO  12:18:11,352 - #10 ;
+INFO  12:18:11,353 - #8 }
+INFO  12:18:11,353 - #36 while
+INFO  12:18:11,353 - #15 (
+INFO  12:18:11,353 - #4 1
+INFO  12:18:11,353 - #16 )
+INFO  12:18:11,461 - #10 ;
+INFO  12:18:11,461 - #8 }
+INFO  12:18:11,462 - #8 }
+INFO  12:18:11,465 - Program(
+ Dzei
+  ConVarDecList_var(
+    ConVarDecList_epsilon(
+    ) [ConVarDecList_epsilon]
+    VarDecList(
+      Type(
+       int
+      ) [Type]
+     x
+      Brackets_e(
+      ) [Brackets_e]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignature(
+        MethodSignatureType_v(
+        ) [MethodSignatureType_v]
+       main
+        FormParsOpt_e(
+        ) [FormParsOpt_e]
+      ) [MethodSignature]
+      VarDecOpt_e(
+      ) [VarDecOpt_e]
+      StatementOpt_s(
+        StatementOpt_s(
+          StatementOpt_s(
+            StatementOpt_e(
+            ) [StatementOpt_e]
+            Statement_ds(
+              DesignatorStatement_ds(
+                Designator(
+                 a
+                  DesignatorList_e(
+                  ) [DesignatorList_e]
+                ) [Designator]
+                DesignatorStatementList_inc(
+                ) [DesignatorStatementList_inc]
+              ) [DesignatorStatement_ds]
+            ) [Statement_ds]
+          ) [StatementOpt_s]
+          Statement_ds(
+            DesignatorStatement_ds(
+              Designator(
+               b
+                DesignatorList_e(
+                ) [DesignatorList_e]
+              ) [Designator]
+              DesignatorStatementList_aop(
+                Assignop(
+                ) [Assignop]
+                Expr_term(
+                  Term(
+                    Factor_num(
+                     3
+                    ) [Factor_num]
+                    TermOpt_e(
+                    ) [TermOpt_e]
+                  ) [Term]
+                  AddOpTerm_e(
+                  ) [AddOpTerm_e]
+                ) [Expr_term]
+              ) [DesignatorStatementList_aop]
+            ) [DesignatorStatement_ds]
+          ) [Statement_ds]
+        ) [StatementOpt_s]
+        Statement_do(
+          Statement_st(
+            StatementOpt_s(
+              StatementOpt_e(
+              ) [StatementOpt_e]
+              Statement_pr(
+                Expr_term(
+                  Term(
+                    Factor_char(
+                     x
+                    ) [Factor_char]
+                    TermOpt_e(
+                    ) [TermOpt_e]
+                  ) [Term]
+                  AddOpTerm_e(
+                  ) [AddOpTerm_e]
+                ) [Expr_term]
+                NumConstOpt_e(
+                ) [NumConstOpt_e]
+              ) [Statement_pr]
+            ) [StatementOpt_s]
+          ) [Statement_st]
+          ConditionList_con(
+            Condition(
+              CondTerm(
+                CondFact(
+                  Expr_term(
+                    Term(
+                      Factor_bool(
+                       1
+                      ) [Factor_bool]
+                      TermOpt_e(
+                      ) [TermOpt_e]
+                    ) [Term]
+                    AddOpTerm_e(
+                    ) [AddOpTerm_e]
+                  ) [Expr_term]
+                  CondFactREOpt_e(
+                  ) [CondFactREOpt_e]
+                ) [CondFact]
+                CondFactArr_e(
+                ) [CondFactArr_e]
+              ) [CondTerm]
+              CondTermArr_e(
+              ) [CondTermArr_e]
+            ) [Condition]
+          ) [ConditionList_con]
+        ) [Statement_do]
+      ) [StatementOpt_s]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  12:18:11,466 - ===================================
+INFO  12:18:11,466 - Parsiranje uspesno zavrseno!

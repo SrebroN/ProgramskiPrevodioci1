@@ -1,9 +1,9 @@
 // generated with ast extension for cup
 // version 0.8
-// 6/7/2025 19:6:28
+// 14/7/2025 14:16:26
 
 
-package src.rs.ac.bg.etf.pp1.ast;
+package rs.ac.bg.etf.pp1.ast;
 
 public abstract class ConVarDecList implements SyntaxNode {
 

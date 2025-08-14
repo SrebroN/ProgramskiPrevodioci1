@@ -45,7 +45,6 @@ import java_cup.runtime.Symbol;
 
 "program" 					  {return new_symbol(sym.PROG, yytext());}
 "break" 					  {return new_symbol(sym.BREAK, yytext());}
-"class" 					  {return new_symbol(sym.CLASS, yytext());}
 "else" 					 	  {return new_symbol(sym.ELSE, yytext());}
 "const" 					  {return new_symbol(sym.CONST, yytext());}
 "if" 						  {return new_symbol(sym.IF, yytext());}
@@ -59,25 +58,24 @@ import java_cup.runtime.Symbol;
 "do" 						  {return new_symbol(sym.DO, yytext());}
 "while" 					  {return new_symbol(sym.WHILE, yytext());}
 "map" 						  {return new_symbol(sym.MAP, yytext());}
-"interface" 				  {return new_symbol(sym.INTERFACE, yytext());}
 
 
-"+"	 						  {return new_symbol(sym.PLUS, yytext());}
 "++" 						  {return new_symbol(sym.INC, yytext());}
+"+"	 						  {return new_symbol(sym.PLUS, yytext());}
+"--"	 					  {return new_symbol(sym.DEC, yytext());}
 "-"	 						  {return new_symbol(sym.MINUS, yytext());}
 "*"	 						  {return new_symbol(sym.MUL, yytext());}
 "/"	 						  {return new_symbol(sym.DIV, yytext());}
 "%"	 						  {return new_symbol(sym.MOD, yytext());}
 "=="	 					  {return new_symbol(sym.EQUAL, yytext());}
 "!="	 					  {return new_symbol(sym.NOTEQUAL, yytext());}
-">"	 						  {return new_symbol(sym.GREATER, yytext());}
 ">="	 					  {return new_symbol(sym.GREATEREQUAL, yytext());}
-"<"	 					      {return new_symbol(sym.LESS, yytext());}
 "<="	 					  {return new_symbol(sym.LESSEQUAL, yytext());}
+">"	 						  {return new_symbol(sym.GREATER, yytext());}
+"<"	 					      {return new_symbol(sym.LESS, yytext());}
 "&&"	 					  {return new_symbol(sym.AND, yytext());}
 "||"	 					  {return new_symbol(sym.OR, yytext());}
 "="	 					      {return new_symbol(sym.ASSIGN, yytext());}
-"--"	 					  {return new_symbol(sym.DEC, yytext());}
 ";"	 					  	  {return new_symbol(sym.SEMI, yytext());}
 ":"	 						  {return new_symbol(sym.COLON, yytext());}
 ","	 					  	  {return new_symbol(sym.COMMA, yytext());}
@@ -91,10 +89,10 @@ import java_cup.runtime.Symbol;
 
 [0-9]+ 						  {return new_symbol(sym.NUMBER, new Integer (yytext()));}
 "'"."'" 					  {return new_symbol(sym.CHARACTER, new Character (yytext().charAt(1)));}
-("true"|"false")			  {return new_symbol(sym.BOOL, yytext().equals("true")? 1 : 0 ;}
+("true"|"false")			  {return new_symbol(sym.BOOL, yytext().equals("true")? 1 : 0);}
 ([a-z]|[A-Z])[a-z|A-Z|0-9|_]* {return new_symbol(sym.IDENT, yytext());}
 
-. 							  {System.err.prinln("Leksicka greska ("+ yytext()+") na liniji " +(yyline()+1) + " u koloni "+ (yycolumn()+1)+ "\n");}
+. 							  {System.err.println("Leksicka greska ("+ yytext()+") na liniji " +(yyline+1) + " u koloni "+ (yycolumn+1)+ "\n");}
 
 
 
