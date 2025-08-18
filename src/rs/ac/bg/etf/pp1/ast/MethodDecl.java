@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 14/7/2025 14:16:26
+// 18/7/2025 14:21:48
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,25 +9,36 @@ public class MethodDecl implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
-    private MethodSignature MethodSignature;
+    private MethodSignAndName MethodSignAndName;
+    private FormParsOpt FormParsOpt;
     private VarDecOpt VarDecOpt;
     private StatementOpt StatementOpt;
 
-    public MethodDecl (MethodSignature MethodSignature, VarDecOpt VarDecOpt, StatementOpt StatementOpt) {
-        this.MethodSignature=MethodSignature;
-        if(MethodSignature!=null) MethodSignature.setParent(this);
+    public MethodDecl (MethodSignAndName MethodSignAndName, FormParsOpt FormParsOpt, VarDecOpt VarDecOpt, StatementOpt StatementOpt) {
+        this.MethodSignAndName=MethodSignAndName;
+        if(MethodSignAndName!=null) MethodSignAndName.setParent(this);
+        this.FormParsOpt=FormParsOpt;
+        if(FormParsOpt!=null) FormParsOpt.setParent(this);
         this.VarDecOpt=VarDecOpt;
         if(VarDecOpt!=null) VarDecOpt.setParent(this);
         this.StatementOpt=StatementOpt;
         if(StatementOpt!=null) StatementOpt.setParent(this);
     }
 
-    public MethodSignature getMethodSignature() {
-        return MethodSignature;
+    public MethodSignAndName getMethodSignAndName() {
+        return MethodSignAndName;
     }
 
-    public void setMethodSignature(MethodSignature MethodSignature) {
-        this.MethodSignature=MethodSignature;
+    public void setMethodSignAndName(MethodSignAndName MethodSignAndName) {
+        this.MethodSignAndName=MethodSignAndName;
+    }
+
+    public FormParsOpt getFormParsOpt() {
+        return FormParsOpt;
+    }
+
+    public void setFormParsOpt(FormParsOpt FormParsOpt) {
+        this.FormParsOpt=FormParsOpt;
     }
 
     public VarDecOpt getVarDecOpt() {
@@ -67,20 +78,23 @@ public class MethodDecl implements SyntaxNode {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(MethodSignature!=null) MethodSignature.accept(visitor);
+        if(MethodSignAndName!=null) MethodSignAndName.accept(visitor);
+        if(FormParsOpt!=null) FormParsOpt.accept(visitor);
         if(VarDecOpt!=null) VarDecOpt.accept(visitor);
         if(StatementOpt!=null) StatementOpt.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(MethodSignature!=null) MethodSignature.traverseTopDown(visitor);
+        if(MethodSignAndName!=null) MethodSignAndName.traverseTopDown(visitor);
+        if(FormParsOpt!=null) FormParsOpt.traverseTopDown(visitor);
         if(VarDecOpt!=null) VarDecOpt.traverseTopDown(visitor);
         if(StatementOpt!=null) StatementOpt.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(MethodSignature!=null) MethodSignature.traverseBottomUp(visitor);
+        if(MethodSignAndName!=null) MethodSignAndName.traverseBottomUp(visitor);
+        if(FormParsOpt!=null) FormParsOpt.traverseBottomUp(visitor);
         if(VarDecOpt!=null) VarDecOpt.traverseBottomUp(visitor);
         if(StatementOpt!=null) StatementOpt.traverseBottomUp(visitor);
         accept(visitor);
@@ -91,8 +105,14 @@ public class MethodDecl implements SyntaxNode {
         buffer.append(tab);
         buffer.append("MethodDecl(\n");
 
-        if(MethodSignature!=null)
-            buffer.append(MethodSignature.toString("  "+tab));
+        if(MethodSignAndName!=null)
+            buffer.append(MethodSignAndName.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        if(FormParsOpt!=null)
+            buffer.append(FormParsOpt.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

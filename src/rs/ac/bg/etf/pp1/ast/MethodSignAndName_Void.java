@@ -1,13 +1,24 @@
 // generated with ast extension for cup
 // version 0.8
-// 14/7/2025 14:16:26
+// 18/7/2025 14:21:48
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class MethodSignatureType_v extends MethodSignatureType {
+public class MethodSignAndName_Void extends MethodSignAndName {
 
-    public MethodSignatureType_v () {
+    private String I1;
+
+    public MethodSignAndName_Void (String I1) {
+        this.I1=I1;
+    }
+
+    public String getI1() {
+        return I1;
+    }
+
+    public void setI1(String I1) {
+        this.I1=I1;
     }
 
     public void accept(Visitor visitor) {
@@ -28,10 +39,13 @@ public class MethodSignatureType_v extends MethodSignatureType {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("MethodSignatureType_v(\n");
+        buffer.append("MethodSignAndName_Void(\n");
+
+        buffer.append(" "+tab+I1);
+        buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [MethodSignatureType_v]");
+        buffer.append(") [MethodSignAndName_Void]");
         return buffer.toString();
     }
 }

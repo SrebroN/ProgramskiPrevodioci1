@@ -1,0 +1,5 @@
+INFO  13:35:44,743 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  13:35:44,754 - #2 esrseresr
+ERROR 13:35:44,754 - 
+Sintaksna greska na liniji 3
+ERROR 13:35:44,754 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 3

@@ -1,17 +1,19 @@
 // generated with ast extension for cup
 // version 0.8
-// 14/7/2025 14:16:26
+// 18/7/2025 14:21:48
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class MethodSignatureType_t extends MethodSignatureType {
+public class MethodSignAndName_Type extends MethodSignAndName {
 
     private Type Type;
+    private String I2;
 
-    public MethodSignatureType_t (Type Type) {
+    public MethodSignAndName_Type (Type Type, String I2) {
         this.Type=Type;
         if(Type!=null) Type.setParent(this);
+        this.I2=I2;
     }
 
     public Type getType() {
@@ -20,6 +22,14 @@ public class MethodSignatureType_t extends MethodSignatureType {
 
     public void setType(Type Type) {
         this.Type=Type;
+    }
+
+    public String getI2() {
+        return I2;
+    }
+
+    public void setI2(String I2) {
+        this.I2=I2;
     }
 
     public void accept(Visitor visitor) {
@@ -43,7 +53,7 @@ public class MethodSignatureType_t extends MethodSignatureType {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("MethodSignatureType_t(\n");
+        buffer.append("MethodSignAndName_Type(\n");
 
         if(Type!=null)
             buffer.append(Type.toString("  "+tab));
@@ -51,8 +61,11 @@ public class MethodSignatureType_t extends MethodSignatureType {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
+        buffer.append(" "+tab+I2);
+        buffer.append("\n");
+
         buffer.append(tab);
-        buffer.append(") [MethodSignatureType_t]");
+        buffer.append(") [MethodSignAndName_Type]");
         return buffer.toString();
     }
 }

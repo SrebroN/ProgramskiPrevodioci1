@@ -63,7 +63,6 @@ nonterminal ConDeclMore ConDeclMore;
 nonterminal Type Type;
 nonterminal Brackets Brackets;
 nonterminal VarDecMore VarDecMore;
-nonterminal MethodSignature MethodSignature;
 nonterminal MethodSignatureType MethodSignatureType;
 nonterminal FormParsOpt FormParsOpt;
 nonterminal FormPars FormPars;
@@ -102,10 +101,16 @@ nonterminal AddOpTerm AddOpTerm;
 nonterminal ConditionList ConditionList;
 nonterminal ElseStatement ElseStatement;
 nonterminal NumConstOpt NumConstOpt;
+nonterminal ProgramName ProgramName;
+nonterminal MethodSignAndName MethodSignAndName;
+nonterminal DesignatorArrayName DesignatorArrayName;
 
 precedence left ELSE;
 
-Program ::= (Program) PROG IDENT:I1 ConVarDecList:C2 OPBRACKET MethodDecList:M3 CLBRACKET {: RESULT=new Program(I1, C2, M3); RESULT.setLine(I1left); :};
+Program ::= (Program) PROG ProgramName:P1 ConVarDecList:C2 OPBRACKET MethodDecList:M3 CLBRACKET {: RESULT=new Program(P1, C2, M3); RESULT.setLine(P1left); :};
+
+ProgramName ::= (ProgramName) IDENT:I1 {: RESULT=new ProgramName(I1); RESULT.setLine(I1left); :};
+
 
 ConVarDecList ::=   (ConVarDecList_con) ConVarDecList:C1 ConDecList:C2 {: RESULT=new ConVarDecList_con(C1, C2); RESULT.setLine(C1left); :}
 					|
@@ -150,14 +155,12 @@ MethodDecList ::= 	(MethodDecList_m) MethodDecList:M1 MethodDecl:M2 {: RESULT=ne
 					(MethodDecList_e) {: RESULT=new MethodDecList_e(); :}/*epsilon*/
 					;
 					
-MethodDecl ::= (MethodDecl) MethodSignature:M1 VarDecOpt:V2 OPBRACKET StatementOpt:S3 CLBRACKET {: RESULT=new MethodDecl(M1, V2, S3); RESULT.setLine(M1left); :};
+MethodDecl ::= (MethodDecl)  MethodSignAndName:M1 OPPAREN FormParsOpt:F2 CLPAREN VarDecOpt:V3 OPBRACKET StatementOpt:S4 CLBRACKET {: RESULT=new MethodDecl(M1, F2, V3, S4); RESULT.setLine(M1left); :};
 
-MethodSignature ::= (MethodSignature) MethodSignatureType:M1 IDENT:I2 OPPAREN FormParsOpt:F3 CLPAREN {: RESULT=new MethodSignature(M1, I2, F3); RESULT.setLine(M1left); :};
-
-MethodSignatureType ::= (MethodSignatureType_t) Type:T1 {: RESULT=new MethodSignatureType_t(T1); RESULT.setLine(T1left); :}
+MethodSignAndName ::= 	(MethodSignAndName_Type) Type:T1 IDENT:I2 {: RESULT=new MethodSignAndName_Type(T1, I2); RESULT.setLine(T1left); :}
 						|
-						(MethodSignatureType_v) VOID {: RESULT=new MethodSignatureType_v(); :}
-						; 
+						(MethodSignAndName_Void) VOID IDENT:I1 {: RESULT=new MethodSignAndName_Void(I1); RESULT.setLine(I1left); :}
+						;
 
 FormParsOpt ::= (FormParsOpt_fm) FormPars:F1 {: RESULT=new FormParsOpt_fm(F1); RESULT.setLine(F1left); :}
 				|
@@ -217,6 +220,17 @@ ConditionList ::= 	(ConditionList_con) Condition:C1 {: RESULT=new ConditionList_
 					(ConditionList_e) {: RESULT=new ConditionList_e(); :}/*epsilon*/
 					;
 
+Designator ::= 	(Designator) IDENT:I1 DesignatorList:D2 {: RESULT=new Designator(I1, D2); RESULT.setLine(I1left); :};
+
+DesignatorList ::=	(DesignatorList_id) DesignatorList:D1 DOT IDENT:I2 {: RESULT=new DesignatorList_id(D1, I2); RESULT.setLine(D1left); :} 
+					|
+					(DesignatorList_exp) DesignatorList:D1 OPSQBRACKET Expr:E2 CLSQBRACKET {: RESULT=new DesignatorList_exp(D1, E2); RESULT.setLine(D1left); :}
+					|
+					(DesignatorList_e) {: RESULT=new DesignatorList_e(); :}/*epsilon*/
+					;
+
+DesignatorArrayName ::=	(DesignatorArrayName) IDENT:I1 {: RESULT=new DesignatorArrayName(I1); RESULT.setLine(I1left); :};
+
 DesignatorStatement ::= (DesignatorStatement_ds) Designator:D1 DesignatorStatementList:D2 {: RESULT=new DesignatorStatement_ds(D1, D2); RESULT.setLine(D1left); :}
 						|
 						(DesignatorStatement_tw) Designator:D1 Assignop:A2 Designator:D3 Setop:S4 Designator:D5 {: RESULT=new DesignatorStatement_tw(D1, A2, D3, S4, D5); RESULT.setLine(D1left); :}
@@ -230,7 +244,7 @@ DesignatorStatementList ::=	(DesignatorStatementList_aop) Assignop:A1 Expr:E2 {:
 							|
 							(DesignatorStatementList_dec) DEC {: RESULT=new DesignatorStatementList_dec(); :}
 							;
-
+ 
 ActPars ::=	(ActPars) Expr:E1 ActParsExprOpt:A2 {: RESULT=new ActPars(E1, A2); RESULT.setLine(E1left); :};
 
 ActParsExprOpt ::= 	(ActParsExprOpt_exp) ActParsExprOpt:A1 COMMA Expr:E2 {: RESULT=new ActParsExprOpt_exp(A1, E2); RESULT.setLine(A1left); :}
@@ -311,14 +325,7 @@ ActParsOpt ::=	(ActParsOpt_a) ActPars:A1 {: RESULT=new ActParsOpt_a(A1); RESULT.
 				(ActParsOpt_e) {: RESULT=new ActParsOpt_e(); :}/*epsilon*/
 				;
 					
-Designator ::= (Designator) IDENT:I1 DesignatorList:D2 {: RESULT=new Designator(I1, D2); RESULT.setLine(I1left); :};
 
-DesignatorList ::=	(DesignatorList_id) DesignatorList:D1 DOT IDENT:I2 {: RESULT=new DesignatorList_id(D1, I2); RESULT.setLine(D1left); :} 
-					|
-					(DesignatorList_exp) DesignatorList:D1 OPSQBRACKET Expr:E2 CLSQBRACKET {: RESULT=new DesignatorList_exp(D1, E2); RESULT.setLine(D1left); :}
-					|
-					(DesignatorList_e) {: RESULT=new DesignatorList_e(); :}/*epsilon*/
-					;
 					
 Label ::= (Label) IDENT:I1 {: RESULT=new Label(I1); RESULT.setLine(I1left); :}; 
 

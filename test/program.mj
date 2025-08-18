@@ -17,10 +17,6 @@ int a;
 
 	int inkrement(int a, int inc) 
 		int pom; 
-		bool test;
-		int pom2,pom3;
-		int test2,test34;
-		char c;
 	{
 		if(inc == 1) pom = 1;
 		else if(inc == 2) pom = a;

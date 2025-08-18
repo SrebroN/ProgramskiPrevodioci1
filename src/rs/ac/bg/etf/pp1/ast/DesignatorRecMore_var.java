@@ -1,13 +1,24 @@
 // generated with ast extension for cup
 // version 0.8
-// 14/7/2025 14:16:26
+// 18/7/2025 14:21:48
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class DesignatorList_e extends DesignatorList {
+public class DesignatorRecMore_var extends DesignatorRecMore {
 
-    public DesignatorList_e () {
+    private String I1;
+
+    public DesignatorRecMore_var (String I1) {
+        this.I1=I1;
+    }
+
+    public String getI1() {
+        return I1;
+    }
+
+    public void setI1(String I1) {
+        this.I1=I1;
     }
 
     public void accept(Visitor visitor) {
@@ -28,10 +39,13 @@ public class DesignatorList_e extends DesignatorList {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("DesignatorList_e(\n");
+        buffer.append("DesignatorRecMore_var(\n");
+
+        buffer.append(" "+tab+I1);
+        buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [DesignatorList_e]");
+        buffer.append(") [DesignatorRecMore_var]");
         return buffer.toString();
     }
 }

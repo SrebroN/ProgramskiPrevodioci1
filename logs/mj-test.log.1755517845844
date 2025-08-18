@@ -1,0 +1,16 @@
+INFO  13:49:59,881 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  13:49:59,939 - #6 program
+INFO  13:49:59,939 - #2 test302
+INFO  13:49:59,939 - #7 {
+INFO  13:49:59,940 - #8 }
+INFO  13:49:59,942 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_epsilon(
+  ) [ConVarDecList_epsilon]
+  MethodDecList_e(
+  ) [MethodDecList_e]
+) [Program]
+INFO  13:49:59,943 - ===================================
+INFO  13:49:59,943 - Parsiranje uspesno zavrseno!
