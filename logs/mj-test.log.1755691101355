@@ -1,0 +1,79 @@
+INFO  13:57:50,739 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  13:57:50,789 - #6 program
+INFO  13:57:50,789 - #2 test302
+INFO  13:57:50,789 - #9 const
+INFO  13:57:50,791 - #2 int
+INFO  13:57:50,791 - #2 pi
+INFO  13:57:50,792 - #11 =
+INFO  13:57:50,792 - #3 3
+INFO  13:57:50,792 - #10 ;
+INFO  13:57:50,794 - #9 const
+INFO  13:57:50,794 - #2 int
+INFO  13:57:50,795 - #2 pi
+INFO  13:57:50,795 - #11 =
+INFO  13:57:50,795 - #3 33
+INFO  13:57:50,795 - #10 ;
+INFO  13:57:50,795 - #7 {
+INFO  13:57:50,795 - #17 void
+INFO  13:57:50,796 - #2 Main
+INFO  13:57:50,796 - #15 (
+INFO  13:57:50,796 - #16 )
+INFO  13:57:50,797 - #7 {
+INFO  13:57:50,798 - #8 }
+INFO  13:57:50,799 - #8 }
+INFO  13:57:50,809 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_con(
+    ConVarDecList_con(
+      ConVarDecList_epsilon(
+      ) [ConVarDecList_epsilon]
+      ConDecList(
+        Type(
+         int
+        ) [Type]
+        ConDecl(
+         pi
+          Constant_n(
+           3
+          ) [Constant_n]
+        ) [ConDecl]
+        ConDeclMore_e(
+        ) [ConDeclMore_e]
+      ) [ConDecList]
+    ) [ConVarDecList_con]
+    ConDecList(
+      Type(
+       int
+      ) [Type]
+      ConDecl(
+       pi
+        Constant_n(
+         33
+        ) [Constant_n]
+      ) [ConDecl]
+      ConDeclMore_e(
+      ) [ConDeclMore_e]
+    ) [ConDecList]
+  ) [ConVarDecList_con]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       Main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_e(
+      ) [VarDecOpt_e]
+      StatementOpt_e(
+      ) [StatementOpt_e]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  13:57:50,809 - ===================================
+ERROR 13:57:50,817 - Dvostruka definicija konstante: pi na liniji 6
+INFO  13:57:50,817 - ===================================
+ERROR 13:57:50,817 - Parsiranje NIJE uspesno zavrseno
