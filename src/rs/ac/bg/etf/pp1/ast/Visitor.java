@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 18/7/2025 14:47:0
+// 22/7/2025 16:42:39
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -21,20 +21,20 @@ public interface Visitor {
     public void visit(Addop Addop);
     public void visit(AddOpTerm AddOpTerm);
     public void visit(NumConstOpt NumConstOpt);
-    public void visit(ExprOpt ExprOpt);
     public void visit(Factor Factor);
+    public void visit(ExprOpt ExprOpt);
     public void visit(ConVarDecList ConVarDecList);
-    public void visit(DesignatorRecMore DesignatorRecMore);
     public void visit(Designator Designator);
+    public void visit(DesignatorRecMore DesignatorRecMore);
     public void visit(MethodSignAndName MethodSignAndName);
     public void visit(DesignatorStatementList DesignatorStatementList);
     public void visit(ElseStatement ElseStatement);
-    public void visit(Brackets Brackets);
     public void visit(FormParsMore FormParsMore);
     public void visit(Expr Expr);
     public void visit(VarDecOpt VarDecOpt);
     public void visit(DesignatorList DesignatorList);
     public void visit(DesignatorStatement DesignatorStatement);
+    public void visit(VarDec VarDec);
     public void visit(ConDeclMore ConDeclMore);
     public void visit(VarDecMore VarDecMore);
     public void visit(Statement Statement);
@@ -42,6 +42,7 @@ public interface Visitor {
     public void visit(StatementOpt StatementOpt);
     public void visit(FactorAct FactorAct);
     public void visit(CondTermArr CondTermArr);
+    public void visit(FormPars FormPars);
     public void visit(TermOpt TermOpt);
     public void visit(Setop Setop);
     public void visit(Mulop_md Mulop_md);
@@ -130,7 +131,8 @@ public interface Visitor {
     public void visit(VarDecOpt_v VarDecOpt_v);
     public void visit(FormParsMore_e FormParsMore_e);
     public void visit(FormParsMore_m FormParsMore_m);
-    public void visit(FormPars FormPars);
+    public void visit(FormPars_arr FormPars_arr);
+    public void visit(FormPars_var FormPars_var);
     public void visit(FormParsOpt_e FormParsOpt_e);
     public void visit(FormParsOpt_fm FormParsOpt_fm);
     public void visit(MethodSignAndName_Void MethodSignAndName_Void);
@@ -138,10 +140,10 @@ public interface Visitor {
     public void visit(MethodDecl MethodDecl);
     public void visit(MethodDecList_e MethodDecList_e);
     public void visit(MethodDecList_m MethodDecList_m);
-    public void visit(Brackets_e Brackets_e);
-    public void visit(Brackets_b Brackets_b);
     public void visit(VarDecMore_e VarDecMore_e);
     public void visit(VarDecMore_m VarDecMore_m);
+    public void visit(VarDec_arr VarDec_arr);
+    public void visit(VarDec_var VarDec_var);
     public void visit(VarDecList VarDecList);
     public void visit(Constant_b Constant_b);
     public void visit(Constant_c Constant_c);

@@ -53,14 +53,15 @@ terminal VOID, EQUAL, NOTEQUAL, GREATER, GREATEREQUAL, LESS, LESSEQUAL, PLUS, MI
 terminal IF, BREAK, CONTINUE, RETURN, READ, DO, WHILE, DOT, NEW, MAP, AND, OR, INC, DEC, ELSE, PRINT, COLON;
 
 nonterminal Program, ConVarDecList, MethodDecList, ConDecList, VarDecList, ConDecl, Constant;
-nonterminal ConDeclMore, Type, Brackets, VarDecMore, MethodSignatureType, FormParsOpt;
+nonterminal ConDeclMore, Type, VarDecMore, MethodSignatureType, FormParsOpt;
 nonterminal FormPars, FormParsMore, MethodDecl, VarDecOpt, StatementOpt, Statement, ActPars, ActParsExprOpt, ActParsOpt;
 nonterminal CondFact, CondFactREOpt, CondTerm, CondFactArr, Condition, CondTermArr, DesignatorStatement;
-nonterminal DesignatorStatementList, Assignop, Relop, Addop, Mulop, Setop, Label, Designator, DesignatorList;
-nonterminal Factor, FactorAct, FactorExprPars, ExprOpt, Term, TermOpt, Expr, AddOpTerm;
-nonterminal ConditionList, ElseStatement, NumConstOpt, ProgramName, MethodSignAndName;
+nonterminal DesignatorStatementList, Assignop, Relop, Addop, Mulop, Setop, Label, DesignatorList;
+nonterminal FactorAct, FactorExprPars, ExprOpt;
+nonterminal ConditionList, ElseStatement, NumConstOpt, ProgramName, MethodSignAndName, VarDec;
 nonterminal DesignatorRecMore, DesignatorArrayName, DesignatorRecordName, DesignatorRecordArrayName;
-
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Expr, AddOpTerm, Term, TermOpt;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator;
 precedence left ELSE;
 
 Program ::= (Program) PROG ProgramName ConVarDecList OPBRACKET MethodDecList CLBRACKET;
@@ -93,18 +94,18 @@ Constant ::= (Constant_n) NUMBER
 			(Constant_b) BOOL
 			;
 
-VarDecList ::= (VarDecList) Type IDENT Brackets VarDecMore SEMI;
+VarDecList ::= (VarDecList) Type VarDec VarDecMore SEMI;
 
+VarDec	::=	(VarDec_var) IDENT
+			|
+			(VarDec_arr) IDENT OPSQBRACKET CLSQBRACKET
+			;
 
-VarDecMore ::= 	(VarDecMore_m) COMMA IDENT Brackets VarDecMore
+VarDecMore ::= 	(VarDecMore_m) COMMA VarDec VarDecMore
 				|
 				(VarDecMore_e)/*epsilon*/
 				;
 
-Brackets ::=   			(Brackets_b) OPSQBRACKET CLSQBRACKET
-						|
-						(Brackets_e)/*epsilon*/
-						;
 
 MethodDecList ::= 	(MethodDecList_m) MethodDecList MethodDecl
 					|
@@ -118,14 +119,17 @@ MethodSignAndName ::= 	(MethodSignAndName_Type) Type IDENT
 						(MethodSignAndName_Void) VOID IDENT
 						;
 
-FormParsOpt ::= (FormParsOpt_fm) FormPars
+FormParsOpt ::= (FormParsOpt_fm) FormPars FormParsMore
 				|
 				(FormParsOpt_e) /*epsilon*/
 				;
 
-FormPars ::= (FormPars) Type IDENT Brackets FormParsMore;
+FormPars ::= 	(FormPars_var) Type IDENT
+				|
+				(FormPars_arr) Type IDENT OPSQBRACKET CLSQBRACKET
+				;
 
-FormParsMore ::= 	(FormParsMore_m) COMMA FormPars
+FormParsMore ::= 	(FormParsMore_m) COMMA FormPars FormParsMore
 					|
 					(FormParsMore_e)/*epsilon*/
 					;
@@ -296,8 +300,6 @@ ActParsOpt ::=	(ActParsOpt_a) ActPars
 				|
 				(ActParsOpt_e)/*epsilon*/
 				;
-					
-
 					
 Label ::= (Label) IDENT; 
 

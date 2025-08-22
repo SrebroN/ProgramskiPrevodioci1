@@ -1,0 +1,90 @@
+INFO  13:42:51,962 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  13:42:52,022 - #6 program
+INFO  13:42:52,022 - #2 test302
+INFO  13:42:52,023 - #9 const
+INFO  13:42:52,024 - #2 int
+INFO  13:42:52,024 - #2 g
+INFO  13:42:52,025 - #11 =
+INFO  13:42:52,026 - #3 33
+INFO  13:42:52,026 - #12 ,
+INFO  13:42:52,027 - #2 p
+INFO  13:42:52,027 - #11 =
+INFO  13:42:52,027 - #3 3
+INFO  13:42:52,028 - #10 ;
+INFO  13:42:52,029 - #9 const
+INFO  13:42:52,030 - #2 char
+INFO  13:42:52,030 - #2 a
+INFO  13:42:52,030 - #11 =
+INFO  13:42:52,030 - #5 a
+INFO  13:42:52,030 - #10 ;
+INFO  13:42:52,031 - #7 {
+INFO  13:42:52,031 - #17 void
+INFO  13:42:52,032 - #2 Main
+INFO  13:42:52,032 - #15 (
+INFO  13:42:52,038 - #16 )
+INFO  13:42:52,039 - #7 {
+INFO  13:42:52,040 - #8 }
+INFO  13:42:52,042 - #8 }
+INFO  13:42:52,044 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_con(
+    ConVarDecList_con(
+      ConVarDecList_epsilon(
+      ) [ConVarDecList_epsilon]
+      ConDecList(
+        Type(
+         int
+        ) [Type]
+        ConDecl(
+         g
+          Constant_n(
+           33
+          ) [Constant_n]
+        ) [ConDecl]
+        ConDeclMore_comma(
+          ConDecl(
+           p
+            Constant_n(
+             3
+            ) [Constant_n]
+          ) [ConDecl]
+          ConDeclMore_e(
+          ) [ConDeclMore_e]
+        ) [ConDeclMore_comma]
+      ) [ConDecList]
+    ) [ConVarDecList_con]
+    ConDecList(
+      Type(
+       char
+      ) [Type]
+      ConDecl(
+       a
+        Constant_c(
+         a
+        ) [Constant_c]
+      ) [ConDecl]
+      ConDeclMore_e(
+      ) [ConDeclMore_e]
+    ) [ConDecList]
+  ) [ConVarDecList_con]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       Main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_e(
+      ) [VarDecOpt_e]
+      StatementOpt_e(
+      ) [StatementOpt_e]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  13:42:52,044 - ===================================
+INFO  13:42:52,053 - ===================================
+INFO  13:42:52,054 - Parsiranje uspesno zavrseno!

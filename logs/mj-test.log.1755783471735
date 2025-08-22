@@ -1,0 +1,72 @@
+INFO  15:36:08,532 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  15:36:08,580 - #6 program
+INFO  15:36:08,580 - #2 test302
+INFO  15:36:08,580 - #9 const
+INFO  15:36:08,582 - #2 int
+INFO  15:36:08,582 - #2 pi
+INFO  15:36:08,582 - #11 =
+INFO  15:36:08,582 - #3 3
+INFO  15:36:08,583 - #10 ;
+INFO  15:36:08,599 - #2 char
+INFO  15:36:08,602 - #2 a
+INFO  15:36:08,602 - #10 ;
+INFO  15:36:08,603 - #7 {
+INFO  15:36:08,604 - #17 void
+INFO  15:36:08,605 - #2 Main
+INFO  15:36:08,606 - #15 (
+INFO  15:36:08,606 - #16 )
+INFO  15:36:08,607 - #7 {
+INFO  15:36:08,607 - #8 }
+INFO  15:36:08,608 - #8 }
+INFO  15:36:08,612 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_var(
+    ConVarDecList_con(
+      ConVarDecList_epsilon(
+      ) [ConVarDecList_epsilon]
+      ConDecList(
+        Type(
+         int
+        ) [Type]
+        ConDecl(
+         pi
+          Constant_n(
+           3
+          ) [Constant_n]
+        ) [ConDecl]
+        ConDeclMore_e(
+        ) [ConDeclMore_e]
+      ) [ConDecList]
+    ) [ConVarDecList_con]
+    VarDecList(
+      Type(
+       char
+      ) [Type]
+      VarDec_var(
+       a
+      ) [VarDec_var]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       Main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_e(
+      ) [VarDecOpt_e]
+      StatementOpt_e(
+      ) [StatementOpt_e]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  15:36:08,618 - ===================================
+INFO  15:36:08,627 - ===================================
+INFO  15:36:08,628 - Parsiranje uspesno zavrseno!

@@ -1,0 +1,170 @@
+INFO  10:27:44,434 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  10:27:44,484 - #6 program
+INFO  10:27:44,484 - #2 test302
+INFO  10:27:44,484 - #9 const
+INFO  10:27:44,486 - #2 int
+INFO  10:27:44,486 - #2 pi
+INFO  10:27:44,487 - #11 =
+INFO  10:27:44,487 - #3 3
+INFO  10:27:44,487 - #10 ;
+INFO  10:27:44,488 - #2 char
+INFO  10:27:44,490 - #2 a
+INFO  10:27:44,490 - #10 ;
+INFO  10:27:44,491 - #2 int
+INFO  10:27:44,492 - #2 b
+INFO  10:27:44,492 - #13 [
+INFO  10:27:44,492 - #14 ]
+INFO  10:27:44,492 - #10 ;
+INFO  10:27:44,493 - #2 bool
+INFO  10:27:44,493 - #2 tru
+INFO  10:27:44,493 - #10 ;
+INFO  10:27:44,493 - #2 bool
+INFO  10:27:44,493 - #2 fls
+INFO  10:27:44,493 - #10 ;
+INFO  10:27:44,499 - #7 {
+INFO  10:27:44,499 - #17 void
+INFO  10:27:44,500 - #2 main
+INFO  10:27:44,500 - #15 (
+INFO  10:27:44,501 - #16 )
+INFO  10:27:44,501 - #2 int
+INFO  10:27:44,502 - #2 awdwa
+INFO  10:27:44,502 - #10 ;
+INFO  10:27:44,502 - #2 char
+INFO  10:27:44,503 - #2 a
+INFO  10:27:44,503 - #10 ;
+INFO  10:27:44,503 - #7 {
+INFO  10:27:44,503 - #8 }
+INFO  10:27:44,503 - #2 int
+INFO  10:27:44,504 - #2 fls
+INFO  10:27:44,505 - #15 (
+INFO  10:27:44,505 - #16 )
+INFO  10:27:44,505 - #7 {
+INFO  10:27:44,505 - #8 }
+INFO  10:27:44,505 - #8 }
+INFO  10:27:44,507 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_var(
+    ConVarDecList_var(
+      ConVarDecList_var(
+        ConVarDecList_var(
+          ConVarDecList_con(
+            ConVarDecList_epsilon(
+            ) [ConVarDecList_epsilon]
+            ConDecList(
+              Type(
+               int
+              ) [Type]
+              ConDecl(
+               pi
+                Constant_n(
+                 3
+                ) [Constant_n]
+              ) [ConDecl]
+              ConDeclMore_e(
+              ) [ConDeclMore_e]
+            ) [ConDecList]
+          ) [ConVarDecList_con]
+          VarDecList(
+            Type(
+             char
+            ) [Type]
+            VarDec_var(
+             a
+            ) [VarDec_var]
+            VarDecMore_e(
+            ) [VarDecMore_e]
+          ) [VarDecList]
+        ) [ConVarDecList_var]
+        VarDecList(
+          Type(
+           int
+          ) [Type]
+          VarDec_arr(
+           b
+          ) [VarDec_arr]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList]
+      ) [ConVarDecList_var]
+      VarDecList(
+        Type(
+         bool
+        ) [Type]
+        VarDec_var(
+         tru
+        ) [VarDec_var]
+        VarDecMore_e(
+        ) [VarDecMore_e]
+      ) [VarDecList]
+    ) [ConVarDecList_var]
+    VarDecList(
+      Type(
+       bool
+      ) [Type]
+      VarDec_var(
+       fls
+      ) [VarDec_var]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_m(
+    MethodDecList_m(
+      MethodDecList_e(
+      ) [MethodDecList_e]
+      MethodDecl(
+        MethodSignAndName_Void(
+         main
+        ) [MethodSignAndName_Void]
+        FormParsOpt_e(
+        ) [FormParsOpt_e]
+        VarDecOpt_v(
+          VarDecOpt_v(
+            VarDecOpt_e(
+            ) [VarDecOpt_e]
+            VarDecList(
+              Type(
+               int
+              ) [Type]
+              VarDec_var(
+               awdwa
+              ) [VarDec_var]
+              VarDecMore_e(
+              ) [VarDecMore_e]
+            ) [VarDecList]
+          ) [VarDecOpt_v]
+          VarDecList(
+            Type(
+             char
+            ) [Type]
+            VarDec_var(
+             a
+            ) [VarDec_var]
+            VarDecMore_e(
+            ) [VarDecMore_e]
+          ) [VarDecList]
+        ) [VarDecOpt_v]
+        StatementOpt_e(
+        ) [StatementOpt_e]
+      ) [MethodDecl]
+    ) [MethodDecList_m]
+    MethodDecl(
+      MethodSignAndName_Type(
+        Type(
+         int
+        ) [Type]
+       fls
+      ) [MethodSignAndName_Type]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_e(
+      ) [VarDecOpt_e]
+      StatementOpt_e(
+      ) [StatementOpt_e]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  10:27:44,507 - ===================================
+ERROR 10:27:44,515 - Dvostruka definicija konstante: a na liniji 12

@@ -1,0 +1,194 @@
+INFO  10:32:35,530 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  10:32:35,588 - #6 program
+INFO  10:32:35,588 - #2 test302
+INFO  10:32:35,588 - #9 const
+INFO  10:32:35,590 - #2 int
+INFO  10:32:35,590 - #2 pi
+INFO  10:32:35,591 - #11 =
+INFO  10:32:35,591 - #3 3
+INFO  10:32:35,592 - #10 ;
+INFO  10:32:35,594 - #2 char
+INFO  10:32:35,596 - #2 a
+INFO  10:32:35,596 - #10 ;
+INFO  10:32:35,597 - #2 int
+INFO  10:32:35,598 - #2 b
+INFO  10:32:35,598 - #13 [
+INFO  10:32:35,598 - #14 ]
+INFO  10:32:35,598 - #10 ;
+INFO  10:32:35,599 - #2 bool
+INFO  10:32:35,599 - #2 tru
+INFO  10:32:35,599 - #10 ;
+INFO  10:32:35,599 - #2 bool
+INFO  10:32:35,599 - #2 fls
+INFO  10:32:35,599 - #10 ;
+INFO  10:32:35,605 - #7 {
+INFO  10:32:35,605 - #17 void
+INFO  10:32:35,606 - #2 main
+INFO  10:32:35,606 - #15 (
+INFO  10:32:35,606 - #16 )
+INFO  10:32:35,607 - #2 int
+INFO  10:32:35,608 - #2 awdwa
+INFO  10:32:35,608 - #10 ;
+INFO  10:32:35,608 - #2 char
+INFO  10:32:35,609 - #2 a
+INFO  10:32:35,609 - #10 ;
+INFO  10:32:35,609 - #7 {
+INFO  10:32:35,609 - #8 }
+INFO  10:32:35,610 - #2 bool
+INFO  10:32:35,611 - #2 fls
+INFO  10:32:35,611 - #15 (
+INFO  10:32:35,612 - #16 )
+INFO  10:32:35,612 - #7 {
+INFO  10:32:35,612 - #8 }
+INFO  10:32:35,612 - #2 int
+INFO  10:32:35,612 - #2 fls
+INFO  10:32:35,612 - #15 (
+INFO  10:32:35,612 - #16 )
+INFO  10:32:35,612 - #7 {
+INFO  10:32:35,612 - #8 }
+INFO  10:32:35,613 - #8 }
+INFO  10:32:35,614 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_var(
+    ConVarDecList_var(
+      ConVarDecList_var(
+        ConVarDecList_var(
+          ConVarDecList_con(
+            ConVarDecList_epsilon(
+            ) [ConVarDecList_epsilon]
+            ConDecList(
+              Type(
+               int
+              ) [Type]
+              ConDecl(
+               pi
+                Constant_n(
+                 3
+                ) [Constant_n]
+              ) [ConDecl]
+              ConDeclMore_e(
+              ) [ConDeclMore_e]
+            ) [ConDecList]
+          ) [ConVarDecList_con]
+          VarDecList(
+            Type(
+             char
+            ) [Type]
+            VarDec_var(
+             a
+            ) [VarDec_var]
+            VarDecMore_e(
+            ) [VarDecMore_e]
+          ) [VarDecList]
+        ) [ConVarDecList_var]
+        VarDecList(
+          Type(
+           int
+          ) [Type]
+          VarDec_arr(
+           b
+          ) [VarDec_arr]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList]
+      ) [ConVarDecList_var]
+      VarDecList(
+        Type(
+         bool
+        ) [Type]
+        VarDec_var(
+         tru
+        ) [VarDec_var]
+        VarDecMore_e(
+        ) [VarDecMore_e]
+      ) [VarDecList]
+    ) [ConVarDecList_var]
+    VarDecList(
+      Type(
+       bool
+      ) [Type]
+      VarDec_var(
+       fls
+      ) [VarDec_var]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_m(
+    MethodDecList_m(
+      MethodDecList_m(
+        MethodDecList_e(
+        ) [MethodDecList_e]
+        MethodDecl(
+          MethodSignAndName_Void(
+           main
+          ) [MethodSignAndName_Void]
+          FormParsOpt_e(
+          ) [FormParsOpt_e]
+          VarDecOpt_v(
+            VarDecOpt_v(
+              VarDecOpt_e(
+              ) [VarDecOpt_e]
+              VarDecList(
+                Type(
+                 int
+                ) [Type]
+                VarDec_var(
+                 awdwa
+                ) [VarDec_var]
+                VarDecMore_e(
+                ) [VarDecMore_e]
+              ) [VarDecList]
+            ) [VarDecOpt_v]
+            VarDecList(
+              Type(
+               char
+              ) [Type]
+              VarDec_var(
+               a
+              ) [VarDec_var]
+              VarDecMore_e(
+              ) [VarDecMore_e]
+            ) [VarDecList]
+          ) [VarDecOpt_v]
+          StatementOpt_e(
+          ) [StatementOpt_e]
+        ) [MethodDecl]
+      ) [MethodDecList_m]
+      MethodDecl(
+        MethodSignAndName_Type(
+          Type(
+           bool
+          ) [Type]
+         fls
+        ) [MethodSignAndName_Type]
+        FormParsOpt_e(
+        ) [FormParsOpt_e]
+        VarDecOpt_e(
+        ) [VarDecOpt_e]
+        StatementOpt_e(
+        ) [StatementOpt_e]
+      ) [MethodDecl]
+    ) [MethodDecList_m]
+    MethodDecl(
+      MethodSignAndName_Type(
+        Type(
+         int
+        ) [Type]
+       fls
+      ) [MethodSignAndName_Type]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_e(
+      ) [VarDecOpt_e]
+      StatementOpt_e(
+      ) [StatementOpt_e]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  10:32:35,615 - ===================================
+ERROR 10:32:35,624 - Dvostruka definicija metode: fls na liniji 14
+INFO  10:32:35,624 - ===================================
+ERROR 10:32:35,625 - Parsiranje NIJE uspesno zavrseno

@@ -1,0 +1,136 @@
+INFO  16:10:21,045 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  16:10:21,095 - #6 program
+INFO  16:10:21,096 - #2 test302
+INFO  16:10:21,096 - #9 const
+INFO  16:10:21,097 - #2 int
+INFO  16:10:21,097 - #2 pi
+INFO  16:10:21,098 - #11 =
+INFO  16:10:21,099 - #3 3
+INFO  16:10:21,099 - #10 ;
+INFO  16:10:21,101 - #2 char
+INFO  16:10:21,102 - #2 a
+INFO  16:10:21,102 - #10 ;
+INFO  16:10:21,103 - #2 int
+INFO  16:10:21,104 - #2 b
+INFO  16:10:21,104 - #13 [
+INFO  16:10:21,105 - #14 ]
+INFO  16:10:21,105 - #10 ;
+INFO  16:10:21,105 - #2 bool
+INFO  16:10:21,105 - #2 tru
+INFO  16:10:21,105 - #10 ;
+INFO  16:10:21,105 - #2 bool
+INFO  16:10:21,106 - #2 fls
+INFO  16:10:21,106 - #10 ;
+INFO  16:10:21,112 - #2 int
+INFO  16:10:21,112 - #2 main
+INFO  16:10:21,112 - #10 ;
+INFO  16:10:21,112 - #7 {
+INFO  16:10:21,112 - #17 void
+INFO  16:10:21,113 - #2 main
+INFO  16:10:21,113 - #15 (
+INFO  16:10:21,114 - #16 )
+INFO  16:10:21,115 - #7 {
+INFO  16:10:21,116 - #8 }
+INFO  16:10:21,116 - #8 }
+INFO  16:10:21,119 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_var(
+    ConVarDecList_var(
+      ConVarDecList_var(
+        ConVarDecList_var(
+          ConVarDecList_var(
+            ConVarDecList_con(
+              ConVarDecList_epsilon(
+              ) [ConVarDecList_epsilon]
+              ConDecList(
+                Type(
+                 int
+                ) [Type]
+                ConDecl(
+                 pi
+                  Constant_n(
+                   3
+                  ) [Constant_n]
+                ) [ConDecl]
+                ConDeclMore_e(
+                ) [ConDeclMore_e]
+              ) [ConDecList]
+            ) [ConVarDecList_con]
+            VarDecList(
+              Type(
+               char
+              ) [Type]
+              VarDec_var(
+               a
+              ) [VarDec_var]
+              VarDecMore_e(
+              ) [VarDecMore_e]
+            ) [VarDecList]
+          ) [ConVarDecList_var]
+          VarDecList(
+            Type(
+             int
+            ) [Type]
+            VarDec_arr(
+             b
+            ) [VarDec_arr]
+            VarDecMore_e(
+            ) [VarDecMore_e]
+          ) [VarDecList]
+        ) [ConVarDecList_var]
+        VarDecList(
+          Type(
+           bool
+          ) [Type]
+          VarDec_var(
+           tru
+          ) [VarDec_var]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList]
+      ) [ConVarDecList_var]
+      VarDecList(
+        Type(
+         bool
+        ) [Type]
+        VarDec_var(
+         fls
+        ) [VarDec_var]
+        VarDecMore_e(
+        ) [VarDecMore_e]
+      ) [VarDecList]
+    ) [ConVarDecList_var]
+    VarDecList(
+      Type(
+       int
+      ) [Type]
+      VarDec_var(
+       main
+      ) [VarDec_var]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_e(
+      ) [VarDecOpt_e]
+      StatementOpt_e(
+      ) [StatementOpt_e]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  16:10:21,119 - ===================================
+ERROR 16:10:21,127 - Dvostruka definicija metode: main na liniji 12
+ERROR 16:10:21,127 - Greska, main nije deklarisan
+INFO  16:10:21,127 - ===================================
+ERROR 16:10:21,127 - Parsiranje NIJE uspesno zavrseno

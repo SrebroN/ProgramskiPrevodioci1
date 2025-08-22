@@ -61,7 +61,6 @@ nonterminal ConDecl ConDecl;
 nonterminal Constant Constant;
 nonterminal ConDeclMore ConDeclMore;
 nonterminal Type Type;
-nonterminal Brackets Brackets;
 nonterminal VarDecMore VarDecMore;
 nonterminal MethodSignatureType MethodSignatureType;
 nonterminal FormParsOpt FormParsOpt;
@@ -88,26 +87,22 @@ nonterminal Addop Addop;
 nonterminal Mulop Mulop;
 nonterminal Setop Setop;
 nonterminal Label Label;
-nonterminal Designator Designator;
 nonterminal DesignatorList DesignatorList;
-nonterminal Factor Factor;
 nonterminal FactorAct FactorAct;
 nonterminal FactorExprPars FactorExprPars;
 nonterminal ExprOpt ExprOpt;
-nonterminal Term Term;
-nonterminal TermOpt TermOpt;
-nonterminal Expr Expr;
-nonterminal AddOpTerm AddOpTerm;
 nonterminal ConditionList ConditionList;
 nonterminal ElseStatement ElseStatement;
 nonterminal NumConstOpt NumConstOpt;
 nonterminal ProgramName ProgramName;
 nonterminal MethodSignAndName MethodSignAndName;
+nonterminal VarDec VarDec;
 nonterminal DesignatorRecMore DesignatorRecMore;
 nonterminal DesignatorArrayName DesignatorArrayName;
 nonterminal DesignatorRecordName DesignatorRecordName;
 nonterminal DesignatorRecordArrayName DesignatorRecordArrayName;
-
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Expr, AddOpTerm, Term, TermOpt;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator;
 precedence left ELSE;
 
 Program ::= (Program) PROG ProgramName:P1 ConVarDecList:C2 OPBRACKET MethodDecList:M3 CLBRACKET {: RESULT=new Program(P1, C2, M3); RESULT.setLine(P1left); :};
@@ -140,18 +135,18 @@ Constant ::= (Constant_n) NUMBER:N1 {: RESULT=new Constant_n(N1); RESULT.setLine
 			(Constant_b) BOOL:B1 {: RESULT=new Constant_b(B1); RESULT.setLine(B1left); :}
 			;
 
-VarDecList ::= (VarDecList) Type:T1 IDENT:I2 Brackets:B3 VarDecMore:V4 SEMI {: RESULT=new VarDecList(T1, I2, B3, V4); RESULT.setLine(T1left); :};
+VarDecList ::= (VarDecList) Type:T1 VarDec:V2 VarDecMore:V3 SEMI {: RESULT=new VarDecList(T1, V2, V3); RESULT.setLine(T1left); :};
 
+VarDec	::=	(VarDec_var) IDENT:I1 {: RESULT=new VarDec_var(I1); RESULT.setLine(I1left); :}
+			|
+			(VarDec_arr) IDENT:I1 OPSQBRACKET CLSQBRACKET {: RESULT=new VarDec_arr(I1); RESULT.setLine(I1left); :}
+			;
 
-VarDecMore ::= 	(VarDecMore_m) COMMA IDENT:I1 Brackets:B2 VarDecMore:V3 {: RESULT=new VarDecMore_m(I1, B2, V3); RESULT.setLine(I1left); :}
+VarDecMore ::= 	(VarDecMore_m) COMMA VarDec:V1 VarDecMore:V2 {: RESULT=new VarDecMore_m(V1, V2); RESULT.setLine(V1left); :}
 				|
 				(VarDecMore_e) {: RESULT=new VarDecMore_e(); :}/*epsilon*/
 				;
 
-Brackets ::=   			(Brackets_b) OPSQBRACKET CLSQBRACKET {: RESULT=new Brackets_b(); :}
-						|
-						(Brackets_e) {: RESULT=new Brackets_e(); :}/*epsilon*/
-						;
 
 MethodDecList ::= 	(MethodDecList_m) MethodDecList:M1 MethodDecl:M2 {: RESULT=new MethodDecList_m(M1, M2); RESULT.setLine(M1left); :}
 					|
@@ -165,14 +160,17 @@ MethodSignAndName ::= 	(MethodSignAndName_Type) Type:T1 IDENT:I2 {: RESULT=new M
 						(MethodSignAndName_Void) VOID IDENT:I1 {: RESULT=new MethodSignAndName_Void(I1); RESULT.setLine(I1left); :}
 						;
 
-FormParsOpt ::= (FormParsOpt_fm) FormPars:F1 {: RESULT=new FormParsOpt_fm(F1); RESULT.setLine(F1left); :}
+FormParsOpt ::= (FormParsOpt_fm) FormPars:F1 FormParsMore:F2 {: RESULT=new FormParsOpt_fm(F1, F2); RESULT.setLine(F1left); :}
 				|
 				(FormParsOpt_e) {: RESULT=new FormParsOpt_e(); :} /*epsilon*/
 				;
 
-FormPars ::= (FormPars) Type:T1 IDENT:I2 Brackets:B3 FormParsMore:F4 {: RESULT=new FormPars(T1, I2, B3, F4); RESULT.setLine(T1left); :};
+FormPars ::= 	(FormPars_var) Type:T1 IDENT:I2 {: RESULT=new FormPars_var(T1, I2); RESULT.setLine(T1left); :}
+				|
+				(FormPars_arr) Type:T1 IDENT:I2 OPSQBRACKET CLSQBRACKET {: RESULT=new FormPars_arr(T1, I2); RESULT.setLine(T1left); :}
+				;
 
-FormParsMore ::= 	(FormParsMore_m) COMMA FormPars:F1 {: RESULT=new FormParsMore_m(F1); RESULT.setLine(F1left); :}
+FormParsMore ::= 	(FormParsMore_m) COMMA FormPars:F1 FormParsMore:F2 {: RESULT=new FormParsMore_m(F1, F2); RESULT.setLine(F1left); :}
 					|
 					(FormParsMore_e) {: RESULT=new FormParsMore_e(); :}/*epsilon*/
 					;
@@ -343,8 +341,6 @@ ActParsOpt ::=	(ActParsOpt_a) ActPars:A1 {: RESULT=new ActParsOpt_a(A1); RESULT.
 				|
 				(ActParsOpt_e) {: RESULT=new ActParsOpt_e(); :}/*epsilon*/
 				;
-					
-
 					
 Label ::= (Label) IDENT:I1 {: RESULT=new Label(I1); RESULT.setLine(I1left); :}; 
 
