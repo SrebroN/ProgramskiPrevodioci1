@@ -57,11 +57,11 @@ nonterminal ConDeclMore, Type, VarDecMore, MethodSignatureType, FormParsOpt;
 nonterminal FormPars, FormParsMore, MethodDecl, VarDecOpt, StatementOpt, Statement, ActPars, ActParsExprOpt, ActParsOpt;
 nonterminal CondFact, CondFactREOpt, CondTerm, CondFactArr, Condition, CondTermArr, DesignatorStatement;
 nonterminal DesignatorStatementList, Assignop, Relop, Addop, Mulop, Setop, Label, DesignatorList;
-nonterminal FactorAct, FactorExprPars, ExprOpt;
+nonterminal FactorAct, ExprOpt;
 nonterminal ConditionList, ElseStatement, NumConstOpt, ProgramName, MethodSignAndName, VarDec;
-nonterminal DesignatorRecMore, DesignatorArrayName, DesignatorRecordName, DesignatorRecordArrayName;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Expr, AddOpTerm, Term, TermOpt;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Expr, AddOpTerm, Term, MulopFactor;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, DesignatorArrayName;
+// DesignatorRecMore, DesignatorRecordName, DesignatorRecordArrayName;
 precedence left ELSE;
 
 Program ::= (Program) PROG ProgramName ConVarDecList OPBRACKET MethodDecList CLBRACKET;
@@ -183,9 +183,10 @@ ConditionList ::= 	(ConditionList_con) Condition
 					
 Designator ::= 	(Designator_var) IDENT
 				|
-				(Designator_elem) DesignatorArrayName OPSQBRACKET Expr CLSQBRACKET
-				|
-				(Designator_rec) DesignatorRecordName DesignatorRecMore
+				(Designator_elem) DesignatorArrayName OPSQBRACKET Expr CLSQBRACKET;
+	
+		/*		|
+  				(Designator_rec) DesignatorRecordName DesignatorRecMore
 				|
 				(Designator_rec_elem) DesignatorArrayName OPSQBRACKET Expr CLSQBRACKET DesignatorRecMore
 				;
@@ -199,12 +200,13 @@ DesignatorRecMore ::= 	(DesignatorRecMore_var) DOT IDENT
 						(DesignatorRecMore_rec_elem) DesignatorRecMore  DOT DesignatorRecordArrayName OPSQBRACKET Expr CLSQBRACKET
 						;
 
-DesignatorArrayName ::= (DesignatorArrayName) IDENT;
  
 DesignatorRecordName ::= (DesignatorRecordName) IDENT;
 
 DesignatorRecordArrayName ::= (DesignatorRecordArrayName) IDENT;
-						
+				*/
+				
+DesignatorArrayName ::= (DesignatorArrayName) IDENT;
 
 DesignatorStatement ::= (DesignatorStatement_ds) Designator DesignatorStatementList
 						|
@@ -249,9 +251,9 @@ CondFactREOpt ::=	(CondFactREOpt_re) Relop Expr
 					(CondFactREOpt_e) /*epsilon*/
 					;
  
-Expr ::= 	(Expr_term) Term AddOpTerm
+Expr ::= 	(Expr_term) AddOpTerm
 			|
-			(Expr_mint) MINUS Term AddOpTerm
+			(Expr_mint) MINUS AddOpTerm
 			|
 			(Expr_des) Designator MAP Designator
 			;
@@ -263,15 +265,15 @@ ExprOpt ::=	(ExprOpt_exp) Expr
 
 AddOpTerm ::=	(AddOpTerm_op) AddOpTerm Addop Term
 				|
-				(AddOpTerm_e)/*epsilon*/
+				(AddOpTerm_term) Term
 				;
 
-Term ::=	(Term) Factor TermOpt;
+Term ::=	(Term)  MulopFactor;
 
-TermOpt ::=	(TermOpt_t) TermOpt Mulop Factor
-			|
-			(TermOpt_e) /*epsilon*/
-			;
+MulopFactor ::=	(MulopFactor_mul) MulopFactor Mulop Factor
+				|
+				(MulopFactor_fac) Factor
+				;
 					
 Factor ::= 	(Factor_des) Designator FactorAct
 			|
@@ -281,7 +283,7 @@ Factor ::= 	(Factor_des) Designator FactorAct
 			|
 			(Factor_bool) BOOL
 			|
-			(Factor_new) NEW Type FactorExprPars
+			(Factor_newexpr) NEW Type OPSQBRACKET Expr CLSQBRACKET
 			|
 			(Factor_expr) OPPAREN Expr CLPAREN
 			;		
@@ -291,11 +293,6 @@ FactorAct ::=	(FactorAct_fa) OPPAREN ActParsOpt CLPAREN
 				(FactorAct_e)/*epsilon*/
 				;
 					
-FactorExprPars ::= 	(FactorExprPars_expr) OPSQBRACKET Expr CLSQBRACKET
-					|
-					(FactorExprPars_pars) OPPAREN ActParsOpt CLPAREN
-					;
-
 ActParsOpt ::=	(ActParsOpt_a) ActPars
 				|
 				(ActParsOpt_e)/*epsilon*/

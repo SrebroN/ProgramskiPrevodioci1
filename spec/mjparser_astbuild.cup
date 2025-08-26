@@ -89,7 +89,6 @@ nonterminal Setop Setop;
 nonterminal Label Label;
 nonterminal DesignatorList DesignatorList;
 nonterminal FactorAct FactorAct;
-nonterminal FactorExprPars FactorExprPars;
 nonterminal ExprOpt ExprOpt;
 nonterminal ConditionList ConditionList;
 nonterminal ElseStatement ElseStatement;
@@ -97,12 +96,9 @@ nonterminal NumConstOpt NumConstOpt;
 nonterminal ProgramName ProgramName;
 nonterminal MethodSignAndName MethodSignAndName;
 nonterminal VarDec VarDec;
-nonterminal DesignatorRecMore DesignatorRecMore;
-nonterminal DesignatorArrayName DesignatorArrayName;
-nonterminal DesignatorRecordName DesignatorRecordName;
-nonterminal DesignatorRecordArrayName DesignatorRecordArrayName;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Expr, AddOpTerm, Term, TermOpt;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Expr, AddOpTerm, Term, MulopFactor;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, DesignatorArrayName;
+// DesignatorRecMore, DesignatorRecordName, DesignatorRecordArrayName;
 precedence left ELSE;
 
 Program ::= (Program) PROG ProgramName:P1 ConVarDecList:C2 OPBRACKET MethodDecList:M3 CLBRACKET {: RESULT=new Program(P1, C2, M3); RESULT.setLine(P1left); :};
@@ -224,28 +220,30 @@ ConditionList ::= 	(ConditionList_con) Condition:C1 {: RESULT=new ConditionList_
 					
 Designator ::= 	(Designator_var) IDENT:I1 {: RESULT=new Designator_var(I1); RESULT.setLine(I1left); :}
 				|
-				(Designator_elem) DesignatorArrayName:D1 OPSQBRACKET Expr:E2 CLSQBRACKET {: RESULT=new Designator_elem(D1, E2); RESULT.setLine(D1left); :}
+				(Designator_elem) DesignatorArrayName:D1 OPSQBRACKET Expr:E2 CLSQBRACKET {: RESULT=new Designator_elem(D1, E2); RESULT.setLine(D1left); :};
+	
+		/*		|
+  				(Designator_rec) DesignatorRecordName DesignatorRecMore
 				|
-				(Designator_rec) DesignatorRecordName:D1 DesignatorRecMore:D2 {: RESULT=new Designator_rec(D1, D2); RESULT.setLine(D1left); :}
-				|
-				(Designator_rec_elem) DesignatorArrayName:D1 OPSQBRACKET Expr:E2 CLSQBRACKET DesignatorRecMore:D3 {: RESULT=new Designator_rec_elem(D1, E2, D3); RESULT.setLine(D1left); :}
+				(Designator_rec_elem) DesignatorArrayName OPSQBRACKET Expr CLSQBRACKET DesignatorRecMore
 				;
 				
-DesignatorRecMore ::= 	(DesignatorRecMore_var) DOT IDENT:I1 {: RESULT=new DesignatorRecMore_var(I1); RESULT.setLine(I1left); :} 
+DesignatorRecMore ::= 	(DesignatorRecMore_var) DOT IDENT 
 						|
-					 	(DesignatorRecMore_elem) DOT DesignatorRecordArrayName:D1 OPSQBRACKET Expr:E2 CLSQBRACKET {: RESULT=new DesignatorRecMore_elem(D1, E2); RESULT.setLine(D1left); :} 
+					 	(DesignatorRecMore_elem) DOT DesignatorRecordArrayName OPSQBRACKET Expr CLSQBRACKET 
 						|
-						(DesignatorRecMore_rec_var) DesignatorRecMore:D1 DOT IDENT:I2 {: RESULT=new DesignatorRecMore_rec_var(D1, I2); RESULT.setLine(D1left); :}
+						(DesignatorRecMore_rec_var) DesignatorRecMore DOT IDENT
 						|
-						(DesignatorRecMore_rec_elem) DesignatorRecMore:D1  DOT DesignatorRecordArrayName:D2 OPSQBRACKET Expr:E3 CLSQBRACKET {: RESULT=new DesignatorRecMore_rec_elem(D1, D2, E3); RESULT.setLine(D1left); :}
+						(DesignatorRecMore_rec_elem) DesignatorRecMore  DOT DesignatorRecordArrayName OPSQBRACKET Expr CLSQBRACKET
 						;
 
-DesignatorArrayName ::= (DesignatorArrayName) IDENT:I1 {: RESULT=new DesignatorArrayName(I1); RESULT.setLine(I1left); :};
  
-DesignatorRecordName ::= (DesignatorRecordName) IDENT:I1 {: RESULT=new DesignatorRecordName(I1); RESULT.setLine(I1left); :};
+DesignatorRecordName ::= (DesignatorRecordName) IDENT;
 
-DesignatorRecordArrayName ::= (DesignatorRecordArrayName) IDENT:I1 {: RESULT=new DesignatorRecordArrayName(I1); RESULT.setLine(I1left); :};
-						
+DesignatorRecordArrayName ::= (DesignatorRecordArrayName) IDENT;
+				*/
+				
+DesignatorArrayName ::= (DesignatorArrayName) IDENT:I1 {: RESULT=new DesignatorArrayName(I1); RESULT.setLine(I1left); :};
 
 DesignatorStatement ::= (DesignatorStatement_ds) Designator:D1 DesignatorStatementList:D2 {: RESULT=new DesignatorStatement_ds(D1, D2); RESULT.setLine(D1left); :}
 						|
@@ -290,9 +288,9 @@ CondFactREOpt ::=	(CondFactREOpt_re) Relop:R1 Expr:E2 {: RESULT=new CondFactREOp
 					(CondFactREOpt_e) {: RESULT=new CondFactREOpt_e(); :} /*epsilon*/
 					;
  
-Expr ::= 	(Expr_term) Term:T1 AddOpTerm:A2 {: RESULT=new Expr_term(T1, A2); RESULT.setLine(T1left); :}
+Expr ::= 	(Expr_term) AddOpTerm:A1 {: RESULT=new Expr_term(A1); RESULT.setLine(A1left); :}
 			|
-			(Expr_mint) MINUS Term:T1 AddOpTerm:A2 {: RESULT=new Expr_mint(T1, A2); RESULT.setLine(T1left); :}
+			(Expr_mint) MINUS AddOpTerm:A1 {: RESULT=new Expr_mint(A1); RESULT.setLine(A1left); :}
 			|
 			(Expr_des) Designator:D1 MAP Designator:D2 {: RESULT=new Expr_des(D1, D2); RESULT.setLine(D1left); :}
 			;
@@ -304,15 +302,15 @@ ExprOpt ::=	(ExprOpt_exp) Expr:E1 {: RESULT=new ExprOpt_exp(E1); RESULT.setLine(
 
 AddOpTerm ::=	(AddOpTerm_op) AddOpTerm:A1 Addop:A2 Term:T3 {: RESULT=new AddOpTerm_op(A1, A2, T3); RESULT.setLine(A1left); :}
 				|
-				(AddOpTerm_e) {: RESULT=new AddOpTerm_e(); :}/*epsilon*/
+				(AddOpTerm_term) Term:T1 {: RESULT=new AddOpTerm_term(T1); RESULT.setLine(T1left); :}
 				;
 
-Term ::=	(Term) Factor:F1 TermOpt:T2 {: RESULT=new Term(F1, T2); RESULT.setLine(F1left); :};
+Term ::=	(Term)  MulopFactor:M1 {: RESULT=new Term(M1); RESULT.setLine(M1left); :};
 
-TermOpt ::=	(TermOpt_t) TermOpt:T1 Mulop:M2 Factor:F3 {: RESULT=new TermOpt_t(T1, M2, F3); RESULT.setLine(T1left); :}
-			|
-			(TermOpt_e) {: RESULT=new TermOpt_e(); :} /*epsilon*/
-			;
+MulopFactor ::=	(MulopFactor_mul) MulopFactor:M1 Mulop:M2 Factor:F3 {: RESULT=new MulopFactor_mul(M1, M2, F3); RESULT.setLine(M1left); :}
+				|
+				(MulopFactor_fac) Factor:F1 {: RESULT=new MulopFactor_fac(F1); RESULT.setLine(F1left); :}
+				;
 					
 Factor ::= 	(Factor_des) Designator:D1 FactorAct:F2 {: RESULT=new Factor_des(D1, F2); RESULT.setLine(D1left); :}
 			|
@@ -322,7 +320,7 @@ Factor ::= 	(Factor_des) Designator:D1 FactorAct:F2 {: RESULT=new Factor_des(D1,
 			|
 			(Factor_bool) BOOL:B1 {: RESULT=new Factor_bool(B1); RESULT.setLine(B1left); :}
 			|
-			(Factor_new) NEW Type:T1 FactorExprPars:F2 {: RESULT=new Factor_new(T1, F2); RESULT.setLine(T1left); :}
+			(Factor_newexpr) NEW Type:T1 OPSQBRACKET Expr:E2 CLSQBRACKET {: RESULT=new Factor_newexpr(T1, E2); RESULT.setLine(T1left); :}
 			|
 			(Factor_expr) OPPAREN Expr:E1 CLPAREN {: RESULT=new Factor_expr(E1); RESULT.setLine(E1left); :}
 			;		
@@ -332,11 +330,6 @@ FactorAct ::=	(FactorAct_fa) OPPAREN ActParsOpt:A1 CLPAREN {: RESULT=new FactorA
 				(FactorAct_e) {: RESULT=new FactorAct_e(); :}/*epsilon*/
 				;
 					
-FactorExprPars ::= 	(FactorExprPars_expr) OPSQBRACKET Expr:E1 CLSQBRACKET {: RESULT=new FactorExprPars_expr(E1); RESULT.setLine(E1left); :}
-					|
-					(FactorExprPars_pars) OPPAREN ActParsOpt:A1 CLPAREN {: RESULT=new FactorExprPars_pars(A1); RESULT.setLine(A1left); :}
-					;
-
 ActParsOpt ::=	(ActParsOpt_a) ActPars:A1 {: RESULT=new ActParsOpt_a(A1); RESULT.setLine(A1left); :}
 				|
 				(ActParsOpt_e) {: RESULT=new ActParsOpt_e(); :}/*epsilon*/

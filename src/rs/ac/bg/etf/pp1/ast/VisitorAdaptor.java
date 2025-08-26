@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 22/7/2025 16:42:39
+// 26/7/2025 17:8:31
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -14,9 +14,9 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Relop Relop) { }
     public void visit(ActParsOpt ActParsOpt) { }
     public void visit(ConditionList ConditionList) { }
-    public void visit(FactorExprPars FactorExprPars) { }
     public void visit(MethodSignatureType MethodSignatureType) { }
     public void visit(MethodDecList MethodDecList) { }
+    public void visit(MulopFactor MulopFactor) { }
     public void visit(ActParsExprOpt ActParsExprOpt) { }
     public void visit(Addop Addop) { }
     public void visit(AddOpTerm AddOpTerm) { }
@@ -25,7 +25,6 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(ExprOpt ExprOpt) { }
     public void visit(ConVarDecList ConVarDecList) { }
     public void visit(Designator Designator) { }
-    public void visit(DesignatorRecMore DesignatorRecMore) { }
     public void visit(MethodSignAndName MethodSignAndName) { }
     public void visit(DesignatorStatementList DesignatorStatementList) { }
     public void visit(ElseStatement ElseStatement) { }
@@ -43,7 +42,6 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(FactorAct FactorAct) { }
     public void visit(CondTermArr CondTermArr) { }
     public void visit(FormPars FormPars) { }
-    public void visit(TermOpt TermOpt) { }
     public void visit(Setop Setop) { visit(); }
     public void visit(Mulop_md Mulop_md) { visit(); }
     public void visit(Mulop_d Mulop_d) { visit(); }
@@ -60,20 +58,18 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Label Label) { visit(); }
     public void visit(ActParsOpt_e ActParsOpt_e) { visit(); }
     public void visit(ActParsOpt_a ActParsOpt_a) { visit(); }
-    public void visit(FactorExprPars_pars FactorExprPars_pars) { visit(); }
-    public void visit(FactorExprPars_expr FactorExprPars_expr) { visit(); }
     public void visit(FactorAct_e FactorAct_e) { visit(); }
     public void visit(FactorAct_fa FactorAct_fa) { visit(); }
     public void visit(Factor_expr Factor_expr) { visit(); }
-    public void visit(Factor_new Factor_new) { visit(); }
+    public void visit(Factor_newexpr Factor_newexpr) { visit(); }
     public void visit(Factor_bool Factor_bool) { visit(); }
     public void visit(Factor_char Factor_char) { visit(); }
     public void visit(Factor_num Factor_num) { visit(); }
     public void visit(Factor_des Factor_des) { visit(); }
-    public void visit(TermOpt_e TermOpt_e) { visit(); }
-    public void visit(TermOpt_t TermOpt_t) { visit(); }
+    public void visit(MulopFactor_fac MulopFactor_fac) { visit(); }
+    public void visit(MulopFactor_mul MulopFactor_mul) { visit(); }
     public void visit(Term Term) { visit(); }
-    public void visit(AddOpTerm_e AddOpTerm_e) { visit(); }
+    public void visit(AddOpTerm_term AddOpTerm_term) { visit(); }
     public void visit(AddOpTerm_op AddOpTerm_op) { visit(); }
     public void visit(ExprOpt_e ExprOpt_e) { visit(); }
     public void visit(ExprOpt_exp ExprOpt_exp) { visit(); }
@@ -98,15 +94,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DesignatorStatementList_aop DesignatorStatementList_aop) { visit(); }
     public void visit(DesignatorStatement_tw DesignatorStatement_tw) { visit(); }
     public void visit(DesignatorStatement_ds DesignatorStatement_ds) { visit(); }
-    public void visit(DesignatorRecordArrayName DesignatorRecordArrayName) { visit(); }
-    public void visit(DesignatorRecordName DesignatorRecordName) { visit(); }
     public void visit(DesignatorArrayName DesignatorArrayName) { visit(); }
-    public void visit(DesignatorRecMore_rec_elem DesignatorRecMore_rec_elem) { visit(); }
-    public void visit(DesignatorRecMore_rec_var DesignatorRecMore_rec_var) { visit(); }
-    public void visit(DesignatorRecMore_elem DesignatorRecMore_elem) { visit(); }
-    public void visit(DesignatorRecMore_var DesignatorRecMore_var) { visit(); }
-    public void visit(Designator_rec_elem Designator_rec_elem) { visit(); }
-    public void visit(Designator_rec Designator_rec) { visit(); }
     public void visit(Designator_elem Designator_elem) { visit(); }
     public void visit(Designator_var Designator_var) { visit(); }
     public void visit(ConditionList_e ConditionList_e) { visit(); }

@@ -1,0 +1,44 @@
+INFO  12:35:07,533 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  12:35:07,603 - #6 program
+INFO  12:35:07,603 - #2 test302
+INFO  12:35:07,604 - #2 int
+INFO  12:35:07,605 - #2 i
+INFO  12:35:07,607 - #10 ;
+INFO  12:35:07,609 - #2 bool
+INFO  12:35:07,610 - #2 ibool
+INFO  12:35:07,610 - #10 ;
+INFO  12:35:07,610 - #2 int
+INFO  12:35:07,611 - #2 niz2
+INFO  12:35:07,611 - #10 ;
+INFO  12:35:07,611 - #2 int
+INFO  12:35:07,611 - #2 niz
+INFO  12:35:07,611 - #13 [
+INFO  12:35:07,611 - #14 ]
+INFO  12:35:07,611 - #10 ;
+INFO  12:35:07,611 - #2 int
+INFO  12:35:07,612 - #2 a
+INFO  12:35:07,612 - #10 ;
+INFO  12:35:07,612 - #7 {
+INFO  12:35:07,612 - #17 void
+INFO  12:35:07,613 - #2 main
+INFO  12:35:07,614 - #15 (
+INFO  12:35:07,614 - #16 )
+INFO  12:35:07,614 - #2 int
+INFO  12:35:07,615 - #2 a
+INFO  12:35:07,616 - #12 ,
+INFO  12:35:07,616 - #2 b
+INFO  12:35:07,616 - #12 ,
+INFO  12:35:07,616 - #2 c
+INFO  12:35:07,616 - #10 ;
+INFO  12:35:07,616 - #2 int
+INFO  12:35:07,617 - #2 x
+INFO  12:35:07,617 - #13 [
+INFO  12:35:07,617 - #14 ]
+INFO  12:35:07,617 - #10 ;
+INFO  12:35:07,617 - #7 {
+INFO  12:35:07,617 - #45 print
+INFO  12:35:07,618 - #15 (
+INFO  12:35:07,619 - #16 )
+ERROR 12:35:07,619 - 
+Sintaksna greska na liniji 15
+ERROR 12:35:07,619 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 15

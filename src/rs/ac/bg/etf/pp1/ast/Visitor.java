@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 22/7/2025 16:42:39
+// 26/7/2025 17:8:31
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -14,9 +14,9 @@ public interface Visitor {
     public void visit(Relop Relop);
     public void visit(ActParsOpt ActParsOpt);
     public void visit(ConditionList ConditionList);
-    public void visit(FactorExprPars FactorExprPars);
     public void visit(MethodSignatureType MethodSignatureType);
     public void visit(MethodDecList MethodDecList);
+    public void visit(MulopFactor MulopFactor);
     public void visit(ActParsExprOpt ActParsExprOpt);
     public void visit(Addop Addop);
     public void visit(AddOpTerm AddOpTerm);
@@ -25,7 +25,6 @@ public interface Visitor {
     public void visit(ExprOpt ExprOpt);
     public void visit(ConVarDecList ConVarDecList);
     public void visit(Designator Designator);
-    public void visit(DesignatorRecMore DesignatorRecMore);
     public void visit(MethodSignAndName MethodSignAndName);
     public void visit(DesignatorStatementList DesignatorStatementList);
     public void visit(ElseStatement ElseStatement);
@@ -43,7 +42,6 @@ public interface Visitor {
     public void visit(FactorAct FactorAct);
     public void visit(CondTermArr CondTermArr);
     public void visit(FormPars FormPars);
-    public void visit(TermOpt TermOpt);
     public void visit(Setop Setop);
     public void visit(Mulop_md Mulop_md);
     public void visit(Mulop_d Mulop_d);
@@ -60,20 +58,18 @@ public interface Visitor {
     public void visit(Label Label);
     public void visit(ActParsOpt_e ActParsOpt_e);
     public void visit(ActParsOpt_a ActParsOpt_a);
-    public void visit(FactorExprPars_pars FactorExprPars_pars);
-    public void visit(FactorExprPars_expr FactorExprPars_expr);
     public void visit(FactorAct_e FactorAct_e);
     public void visit(FactorAct_fa FactorAct_fa);
     public void visit(Factor_expr Factor_expr);
-    public void visit(Factor_new Factor_new);
+    public void visit(Factor_newexpr Factor_newexpr);
     public void visit(Factor_bool Factor_bool);
     public void visit(Factor_char Factor_char);
     public void visit(Factor_num Factor_num);
     public void visit(Factor_des Factor_des);
-    public void visit(TermOpt_e TermOpt_e);
-    public void visit(TermOpt_t TermOpt_t);
+    public void visit(MulopFactor_fac MulopFactor_fac);
+    public void visit(MulopFactor_mul MulopFactor_mul);
     public void visit(Term Term);
-    public void visit(AddOpTerm_e AddOpTerm_e);
+    public void visit(AddOpTerm_term AddOpTerm_term);
     public void visit(AddOpTerm_op AddOpTerm_op);
     public void visit(ExprOpt_e ExprOpt_e);
     public void visit(ExprOpt_exp ExprOpt_exp);
@@ -98,15 +94,7 @@ public interface Visitor {
     public void visit(DesignatorStatementList_aop DesignatorStatementList_aop);
     public void visit(DesignatorStatement_tw DesignatorStatement_tw);
     public void visit(DesignatorStatement_ds DesignatorStatement_ds);
-    public void visit(DesignatorRecordArrayName DesignatorRecordArrayName);
-    public void visit(DesignatorRecordName DesignatorRecordName);
     public void visit(DesignatorArrayName DesignatorArrayName);
-    public void visit(DesignatorRecMore_rec_elem DesignatorRecMore_rec_elem);
-    public void visit(DesignatorRecMore_rec_var DesignatorRecMore_rec_var);
-    public void visit(DesignatorRecMore_elem DesignatorRecMore_elem);
-    public void visit(DesignatorRecMore_var DesignatorRecMore_var);
-    public void visit(Designator_rec_elem Designator_rec_elem);
-    public void visit(Designator_rec Designator_rec);
     public void visit(Designator_elem Designator_elem);
     public void visit(Designator_var Designator_var);
     public void visit(ConditionList_e ConditionList_e);

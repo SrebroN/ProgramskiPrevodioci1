@@ -1,0 +1,165 @@
+INFO  11:59:57,256 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  11:59:57,306 - #6 program
+INFO  11:59:57,306 - #2 test302
+INFO  11:59:57,306 - #2 int
+INFO  11:59:57,308 - #2 i
+INFO  11:59:57,309 - #10 ;
+INFO  11:59:57,310 - #2 bool
+INFO  11:59:57,311 - #2 ibool
+INFO  11:59:57,312 - #10 ;
+INFO  11:59:57,312 - #2 int
+INFO  11:59:57,312 - #2 niz2
+INFO  11:59:57,312 - #10 ;
+INFO  11:59:57,312 - #2 int
+INFO  11:59:57,312 - #2 niz
+INFO  11:59:57,312 - #13 [
+INFO  11:59:57,312 - #14 ]
+INFO  11:59:57,312 - #10 ;
+INFO  11:59:57,313 - #2 int
+INFO  11:59:57,313 - #2 a
+INFO  11:59:57,313 - #10 ;
+INFO  11:59:57,313 - #7 {
+INFO  11:59:57,313 - #17 void
+INFO  11:59:57,314 - #2 main
+INFO  11:59:57,315 - #15 (
+INFO  11:59:57,315 - #16 )
+INFO  11:59:57,316 - #2 int
+INFO  11:59:57,317 - #2 a
+INFO  11:59:57,317 - #12 ,
+INFO  11:59:57,317 - #2 b
+INFO  11:59:57,317 - #12 ,
+INFO  11:59:57,317 - #2 c
+INFO  11:59:57,317 - #10 ;
+INFO  11:59:57,317 - #7 {
+INFO  11:59:57,318 - #45 print
+INFO  11:59:57,319 - #15 (
+INFO  11:59:57,319 - #25 -
+INFO  11:59:57,319 - #3 3
+INFO  11:59:57,319 - #16 )
+INFO  11:59:57,323 - #10 ;
+INFO  11:59:57,323 - #8 }
+INFO  11:59:57,323 - #8 }
+INFO  11:59:57,326 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_var(
+    ConVarDecList_var(
+      ConVarDecList_var(
+        ConVarDecList_var(
+          ConVarDecList_var(
+            ConVarDecList_epsilon(
+            ) [ConVarDecList_epsilon]
+            VarDecList(
+              Type(
+               int
+              ) [Type]
+              VarDec_var(
+               i
+              ) [VarDec_var]
+              VarDecMore_e(
+              ) [VarDecMore_e]
+            ) [VarDecList]
+          ) [ConVarDecList_var]
+          VarDecList(
+            Type(
+             bool
+            ) [Type]
+            VarDec_var(
+             ibool
+            ) [VarDec_var]
+            VarDecMore_e(
+            ) [VarDecMore_e]
+          ) [VarDecList]
+        ) [ConVarDecList_var]
+        VarDecList(
+          Type(
+           int
+          ) [Type]
+          VarDec_var(
+           niz2
+          ) [VarDec_var]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList]
+      ) [ConVarDecList_var]
+      VarDecList(
+        Type(
+         int
+        ) [Type]
+        VarDec_arr(
+         niz
+        ) [VarDec_arr]
+        VarDecMore_e(
+        ) [VarDecMore_e]
+      ) [VarDecList]
+    ) [ConVarDecList_var]
+    VarDecList(
+      Type(
+       int
+      ) [Type]
+      VarDec_var(
+       a
+      ) [VarDec_var]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_v(
+        VarDecOpt_e(
+        ) [VarDecOpt_e]
+        VarDecList(
+          Type(
+           int
+          ) [Type]
+          VarDec_var(
+           a
+          ) [VarDec_var]
+          VarDecMore_m(
+            VarDec_var(
+             b
+            ) [VarDec_var]
+            VarDecMore_m(
+              VarDec_var(
+               c
+              ) [VarDec_var]
+              VarDecMore_e(
+              ) [VarDecMore_e]
+            ) [VarDecMore_m]
+          ) [VarDecMore_m]
+        ) [VarDecList]
+      ) [VarDecOpt_v]
+      StatementOpt_s(
+        StatementOpt_e(
+        ) [StatementOpt_e]
+        Statement_pr(
+          Expr_mint(
+            Term(
+              Factor_num(
+               3
+              ) [Factor_num]
+              TermOpt_e(
+              ) [TermOpt_e]
+            ) [Term]
+            AddOpTerm_e(
+            ) [AddOpTerm_e]
+          ) [Expr_mint]
+          NumConstOpt_e(
+          ) [NumConstOpt_e]
+        ) [Statement_pr]
+      ) [StatementOpt_s]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  11:59:57,326 - ===================================
+INFO  11:59:57,335 - ===================================
+INFO  11:59:57,335 - Parsiranje uspesno zavrseno!

@@ -1,0 +1,161 @@
+INFO  16:09:31,852 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  16:09:31,921 - #6 program
+INFO  16:09:31,921 - #2 test302
+INFO  16:09:31,921 - #2 int
+INFO  16:09:31,923 - #2 i
+INFO  16:09:31,924 - #10 ;
+INFO  16:09:31,925 - #2 bool
+INFO  16:09:31,927 - #2 ibool
+INFO  16:09:31,927 - #10 ;
+INFO  16:09:31,927 - #2 int
+INFO  16:09:31,927 - #2 niz2
+INFO  16:09:31,927 - #10 ;
+INFO  16:09:31,927 - #2 int
+INFO  16:09:31,927 - #2 niz
+INFO  16:09:31,928 - #13 [
+INFO  16:09:31,928 - #14 ]
+INFO  16:09:31,928 - #10 ;
+INFO  16:09:31,928 - #2 int
+INFO  16:09:31,928 - #2 a
+INFO  16:09:31,928 - #10 ;
+INFO  16:09:31,928 - #7 {
+INFO  16:09:31,928 - #17 void
+INFO  16:09:31,929 - #2 main
+INFO  16:09:31,930 - #15 (
+INFO  16:09:31,930 - #16 )
+INFO  16:09:31,931 - #7 {
+INFO  16:09:31,932 - #2 a
+INFO  16:09:31,934 - #11 =
+INFO  16:09:31,934 - #3 2
+INFO  16:09:31,935 - #24 +
+INFO  16:09:31,938 - #3 3
+INFO  16:09:31,939 - #10 ;
+INFO  16:09:31,940 - #8 }
+INFO  16:09:31,940 - #8 }
+INFO  16:09:31,943 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_var(
+    ConVarDecList_var(
+      ConVarDecList_var(
+        ConVarDecList_var(
+          ConVarDecList_var(
+            ConVarDecList_epsilon(
+            ) [ConVarDecList_epsilon]
+            VarDecList(
+              Type(
+               int
+              ) [Type]
+              VarDec_var(
+               i
+              ) [VarDec_var]
+              VarDecMore_e(
+              ) [VarDecMore_e]
+            ) [VarDecList]
+          ) [ConVarDecList_var]
+          VarDecList(
+            Type(
+             bool
+            ) [Type]
+            VarDec_var(
+             ibool
+            ) [VarDec_var]
+            VarDecMore_e(
+            ) [VarDecMore_e]
+          ) [VarDecList]
+        ) [ConVarDecList_var]
+        VarDecList(
+          Type(
+           int
+          ) [Type]
+          VarDec_var(
+           niz2
+          ) [VarDec_var]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList]
+      ) [ConVarDecList_var]
+      VarDecList(
+        Type(
+         int
+        ) [Type]
+        VarDec_arr(
+         niz
+        ) [VarDec_arr]
+        VarDecMore_e(
+        ) [VarDecMore_e]
+      ) [VarDecList]
+    ) [ConVarDecList_var]
+    VarDecList(
+      Type(
+       int
+      ) [Type]
+      VarDec_var(
+       a
+      ) [VarDec_var]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_e(
+      ) [VarDecOpt_e]
+      StatementOpt_s(
+        StatementOpt_e(
+        ) [StatementOpt_e]
+        Statement_ds(
+          DesignatorStatement_ds(
+            Designator_var(
+             a
+            ) [Designator_var]
+            DesignatorStatementList_aop(
+              Assignop(
+              ) [Assignop]
+              Expr_term(
+                Term(
+                  Factor_num(
+                   2
+                  ) [Factor_num]
+                  TermOpt_e(
+                  ) [TermOpt_e]
+                ) [Term]
+                AddOpTerm_op(
+                  AddOpTerm_e(
+                  ) [AddOpTerm_e]
+                  Addop_p(
+                  ) [Addop_p]
+                  Term(
+                    Factor_num(
+                     3
+                    ) [Factor_num]
+                    TermOpt_e(
+                    ) [TermOpt_e]
+                  ) [Term]
+                ) [AddOpTerm_op]
+              ) [Expr_term]
+            ) [DesignatorStatementList_aop]
+          ) [DesignatorStatement_ds]
+        ) [Statement_ds]
+      ) [StatementOpt_s]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  16:09:31,943 - ===================================
+ERROR 16:09:31,951 - Mnozenje sa neint vrednostima: Factor_num(
+ 2
+) [Factor_num] na liniji 15
+ERROR 16:09:31,951 - Mnozenje sa neint vrednostima: Factor_num(
+ 3
+) [Factor_num] na liniji 15
+ERROR 16:09:31,951 - Mnozenje sa neint vrednostima: rs.ac.bg.etf.pp1.ast.Term@4e41089d na liniji 3
+INFO  16:09:31,951 - ===================================
+ERROR 16:09:31,952 - Parsiranje NIJE uspesno zavrseno

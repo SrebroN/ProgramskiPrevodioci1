@@ -1,0 +1,169 @@
+INFO  12:14:50,968 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  12:14:51,031 - #6 program
+INFO  12:14:51,031 - #2 test302
+INFO  12:14:51,031 - #2 int
+INFO  12:14:51,033 - #2 i
+INFO  12:14:51,034 - #10 ;
+INFO  12:14:51,035 - #2 bool
+INFO  12:14:51,036 - #2 ibool
+INFO  12:14:51,036 - #10 ;
+INFO  12:14:51,036 - #2 int
+INFO  12:14:51,036 - #2 niz2
+INFO  12:14:51,036 - #10 ;
+INFO  12:14:51,037 - #2 int
+INFO  12:14:51,037 - #2 niz
+INFO  12:14:51,037 - #13 [
+INFO  12:14:51,037 - #14 ]
+INFO  12:14:51,037 - #10 ;
+INFO  12:14:51,037 - #2 int
+INFO  12:14:51,037 - #2 a
+INFO  12:14:51,037 - #10 ;
+INFO  12:14:51,038 - #7 {
+INFO  12:14:51,038 - #17 void
+INFO  12:14:51,039 - #2 main
+INFO  12:14:51,045 - #15 (
+INFO  12:14:51,045 - #16 )
+INFO  12:14:51,046 - #2 int
+INFO  12:14:51,047 - #2 a
+INFO  12:14:51,047 - #12 ,
+INFO  12:14:51,047 - #2 b
+INFO  12:14:51,047 - #12 ,
+INFO  12:14:51,048 - #2 c
+INFO  12:14:51,048 - #10 ;
+INFO  12:14:51,048 - #7 {
+INFO  12:14:51,048 - #45 print
+INFO  12:14:51,049 - #15 (
+INFO  12:14:51,049 - #2 test302
+INFO  12:14:51,049 - #16 )
+INFO  12:14:51,053 - #10 ;
+INFO  12:14:51,053 - #8 }
+INFO  12:14:51,053 - #8 }
+INFO  12:14:51,056 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_var(
+    ConVarDecList_var(
+      ConVarDecList_var(
+        ConVarDecList_var(
+          ConVarDecList_var(
+            ConVarDecList_epsilon(
+            ) [ConVarDecList_epsilon]
+            VarDecList(
+              Type(
+               int
+              ) [Type]
+              VarDec_var(
+               i
+              ) [VarDec_var]
+              VarDecMore_e(
+              ) [VarDecMore_e]
+            ) [VarDecList]
+          ) [ConVarDecList_var]
+          VarDecList(
+            Type(
+             bool
+            ) [Type]
+            VarDec_var(
+             ibool
+            ) [VarDec_var]
+            VarDecMore_e(
+            ) [VarDecMore_e]
+          ) [VarDecList]
+        ) [ConVarDecList_var]
+        VarDecList(
+          Type(
+           int
+          ) [Type]
+          VarDec_var(
+           niz2
+          ) [VarDec_var]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList]
+      ) [ConVarDecList_var]
+      VarDecList(
+        Type(
+         int
+        ) [Type]
+        VarDec_arr(
+         niz
+        ) [VarDec_arr]
+        VarDecMore_e(
+        ) [VarDecMore_e]
+      ) [VarDecList]
+    ) [ConVarDecList_var]
+    VarDecList(
+      Type(
+       int
+      ) [Type]
+      VarDec_var(
+       a
+      ) [VarDec_var]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_v(
+        VarDecOpt_e(
+        ) [VarDecOpt_e]
+        VarDecList(
+          Type(
+           int
+          ) [Type]
+          VarDec_var(
+           a
+          ) [VarDec_var]
+          VarDecMore_m(
+            VarDec_var(
+             b
+            ) [VarDec_var]
+            VarDecMore_m(
+              VarDec_var(
+               c
+              ) [VarDec_var]
+              VarDecMore_e(
+              ) [VarDecMore_e]
+            ) [VarDecMore_m]
+          ) [VarDecMore_m]
+        ) [VarDecList]
+      ) [VarDecOpt_v]
+      StatementOpt_s(
+        StatementOpt_e(
+        ) [StatementOpt_e]
+        Statement_pr(
+          Expr_term(
+            Term(
+              Factor_des(
+                Designator_var(
+                 test302
+                ) [Designator_var]
+                FactorAct_e(
+                ) [FactorAct_e]
+              ) [Factor_des]
+              TermOpt_e(
+              ) [TermOpt_e]
+            ) [Term]
+            AddOpTerm_e(
+            ) [AddOpTerm_e]
+          ) [Expr_term]
+          NumConstOpt_e(
+          ) [NumConstOpt_e]
+        ) [Statement_pr]
+      ) [StatementOpt_s]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  12:14:51,057 - ===================================
+ERROR 12:14:51,068 - Neadekvatna promenljiva: test302 na liniji 15
+INFO  12:14:51,068 - ===================================
+ERROR 12:14:51,069 - Parsiranje NIJE uspesno zavrseno

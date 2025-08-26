@@ -1,0 +1,202 @@
+INFO  16:42:02,194 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  16:42:02,275 - #6 program
+INFO  16:42:02,275 - #2 test302
+INFO  16:42:02,275 - #2 int
+INFO  16:42:02,277 - #2 i
+INFO  16:42:02,278 - #10 ;
+INFO  16:42:02,280 - #2 bool
+INFO  16:42:02,282 - #2 ibool
+INFO  16:42:02,282 - #10 ;
+INFO  16:42:02,282 - #2 int
+INFO  16:42:02,283 - #2 niz2
+INFO  16:42:02,283 - #10 ;
+INFO  16:42:02,283 - #2 int
+INFO  16:42:02,283 - #2 niz
+INFO  16:42:02,284 - #13 [
+INFO  16:42:02,284 - #14 ]
+INFO  16:42:02,284 - #10 ;
+INFO  16:42:02,284 - #2 int
+INFO  16:42:02,284 - #2 a
+INFO  16:42:02,284 - #10 ;
+INFO  16:42:02,285 - #7 {
+INFO  16:42:02,285 - #17 void
+INFO  16:42:02,286 - #2 main
+INFO  16:42:02,292 - #15 (
+INFO  16:42:02,292 - #16 )
+INFO  16:42:02,293 - #2 int
+INFO  16:42:02,294 - #2 a
+INFO  16:42:02,295 - #12 ,
+INFO  16:42:02,295 - #2 b
+INFO  16:42:02,295 - #12 ,
+INFO  16:42:02,295 - #2 c
+INFO  16:42:02,295 - #10 ;
+INFO  16:42:02,295 - #2 int
+INFO  16:42:02,296 - #2 x
+INFO  16:42:02,296 - #13 [
+INFO  16:42:02,296 - #14 ]
+INFO  16:42:02,296 - #10 ;
+INFO  16:42:02,296 - #7 {
+INFO  16:42:02,296 - #45 print
+INFO  16:42:02,298 - #15 (
+INFO  16:42:02,298 - #2 x
+INFO  16:42:02,298 - #13 [
+INFO  16:42:02,300 - #4 1
+INFO  16:42:02,300 - #14 ]
+INFO  16:42:02,303 - #16 )
+INFO  16:42:02,306 - #10 ;
+INFO  16:42:02,306 - #8 }
+INFO  16:42:02,307 - #8 }
+INFO  16:42:02,311 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_var(
+    ConVarDecList_var(
+      ConVarDecList_var(
+        ConVarDecList_var(
+          ConVarDecList_var(
+            ConVarDecList_epsilon(
+            ) [ConVarDecList_epsilon]
+            VarDecList(
+              Type(
+               int
+              ) [Type]
+              VarDec_var(
+               i
+              ) [VarDec_var]
+              VarDecMore_e(
+              ) [VarDecMore_e]
+            ) [VarDecList]
+          ) [ConVarDecList_var]
+          VarDecList(
+            Type(
+             bool
+            ) [Type]
+            VarDec_var(
+             ibool
+            ) [VarDec_var]
+            VarDecMore_e(
+            ) [VarDecMore_e]
+          ) [VarDecList]
+        ) [ConVarDecList_var]
+        VarDecList(
+          Type(
+           int
+          ) [Type]
+          VarDec_var(
+           niz2
+          ) [VarDec_var]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList]
+      ) [ConVarDecList_var]
+      VarDecList(
+        Type(
+         int
+        ) [Type]
+        VarDec_arr(
+         niz
+        ) [VarDec_arr]
+        VarDecMore_e(
+        ) [VarDecMore_e]
+      ) [VarDecList]
+    ) [ConVarDecList_var]
+    VarDecList(
+      Type(
+       int
+      ) [Type]
+      VarDec_var(
+       a
+      ) [VarDec_var]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_v(
+        VarDecOpt_v(
+          VarDecOpt_e(
+          ) [VarDecOpt_e]
+          VarDecList(
+            Type(
+             int
+            ) [Type]
+            VarDec_var(
+             a
+            ) [VarDec_var]
+            VarDecMore_m(
+              VarDec_var(
+               b
+              ) [VarDec_var]
+              VarDecMore_m(
+                VarDec_var(
+                 c
+                ) [VarDec_var]
+                VarDecMore_e(
+                ) [VarDecMore_e]
+              ) [VarDecMore_m]
+            ) [VarDecMore_m]
+          ) [VarDecList]
+        ) [VarDecOpt_v]
+        VarDecList(
+          Type(
+           int
+          ) [Type]
+          VarDec_arr(
+           x
+          ) [VarDec_arr]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList]
+      ) [VarDecOpt_v]
+      StatementOpt_s(
+        StatementOpt_e(
+        ) [StatementOpt_e]
+        Statement_pr(
+          Expr_term(
+            Term(
+              Factor_des(
+                Designator_elem(
+                  DesignatorArrayName(
+                   x
+                  ) [DesignatorArrayName]
+                  Expr_term(
+                    Term(
+                      Factor_bool(
+                       1
+                      ) [Factor_bool]
+                      TermOpt_e(
+                      ) [TermOpt_e]
+                    ) [Term]
+                    AddOpTerm_e(
+                    ) [AddOpTerm_e]
+                  ) [Expr_term]
+                ) [Designator_elem]
+                FactorAct_e(
+                ) [FactorAct_e]
+              ) [Factor_des]
+              TermOpt_e(
+              ) [TermOpt_e]
+            ) [Term]
+            AddOpTerm_e(
+            ) [AddOpTerm_e]
+          ) [Expr_term]
+          NumConstOpt_e(
+          ) [NumConstOpt_e]
+        ) [Statement_pr]
+      ) [StatementOpt_s]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  16:42:02,311 - ===================================
+ERROR 16:42:02,326 - Indeksiranje sa neint vrednosti. na liniji 15
+INFO  16:42:02,327 - ===================================
+ERROR 16:42:02,327 - Parsiranje NIJE uspesno zavrseno

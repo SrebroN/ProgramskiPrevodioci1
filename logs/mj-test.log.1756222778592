@@ -1,0 +1,264 @@
+INFO  17:39:07,231 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  17:39:07,279 - #6 program
+INFO  17:39:07,279 - #2 test302
+INFO  17:39:07,279 - #2 int
+INFO  17:39:07,280 - #2 i
+INFO  17:39:07,281 - #10 ;
+INFO  17:39:07,282 - #2 bool
+INFO  17:39:07,283 - #2 ibool
+INFO  17:39:07,283 - #10 ;
+INFO  17:39:07,283 - #2 int
+INFO  17:39:07,283 - #2 niz2
+INFO  17:39:07,284 - #10 ;
+INFO  17:39:07,284 - #2 int
+INFO  17:39:07,284 - #2 niz
+INFO  17:39:07,284 - #13 [
+INFO  17:39:07,284 - #14 ]
+INFO  17:39:07,284 - #10 ;
+INFO  17:39:07,284 - #2 int
+INFO  17:39:07,284 - #2 a
+INFO  17:39:07,284 - #10 ;
+INFO  17:39:07,284 - #7 {
+INFO  17:39:07,284 - #17 void
+INFO  17:39:07,285 - #2 main
+INFO  17:39:07,286 - #15 (
+INFO  17:39:07,286 - #16 )
+INFO  17:39:07,287 - #2 int
+INFO  17:39:07,288 - #2 a
+INFO  17:39:07,288 - #12 ,
+INFO  17:39:07,288 - #2 b
+INFO  17:39:07,288 - #12 ,
+INFO  17:39:07,288 - #2 c
+INFO  17:39:07,288 - #10 ;
+INFO  17:39:07,289 - #2 int
+INFO  17:39:07,289 - #2 x
+INFO  17:39:07,289 - #13 [
+INFO  17:39:07,289 - #14 ]
+INFO  17:39:07,289 - #10 ;
+INFO  17:39:07,289 - #7 {
+INFO  17:39:07,289 - #45 print
+INFO  17:39:07,290 - #15 (
+INFO  17:39:07,290 - #2 x
+INFO  17:39:07,290 - #13 [
+INFO  17:39:07,291 - #2 a
+INFO  17:39:07,291 - #14 ]
+INFO  17:39:07,293 - #16 )
+INFO  17:39:07,295 - #10 ;
+INFO  17:39:07,295 - #2 a
+INFO  17:39:07,295 - #11 =
+INFO  17:39:07,295 - #2 b
+INFO  17:39:07,296 - #26 *
+INFO  17:39:07,296 - #3 2
+INFO  17:39:07,298 - #24 +
+INFO  17:39:07,298 - #2 x
+INFO  17:39:07,300 - #10 ;
+INFO  17:39:07,300 - #8 }
+INFO  17:39:07,300 - #8 }
+INFO  17:39:07,303 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_var(
+    ConVarDecList_var(
+      ConVarDecList_var(
+        ConVarDecList_var(
+          ConVarDecList_var(
+            ConVarDecList_epsilon(
+            ) [ConVarDecList_epsilon]
+            VarDecList(
+              Type(
+               int
+              ) [Type]
+              VarDec_var(
+               i
+              ) [VarDec_var]
+              VarDecMore_e(
+              ) [VarDecMore_e]
+            ) [VarDecList]
+          ) [ConVarDecList_var]
+          VarDecList(
+            Type(
+             bool
+            ) [Type]
+            VarDec_var(
+             ibool
+            ) [VarDec_var]
+            VarDecMore_e(
+            ) [VarDecMore_e]
+          ) [VarDecList]
+        ) [ConVarDecList_var]
+        VarDecList(
+          Type(
+           int
+          ) [Type]
+          VarDec_var(
+           niz2
+          ) [VarDec_var]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList]
+      ) [ConVarDecList_var]
+      VarDecList(
+        Type(
+         int
+        ) [Type]
+        VarDec_arr(
+         niz
+        ) [VarDec_arr]
+        VarDecMore_e(
+        ) [VarDecMore_e]
+      ) [VarDecList]
+    ) [ConVarDecList_var]
+    VarDecList(
+      Type(
+       int
+      ) [Type]
+      VarDec_var(
+       a
+      ) [VarDec_var]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_v(
+        VarDecOpt_v(
+          VarDecOpt_e(
+          ) [VarDecOpt_e]
+          VarDecList(
+            Type(
+             int
+            ) [Type]
+            VarDec_var(
+             a
+            ) [VarDec_var]
+            VarDecMore_m(
+              VarDec_var(
+               b
+              ) [VarDec_var]
+              VarDecMore_m(
+                VarDec_var(
+                 c
+                ) [VarDec_var]
+                VarDecMore_e(
+                ) [VarDecMore_e]
+              ) [VarDecMore_m]
+            ) [VarDecMore_m]
+          ) [VarDecList]
+        ) [VarDecOpt_v]
+        VarDecList(
+          Type(
+           int
+          ) [Type]
+          VarDec_arr(
+           x
+          ) [VarDec_arr]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList]
+      ) [VarDecOpt_v]
+      StatementOpt_s(
+        StatementOpt_s(
+          StatementOpt_e(
+          ) [StatementOpt_e]
+          Statement_pr(
+            Expr_term(
+              AddOpTerm_term(
+                Term(
+                  MulopFactor_fac(
+                    Factor_des(
+                      Designator_elem(
+                        DesignatorArrayName(
+                         x
+                        ) [DesignatorArrayName]
+                        Expr_term(
+                          AddOpTerm_term(
+                            Term(
+                              MulopFactor_fac(
+                                Factor_des(
+                                  Designator_var(
+                                   a
+                                  ) [Designator_var]
+                                  FactorAct_e(
+                                  ) [FactorAct_e]
+                                ) [Factor_des]
+                              ) [MulopFactor_fac]
+                            ) [Term]
+                          ) [AddOpTerm_term]
+                        ) [Expr_term]
+                      ) [Designator_elem]
+                      FactorAct_e(
+                      ) [FactorAct_e]
+                    ) [Factor_des]
+                  ) [MulopFactor_fac]
+                ) [Term]
+              ) [AddOpTerm_term]
+            ) [Expr_term]
+            NumConstOpt_e(
+            ) [NumConstOpt_e]
+          ) [Statement_pr]
+        ) [StatementOpt_s]
+        Statement_ds(
+          DesignatorStatement_ds(
+            Designator_var(
+             a
+            ) [Designator_var]
+            DesignatorStatementList_aop(
+              Assignop(
+              ) [Assignop]
+              Expr_term(
+                AddOpTerm_op(
+                  AddOpTerm_term(
+                    Term(
+                      MulopFactor_mul(
+                        MulopFactor_fac(
+                          Factor_des(
+                            Designator_var(
+                             b
+                            ) [Designator_var]
+                            FactorAct_e(
+                            ) [FactorAct_e]
+                          ) [Factor_des]
+                        ) [MulopFactor_fac]
+                        Mulop_m(
+                        ) [Mulop_m]
+                        Factor_num(
+                         2
+                        ) [Factor_num]
+                      ) [MulopFactor_mul]
+                    ) [Term]
+                  ) [AddOpTerm_term]
+                  Addop_p(
+                  ) [Addop_p]
+                  Term(
+                    MulopFactor_fac(
+                      Factor_des(
+                        Designator_var(
+                         x
+                        ) [Designator_var]
+                        FactorAct_e(
+                        ) [FactorAct_e]
+                      ) [Factor_des]
+                    ) [MulopFactor_fac]
+                  ) [Term]
+                ) [AddOpTerm_op]
+              ) [Expr_term]
+            ) [DesignatorStatementList_aop]
+          ) [DesignatorStatement_ds]
+        ) [Statement_ds]
+      ) [StatementOpt_s]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  17:39:07,304 - ===================================
+ERROR 17:39:07,312 - Sabiranje sa neint vrednostima:  na liniji 16
+INFO  17:39:07,312 - ===================================
+ERROR 17:39:07,313 - Parsiranje NIJE uspesno zavrseno

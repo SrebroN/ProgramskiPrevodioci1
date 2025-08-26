@@ -64,9 +64,8 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		Tab.closeScope();
 		if (mainMethod == null) {
 			report_error("Greska, main nije deklarisan", null);
-		}
-		else if(mainMethod.getLevel()>0) {
-			report_error("Greska, main ne sme imati parametre",null);
+		} else if (mainMethod.getLevel() > 0) {
+			report_error("Greska, main ne sme imati parametre", null);
 		}
 	}
 
@@ -136,54 +135,44 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		}
 	}
 
-	//FORMAL PARAM DECL
+	// FORMAL PARAM DECL
 	@Override
 	public void visit(FormPars_var formPars_var) {
 		Obj varObj = null;
 		if (currentMethod == null) {
-			report_error("Semanticka greska. [FormPars_var]",formPars_var);
+			report_error("Semanticka greska. [FormPars_var]", formPars_var);
 		} else {
 			varObj = Tab.currentScope().findSymbol(formPars_var.getI2());
 		}
 		if (varObj == null || varObj == Tab.noObj) {
 			varObj = Tab.insert(Obj.Var, formPars_var.getI2(), currentType);
 			varObj.setFpPos(1);
-			currentMethod.setLevel(currentMethod.getLevel()+1);
+			currentMethod.setLevel(currentMethod.getLevel() + 1);
 		} else {
 			report_error("Dvostruka definicija konstante: " + formPars_var.getI2(), formPars_var);
 		}
 	}
-	
+
 	@Override
 	public void visit(FormPars_arr formPars_arr) {
 		Obj varObj = null;
 		if (currentMethod == null) {
-			report_error("Semanticka greska. [FormPars_var]",formPars_arr);
+			report_error("Semanticka greska. [FormPars_var]", formPars_arr);
 		} else {
 			varObj = Tab.currentScope().findSymbol(formPars_arr.getI2());
 		}
 		if (varObj == null || varObj == Tab.noObj) {
-			varObj = Tab.insert(Obj.Var, formPars_arr.getI2(), new Struct(Struct.Array,currentType));
+			varObj = Tab.insert(Obj.Var, formPars_arr.getI2(), new Struct(Struct.Array, currentType));
 			varObj.setFpPos(1);
-			currentMethod.setLevel(currentMethod.getLevel()+1);
+			currentMethod.setLevel(currentMethod.getLevel() + 1);
 		} else {
 			report_error("Dvostruka definicija konstante: " + formPars_arr.getI2(), formPars_arr);
 		}
 	}
-	
+
 	// METHOD DECLARATIONS
 	@Override
 	public void visit(MethodSignAndName_Type methodSignAndName_Type) {
-		/*
-		 * Obj methObj = Tab.find(methodSignAndName_Type.getI2()); if
-		 * (methodSignAndName_Type.equals(methObj)) {
-		 * report_error("Dvostruka definicija metode: " +
-		 * methodSignAndName_Type.getI2(), methodSignAndName_Type); } else if
-		 * (methodSignAndName_Type.getI2().equalsIgnoreCase("main")) {
-		 * report_error("Main mora imati type void: " + methodSignAndName_Type,
-		 * methodSignAndName_Type); } else { currentMethod = Tab.insert(Obj.Meth,
-		 * methodSignAndName_Type.getI2(), currentType); Tab.openScope(); }
-		 */
 		if (methodSignAndName_Type.getI2().equalsIgnoreCase("main")) {
 			report_error("Main mora imati type void: " + methodSignAndName_Type, methodSignAndName_Type);
 		}
@@ -193,41 +182,208 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
 	@Override
 	public void visit(MethodSignAndName_Void methodSignAndName_Void) {
-		/*
-		 * Obj methObj = Tab.find(methodSignAndName_Void.getI1()); if (methObj !=
-		 * Tab.noObj && methObj.getType() == Tab.noType) {
-		 * report_error("Dvostruka definicija metode: " +
-		 * methodSignAndName_Void.getI1(), methodSignAndName_Void); } else {
-		 * currentMethod = Tab.insert(Obj.Meth, methodSignAndName_Void.getI1(),
-		 * Tab.noType); if (mainHappened == false &&
-		 * methodSignAndName_Void.getI1().equalsIgnoreCase("main")) { mainHappened =
-		 * true; Tab.openScope(); } }
-		 */
 		currentMethod = Tab.insert(Obj.Meth, methodSignAndName_Void.getI1(), Tab.noType);
 		Tab.openScope();
 		if (methodSignAndName_Void.getI1().equalsIgnoreCase("main")) {
-			mainMethod=currentMethod;
+			mainMethod = currentMethod;
 		}
 	}
 
 	@Override
 	public void visit(Factor_num factor_num) {
-		factor_num.struct=Tab.intType;
+		factor_num.struct = Tab.intType;
 	}
+
 	@Override
 	public void visit(Factor_char factor_char) {
-		factor_char.struct=Tab.charType;
-	}	@Override
-	public void visit(Factor_bool factor_bool) {
-		factor_bool.struct=boolType;
+		factor_char.struct = Tab.charType;
 	}
+
+	@Override
+	public void visit(Factor_bool factor_bool) {
+		factor_bool.struct = boolType;
+	}
+
+	@Override
+	public void visit(Factor_des factor_des) {
+		if (factor_des.getFactorAct() instanceof FactorAct_e) {
+			factor_des.struct = factor_des.getDesignator().obj.getType();
+		} else {
+			if (factor_des.getDesignator().obj.getKind() != Obj.Meth) {
+				report_error("Designator mora biti metoda: " + factor_des, factor_des);
+				factor_des.struct = Tab.noType;
+			} else {
+				factor_des.struct = factor_des.getDesignator().obj.getType();
+			}
+		}
+	}
+
+	@Override
+	public void visit(Factor_newexpr factor_newexpr) {
+		if (!factor_newexpr.getExpr().struct.equals(Tab.intType)) {
+			report_error("Velicina niza nije int: ", factor_newexpr);
+			factor_newexpr.struct = Tab.noType;
+		} else {
+			if (currentType.getKind() != Struct.Enum) {
+				factor_newexpr.struct = new Struct(Struct.Array, currentType);
+			} else {
+				// INICIJALIZOVATI SET
+			}
+		}
+
+	}
+
+	@Override
+	public void visit(Factor_expr factor_expr) {
+		factor_expr.struct = Tab.noType;
+	}
+
 	@Override
 	public void visit(MethodDecl methodDecl) {
-
 		Tab.chainLocalSymbols(currentMethod);
 		Tab.closeScope();
-
 		currentMethod = null;
+	}
+
+	@Override
+	public void visit(Term term) {
+		term.struct=term.getMulopFactor().struct;
+	}
+
+	@Override
+	public void visit(AddOpTerm_op addOpTerm_op) {
+		Struct left = addOpTerm_op.getAddOpTerm().struct;
+		Struct right = addOpTerm_op.getTerm().struct;
+		if (left.equals(Tab.intType) && right.equals(Tab.intType)) {
+			addOpTerm_op.struct = Tab.intType;
+		} else {
+			report_error("Sabiranje sa neint vrednostima: ", addOpTerm_op);
+			addOpTerm_op.struct = Tab.noType;
+		}
+	}
+	
+	@Override
+	public void visit(AddOpTerm_term addOpTerm_term) {
+		addOpTerm_term.struct = addOpTerm_term.getTerm().struct;
+	}
+	
+	@Override
+	public void visit(MulopFactor_fac mulopFactor_fac) {
+		mulopFactor_fac.struct = mulopFactor_fac.getFactor().struct;
+	}
+
+	@Override
+	public void visit(MulopFactor_mul mulopFactor_mul) {
+		Struct left = mulopFactor_mul.getMulopFactor().struct;
+		Struct right = mulopFactor_mul.getFactor().struct;
+		if (left.equals(Tab.intType) && right.equals(Tab.intType)) {
+			mulopFactor_mul.struct = Tab.intType;
+		} else {
+			report_error("Mnozenje sa neint vrednostima: " + mulopFactor_mul, mulopFactor_mul);
+			mulopFactor_mul.struct = Tab.noType;
+		}
+	}
+	
+	@Override
+	public void visit(Expr_term expr_term) {
+		expr_term.struct = expr_term.getAddOpTerm().struct;
+	}
+	
+	@Override
+	public void visit(Expr_mint expr_mint) {
+		if(!expr_mint.getAddOpTerm().struct.equals(Tab.intType)) {
+			report_error("Negacija neint vrednosti: "+expr_mint,expr_mint);
+			expr_mint.struct=Tab.noType;
+		}
+		else {
+			expr_mint.struct=expr_mint.getAddOpTerm().struct;
+		}
+	}
+	
+	@Override
+	public void visit(Expr_des expr_des) {
+		Obj left=Tab.find(expr_des.getDesignator().obj.getName());
+		Obj right=Tab.find(expr_des.getDesignator1().obj.getName());
+		if(left==Tab.noObj || right==Tab.noObj) {
+			report_error("Pristup nedefinisanoj promenljivi: ", expr_des);
+			expr_des.struct=Tab.noType;
+		}
+		else if(left.getKind()!=Obj.Meth){
+			report_error("Leva strana map mora biti metoda",expr_des);
+			expr_des.struct=Tab.noType;
+		}
+		else if(!left.getType().equals(Tab.intType) ) {
+			report_error("Metoda mora biti tipa int",expr_des);
+			expr_des.struct=Tab.noType;
+		}
+		else if(left.getLevel()!=1) {
+			report_error("Metoda mora imati tacno jedan parametar",expr_des);
+			expr_des.struct=Tab.noType;
+		}
+		else if(right.getType().getKind()!=Struct.Array) {
+			report_error("Argument mora biti niz",expr_des);
+			expr_des.struct=Tab.noType;
+		}
+		else if(right.getType().getElemType()!=Tab.intType) {
+			report_error("Niz mora int",expr_des);
+			expr_des.struct=Tab.noType;
+		}
+		else {
+			boolean flag=false;
+			for(Obj loc:left.getLocalSymbols()) {
+				if (loc.getFpPos()==1 && loc.getType()==Tab.intType) {
+					flag=true;
+				}
+			}
+			if(!flag) {
+				report_error("Parametar mora biti tipa int",expr_des);
+				expr_des.struct=Tab.noType;
+			}
+			else {
+				expr_des.struct=Tab.intType;
+			}
+		}
+	}
+	
+	@Override
+	public void visit(Designator_var designator_var) {
+		Obj varObj = Tab.find(designator_var.getI1());
+		if (varObj == Tab.noObj) {
+			report_error("Pristup nedefinisanoj promenljivi: " + designator_var.getI1(), designator_var);
+			designator_var.obj = Tab.noObj;
+		} else if (varObj.getKind() != Obj.Var && varObj.getKind() != Obj.Con && varObj.getKind() != Obj.Meth) {
+			report_error("Neadekvatna promenljiva: " + designator_var.getI1(), designator_var);
+			designator_var.obj = Tab.noObj;
+		} else {
+			designator_var.obj = varObj;
+		}
+	}
+
+	@Override
+	public void visit(DesignatorArrayName designatorArrayName) {
+		Obj arrObj = Tab.find(designatorArrayName.getI1());
+		if (arrObj == Tab.noObj) {
+			report_error("Pristup nedefinisanoj promenljivi niza: " + designatorArrayName.getI1(), designatorArrayName);
+			designatorArrayName.obj = Tab.noObj;
+		} else if (arrObj.getKind() != Obj.Var && arrObj.getKind() != Obj.Con && arrObj.getKind() != Obj.Meth) {
+			report_error("Neadekvatna promenljiva niza: " + designatorArrayName.getI1(), designatorArrayName);
+			designatorArrayName.obj = Tab.noObj;
+		} else {
+			designatorArrayName.obj = arrObj;
+		}
+	}
+
+	@Override
+	public void visit(Designator_elem designator_elem) {
+		Obj arrObj = designator_elem.getDesignatorArrayName().obj;
+		if (arrObj == Tab.noObj) {
+			designator_elem.obj = Tab.noObj;
+		} else if (!designator_elem.getExpr().struct.equals(Tab.intType)) {
+			report_error("Indeksiranje sa neint vrednosti.", designator_elem);
+			designator_elem.obj = Tab.noObj;
+		} else {
+			designator_elem.obj = new Obj(Obj.Elem, arrObj.getName() + "[$]", arrObj.getType().getElemType());
+		}
 	}
 
 	@Override

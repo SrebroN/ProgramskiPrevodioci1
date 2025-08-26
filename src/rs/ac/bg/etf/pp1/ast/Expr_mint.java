@@ -1,28 +1,17 @@
 // generated with ast extension for cup
 // version 0.8
-// 22/7/2025 16:42:39
+// 26/7/2025 17:8:31
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class Expr_mint extends Expr {
 
-    private Term Term;
     private AddOpTerm AddOpTerm;
 
-    public Expr_mint (Term Term, AddOpTerm AddOpTerm) {
-        this.Term=Term;
-        if(Term!=null) Term.setParent(this);
+    public Expr_mint (AddOpTerm AddOpTerm) {
         this.AddOpTerm=AddOpTerm;
         if(AddOpTerm!=null) AddOpTerm.setParent(this);
-    }
-
-    public Term getTerm() {
-        return Term;
-    }
-
-    public void setTerm(Term Term) {
-        this.Term=Term;
     }
 
     public AddOpTerm getAddOpTerm() {
@@ -38,18 +27,15 @@ public class Expr_mint extends Expr {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(Term!=null) Term.accept(visitor);
         if(AddOpTerm!=null) AddOpTerm.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(Term!=null) Term.traverseTopDown(visitor);
         if(AddOpTerm!=null) AddOpTerm.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(Term!=null) Term.traverseBottomUp(visitor);
         if(AddOpTerm!=null) AddOpTerm.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -58,12 +44,6 @@ public class Expr_mint extends Expr {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
         buffer.append("Expr_mint(\n");
-
-        if(Term!=null)
-            buffer.append(Term.toString("  "+tab));
-        else
-            buffer.append(tab+"  null");
-        buffer.append("\n");
 
         if(AddOpTerm!=null)
             buffer.append(AddOpTerm.toString("  "+tab));
