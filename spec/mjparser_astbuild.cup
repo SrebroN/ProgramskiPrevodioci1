@@ -97,7 +97,7 @@ nonterminal ProgramName ProgramName;
 nonterminal MethodSignAndName MethodSignAndName;
 nonterminal VarDec VarDec;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Expr, AddOpTerm, Term, MulopFactor;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, DesignatorArrayName;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, DesignatorArrayName, DesignatorMeth;
 // DesignatorRecMore, DesignatorRecordName, DesignatorRecordArrayName;
 precedence left ELSE;
 
@@ -245,9 +245,15 @@ DesignatorRecordArrayName ::= (DesignatorRecordArrayName) IDENT;
 				
 DesignatorArrayName ::= (DesignatorArrayName) IDENT:I1 {: RESULT=new DesignatorArrayName(I1); RESULT.setLine(I1left); :};
 
-DesignatorStatement ::= (DesignatorStatement_ds) Designator:D1 DesignatorStatementList:D2 {: RESULT=new DesignatorStatement_ds(D1, D2); RESULT.setLine(D1left); :}
+DesignatorStatement ::= (DesignatorStatement_assigexpr) Designator:D1 Assignop:A2 Expr:E3 {: RESULT=new DesignatorStatement_assigexpr(D1, A2, E3); RESULT.setLine(D1left); :}
 						|
-						(DesignatorStatement_tw) Designator:D1 Assignop:A2 Designator:D3 Setop:S4 Designator:D5 {: RESULT=new DesignatorStatement_tw(D1, A2, D3, S4, D5); RESULT.setLine(D1left); :}
+						(DesignatorStatement_actpars) DesignatorMeth:D1 OPPAREN ActParsOpt:A2 CLPAREN {: RESULT=new DesignatorStatement_actpars(D1, A2); RESULT.setLine(D1left); :}
+						|
+						(DesignatorStatement_inc) Designator:D1 INC {: RESULT=new DesignatorStatement_inc(D1); RESULT.setLine(D1left); :}
+						|
+						(DesignatorStatement_dec) Designator:D1 DEC {: RESULT=new DesignatorStatement_dec(D1); RESULT.setLine(D1left); :}
+						|
+						(DesignatorStatement_assign) Designator:D1 Assignop:A2 Designator:D3 Setop:S4 Designator:D5 {: RESULT=new DesignatorStatement_assign(D1, A2, D3, S4, D5); RESULT.setLine(D1left); :}
 						; 
 
 DesignatorStatementList ::=	(DesignatorStatementList_aop) Assignop:A1 Expr:E2 {: RESULT=new DesignatorStatementList_aop(A1, E2); RESULT.setLine(A1left); :}
@@ -259,6 +265,7 @@ DesignatorStatementList ::=	(DesignatorStatementList_aop) Assignop:A1 Expr:E2 {:
 							(DesignatorStatementList_dec) DEC {: RESULT=new DesignatorStatementList_dec(); :}
 							;
 							
+DesignatorMeth	::=	(DesignatorMeth) IDENT:I1 {: RESULT=new DesignatorMeth(I1); RESULT.setLine(I1left); :};
 
 ActPars ::=	(ActPars) Expr:E1 ActParsExprOpt:A2 {: RESULT=new ActPars(E1, A2); RESULT.setLine(E1left); :};
 
@@ -292,7 +299,7 @@ Expr ::= 	(Expr_term) AddOpTerm:A1 {: RESULT=new Expr_term(A1); RESULT.setLine(A
 			|
 			(Expr_mint) MINUS AddOpTerm:A1 {: RESULT=new Expr_mint(A1); RESULT.setLine(A1left); :}
 			|
-			(Expr_des) Designator:D1 MAP Designator:D2 {: RESULT=new Expr_des(D1, D2); RESULT.setLine(D1left); :}
+			(Expr_des) IDENT:I1 MAP Designator:D2 {: RESULT=new Expr_des(I1, D2); RESULT.setLine(I1left); :}
 			;
 			
 ExprOpt ::=	(ExprOpt_exp) Expr:E1 {: RESULT=new ExprOpt_exp(E1); RESULT.setLine(E1left); :}

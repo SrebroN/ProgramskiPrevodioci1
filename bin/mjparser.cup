@@ -60,7 +60,7 @@ nonterminal DesignatorStatementList, Assignop, Relop, Addop, Mulop, Setop, Label
 nonterminal FactorAct, ExprOpt;
 nonterminal ConditionList, ElseStatement, NumConstOpt, ProgramName, MethodSignAndName, VarDec;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Expr, AddOpTerm, Term, MulopFactor;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, DesignatorArrayName;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, DesignatorArrayName, DesignatorMeth;
 // DesignatorRecMore, DesignatorRecordName, DesignatorRecordArrayName;
 precedence left ELSE;
 
@@ -208,9 +208,15 @@ DesignatorRecordArrayName ::= (DesignatorRecordArrayName) IDENT;
 				
 DesignatorArrayName ::= (DesignatorArrayName) IDENT;
 
-DesignatorStatement ::= (DesignatorStatement_ds) Designator DesignatorStatementList
+DesignatorStatement ::= (DesignatorStatement_assigexpr) Designator Assignop Expr
 						|
-						(DesignatorStatement_tw) Designator Assignop Designator Setop Designator
+						(DesignatorStatement_actpars) DesignatorMeth OPPAREN ActParsOpt CLPAREN
+						|
+						(DesignatorStatement_inc) Designator INC
+						|
+						(DesignatorStatement_dec) Designator DEC
+						|
+						(DesignatorStatement_assign) Designator Assignop Designator Setop Designator
 						; 
 
 DesignatorStatementList ::=	(DesignatorStatementList_aop) Assignop Expr
@@ -222,6 +228,7 @@ DesignatorStatementList ::=	(DesignatorStatementList_aop) Assignop Expr
 							(DesignatorStatementList_dec) DEC
 							;
 							
+DesignatorMeth	::=	(DesignatorMeth) IDENT;
 
 ActPars ::=	(ActPars) Expr ActParsExprOpt;
 
@@ -255,7 +262,7 @@ Expr ::= 	(Expr_term) AddOpTerm
 			|
 			(Expr_mint) MINUS AddOpTerm
 			|
-			(Expr_des) Designator MAP Designator
+			(Expr_des) IDENT MAP Designator
 			;
 			
 ExprOpt ::=	(ExprOpt_exp) Expr

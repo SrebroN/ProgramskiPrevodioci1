@@ -1,0 +1,261 @@
+INFO  13:09:12,909 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  13:09:12,968 - #6 program
+INFO  13:09:12,968 - #2 test302
+INFO  13:09:12,968 - #2 int
+INFO  13:09:12,970 - #2 i
+INFO  13:09:12,971 - #10 ;
+INFO  13:09:12,973 - #2 bool
+INFO  13:09:12,975 - #2 ibool
+INFO  13:09:12,975 - #10 ;
+INFO  13:09:12,975 - #2 int
+INFO  13:09:12,975 - #2 niz2
+INFO  13:09:12,975 - #10 ;
+INFO  13:09:12,975 - #2 int
+INFO  13:09:12,975 - #2 x
+INFO  13:09:12,976 - #10 ;
+INFO  13:09:12,976 - #2 int
+INFO  13:09:12,976 - #2 niz
+INFO  13:09:12,976 - #13 [
+INFO  13:09:12,976 - #14 ]
+INFO  13:09:12,976 - #10 ;
+INFO  13:09:12,976 - #2 int
+INFO  13:09:12,976 - #2 a
+INFO  13:09:12,977 - #10 ;
+INFO  13:09:12,983 - #7 {
+INFO  13:09:12,983 - #2 int
+INFO  13:09:12,984 - #2 foo
+INFO  13:09:12,984 - #15 (
+INFO  13:09:12,984 - #2 int
+INFO  13:09:12,984 - #2 g
+INFO  13:09:12,984 - #16 )
+INFO  13:09:12,986 - #2 int
+INFO  13:09:12,987 - #2 c
+INFO  13:09:12,987 - #10 ;
+INFO  13:09:12,987 - #7 {
+INFO  13:09:12,987 - #8 }
+INFO  13:09:12,988 - #17 void
+INFO  13:09:12,991 - #2 main
+INFO  13:09:12,991 - #15 (
+INFO  13:09:12,992 - #16 )
+INFO  13:09:12,993 - #2 int
+INFO  13:09:12,993 - #2 a
+INFO  13:09:12,993 - #12 ,
+INFO  13:09:12,993 - #2 b
+INFO  13:09:12,993 - #10 ;
+INFO  13:09:12,993 - #2 int
+INFO  13:09:12,994 - #2 x
+INFO  13:09:12,994 - #13 [
+INFO  13:09:12,994 - #14 ]
+INFO  13:09:12,994 - #10 ;
+INFO  13:09:12,994 - #7 {
+INFO  13:09:12,994 - #2 foo
+INFO  13:09:12,994 - #15 (
+INFO  13:09:12,994 - #3 4
+INFO  13:09:12,994 - #16 )
+INFO  13:09:12,997 - #10 ;
+INFO  13:09:12,998 - #2 a
+INFO  13:09:12,998 - #15 (
+INFO  13:09:12,998 - #16 )
+INFO  13:09:12,999 - #10 ;
+INFO  13:09:12,999 - #8 }
+INFO  13:09:12,999 - #8 }
+INFO  13:09:13,002 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_var(
+    ConVarDecList_var(
+      ConVarDecList_var(
+        ConVarDecList_var(
+          ConVarDecList_var(
+            ConVarDecList_var(
+              ConVarDecList_epsilon(
+              ) [ConVarDecList_epsilon]
+              VarDecList(
+                Type(
+                 int
+                ) [Type]
+                VarDec_var(
+                 i
+                ) [VarDec_var]
+                VarDecMore_e(
+                ) [VarDecMore_e]
+              ) [VarDecList]
+            ) [ConVarDecList_var]
+            VarDecList(
+              Type(
+               bool
+              ) [Type]
+              VarDec_var(
+               ibool
+              ) [VarDec_var]
+              VarDecMore_e(
+              ) [VarDecMore_e]
+            ) [VarDecList]
+          ) [ConVarDecList_var]
+          VarDecList(
+            Type(
+             int
+            ) [Type]
+            VarDec_var(
+             niz2
+            ) [VarDec_var]
+            VarDecMore_e(
+            ) [VarDecMore_e]
+          ) [VarDecList]
+        ) [ConVarDecList_var]
+        VarDecList(
+          Type(
+           int
+          ) [Type]
+          VarDec_var(
+           x
+          ) [VarDec_var]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList]
+      ) [ConVarDecList_var]
+      VarDecList(
+        Type(
+         int
+        ) [Type]
+        VarDec_arr(
+         niz
+        ) [VarDec_arr]
+        VarDecMore_e(
+        ) [VarDecMore_e]
+      ) [VarDecList]
+    ) [ConVarDecList_var]
+    VarDecList(
+      Type(
+       int
+      ) [Type]
+      VarDec_var(
+       a
+      ) [VarDec_var]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_m(
+    MethodDecList_m(
+      MethodDecList_e(
+      ) [MethodDecList_e]
+      MethodDecl(
+        MethodSignAndName_Type(
+          Type(
+           int
+          ) [Type]
+         foo
+        ) [MethodSignAndName_Type]
+        FormParsOpt_fm(
+          FormPars_var(
+            Type(
+             int
+            ) [Type]
+           g
+          ) [FormPars_var]
+          FormParsMore_e(
+          ) [FormParsMore_e]
+        ) [FormParsOpt_fm]
+        VarDecOpt_v(
+          VarDecOpt_e(
+          ) [VarDecOpt_e]
+          VarDecList(
+            Type(
+             int
+            ) [Type]
+            VarDec_var(
+             c
+            ) [VarDec_var]
+            VarDecMore_e(
+            ) [VarDecMore_e]
+          ) [VarDecList]
+        ) [VarDecOpt_v]
+        StatementOpt_e(
+        ) [StatementOpt_e]
+      ) [MethodDecl]
+    ) [MethodDecList_m]
+    MethodDecl(
+      MethodSignAndName_Void(
+       main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_v(
+        VarDecOpt_v(
+          VarDecOpt_e(
+          ) [VarDecOpt_e]
+          VarDecList(
+            Type(
+             int
+            ) [Type]
+            VarDec_var(
+             a
+            ) [VarDec_var]
+            VarDecMore_m(
+              VarDec_var(
+               b
+              ) [VarDec_var]
+              VarDecMore_e(
+              ) [VarDecMore_e]
+            ) [VarDecMore_m]
+          ) [VarDecList]
+        ) [VarDecOpt_v]
+        VarDecList(
+          Type(
+           int
+          ) [Type]
+          VarDec_arr(
+           x
+          ) [VarDec_arr]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList]
+      ) [VarDecOpt_v]
+      StatementOpt_s(
+        StatementOpt_s(
+          StatementOpt_e(
+          ) [StatementOpt_e]
+          Statement_ds(
+            DesignatorStatement_actpars(
+              Designator_var(
+               foo
+              ) [Designator_var]
+              ActParsOpt_a(
+                ActPars(
+                  Expr_term(
+                    AddOpTerm_term(
+                      Term(
+                        MulopFactor_fac(
+                          Factor_num(
+                           4
+                          ) [Factor_num]
+                        ) [MulopFactor_fac]
+                      ) [Term]
+                    ) [AddOpTerm_term]
+                  ) [Expr_term]
+                  ActParsExprOpt_e(
+                  ) [ActParsExprOpt_e]
+                ) [ActPars]
+              ) [ActParsOpt_a]
+            ) [DesignatorStatement_actpars]
+          ) [Statement_ds]
+        ) [StatementOpt_s]
+        Statement_ds(
+          DesignatorStatement_actpars(
+            Designator_var(
+             a
+            ) [Designator_var]
+            ActParsOpt_e(
+            ) [ActParsOpt_e]
+          ) [DesignatorStatement_actpars]
+        ) [Statement_ds]
+      ) [StatementOpt_s]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  13:09:13,002 - ===================================
+ERROR 13:09:13,013 - Pristup nemetodi: a na liniji 18
+INFO  13:09:13,014 - ===================================
+ERROR 13:09:13,014 - Parsiranje NIJE uspesno zavrseno

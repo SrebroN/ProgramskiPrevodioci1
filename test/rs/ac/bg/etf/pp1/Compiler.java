@@ -53,7 +53,7 @@ public class Compiler {
 			Obj boolObj =Tab.insert(Obj.Type, "bool", boolType);
 			boolObj.setAdr(-1);
 			boolObj.setLevel(-1);
-			//set
+			//SET
 			Struct setType=new Struct(Struct.Enum);
 			Obj setObj =Tab.insert(Obj.Type, "set", setType);
 			setObj.setAdr(-1);

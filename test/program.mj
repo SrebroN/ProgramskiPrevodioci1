@@ -6,16 +6,29 @@ int i;
 bool ibool;
 
 int niz2;
-
+int x;
 int niz[];
 int a;
-
+set set1[];
+char charac;
 {
-int foo(int g)int c;{}
-
-void main()int a, b;int x[];{
-	x= new int[-3+6*7*7*8+6+6];
-	a= foo map x;
+int foo(int g)int c;{
+	return true;
 }
+void main()int a, b;int x[];set set2,set3;{
+	foo(3);
+	a=foo1 map x;
+	b=foo map x;
+	a=foo2 map x;
+	a=foo1 map b;
+
+}
+int foo1(int g)int c;{
+	return true;
+}
+int foo2(int g, int h)int c;{
+	return true;
+}
+
 }
 

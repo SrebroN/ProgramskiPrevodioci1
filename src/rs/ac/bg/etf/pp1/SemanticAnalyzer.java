@@ -1,5 +1,7 @@
 package rs.ac.bg.etf.pp1;
 
+import java.util.HashSet;
+
 import org.apache.log4j.Logger;
 
 import rs.ac.bg.etf.pp1.ast.*;
@@ -25,6 +27,9 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	private Obj mainMethod;
 
 	private Obj currentMethod;
+	private boolean returnHappened;
+	private HashSet<String> methodsReferenced = new HashSet<>();
+	private HashSet<String> intMethodsReferenced = new HashSet<>();
 
 	// LOG MESSAGES
 	public void report_error(String message, SyntaxNode info) {
@@ -59,8 +64,38 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
 	@Override
 	public void visit(Program program) {
+		for (String method : methodsReferenced) {
+			Obj methObj = Tab.find(method);
+			if (methObj.getKind() != Obj.Meth) {
+				report_error("Referencirani metod ne postoji: " + method, null);
+			}
+		}
+		for (String meth : intMethodsReferenced) {
+			Obj method = Tab.find(meth);
+			if (method == Tab.noObj) {
+				report_error("Pristup nedefinisanoj promenljivi: "+ meth, null);
+			} else if (method.getKind() != Obj.Meth) {
+				report_error("Leva strana map mora biti metoda", null);
+			} else if (!method.getType().equals(Tab.intType)) {
+				report_error("Metoda mora biti tipa int", null);
+			} else if (method.getLevel() != 1) {
+				report_error("Metoda mora imati tacno jedan parametar", null);
+			} else {
+				boolean flag = false;
+				for (Obj loc : method.getLocalSymbols()) {
+					if (loc.getFpPos() == 1 && loc.getType().equals(Tab.intType)) {
+						flag = true;
+						break;
+					}
+				}
+				if (!flag) {
+					report_error("Parametar mora biti tipa int", null);
+				}
+			}
+		}
 		Tab.chainLocalSymbols(currentProgram);
 		currentProgram = null;
+		methodsReferenced = null;
 		Tab.closeScope();
 		if (mainMethod == null) {
 			report_error("Greska, main nije deklarisan", null);
@@ -69,7 +104,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		}
 	}
 
-	// CONST DECL
+	// ---------------------CONST DECL---------------------
 	@Override
 	public void visit(ConDecl conDecl) {
 		Obj conObj = Tab.find(conDecl.getI1());
@@ -104,7 +139,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		constantType = boolType;
 	}
 
-	// VAR DECLARATIONS
+	// ---------------------VAR DECLARATIONS---------------------
 	@Override
 	public void visit(VarDec_var varDec_var) {
 		Obj varObj = null;
@@ -135,7 +170,38 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		}
 	}
 
-	// FORMAL PARAM DECL
+	// ---------------------METHOD DECLARATIONS---------------------
+
+	@Override
+	public void visit(MethodDecl methodDecl) {
+		Tab.chainLocalSymbols(currentMethod);
+		Tab.closeScope();
+		if (currentMethod.getType() != Tab.noType && !returnHappened) {
+			report_error("Metoda mora imati return:", methodDecl);
+		}
+		currentMethod = null;
+		returnHappened = false;
+	}
+
+	@Override
+	public void visit(MethodSignAndName_Type methodSignAndName_Type) {
+		if (methodSignAndName_Type.getI2().equalsIgnoreCase("main")) {
+			report_error("Main mora imati type void: " + methodSignAndName_Type, methodSignAndName_Type);
+		}
+		currentMethod = Tab.insert(Obj.Meth, methodSignAndName_Type.getI2(), currentType);
+		Tab.openScope();
+	}
+
+	@Override
+	public void visit(MethodSignAndName_Void methodSignAndName_Void) {
+		currentMethod = Tab.insert(Obj.Meth, methodSignAndName_Void.getI1(), Tab.noType);
+		Tab.openScope();
+		if (methodSignAndName_Void.getI1().equalsIgnoreCase("main")) {
+			mainMethod = currentMethod;
+		}
+	}
+
+	// ---------------------FORMAL PARAM DECL---------------------
 	@Override
 	public void visit(FormPars_var formPars_var) {
 		Obj varObj = null;
@@ -170,25 +236,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		}
 	}
 
-	// METHOD DECLARATIONS
-	@Override
-	public void visit(MethodSignAndName_Type methodSignAndName_Type) {
-		if (methodSignAndName_Type.getI2().equalsIgnoreCase("main")) {
-			report_error("Main mora imati type void: " + methodSignAndName_Type, methodSignAndName_Type);
-		}
-		currentMethod = Tab.insert(Obj.Meth, methodSignAndName_Type.getI2(), currentType);
-		Tab.openScope();
-	}
-
-	@Override
-	public void visit(MethodSignAndName_Void methodSignAndName_Void) {
-		currentMethod = Tab.insert(Obj.Meth, methodSignAndName_Void.getI1(), Tab.noType);
-		Tab.openScope();
-		if (methodSignAndName_Void.getI1().equalsIgnoreCase("main")) {
-			mainMethod = currentMethod;
-		}
-	}
-
+	// ---------------------FACTOR---------------------
 	@Override
 	public void visit(Factor_num factor_num) {
 		factor_num.struct = Tab.intType;
@@ -238,18 +286,13 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		factor_expr.struct = Tab.noType;
 	}
 
-	@Override
-	public void visit(MethodDecl methodDecl) {
-		Tab.chainLocalSymbols(currentMethod);
-		Tab.closeScope();
-		currentMethod = null;
-	}
-
+	// ---------------------TERM---------------------
 	@Override
 	public void visit(Term term) {
-		term.struct=term.getMulopFactor().struct;
+		term.struct = term.getMulopFactor().struct;
 	}
 
+	// ---------------------ADDOP---------------------
 	@Override
 	public void visit(AddOpTerm_op addOpTerm_op) {
 		Struct left = addOpTerm_op.getAddOpTerm().struct;
@@ -261,12 +304,13 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			addOpTerm_op.struct = Tab.noType;
 		}
 	}
-	
+
 	@Override
 	public void visit(AddOpTerm_term addOpTerm_term) {
 		addOpTerm_term.struct = addOpTerm_term.getTerm().struct;
 	}
-	
+
+	// MULOP
 	@Override
 	public void visit(MulopFactor_fac mulopFactor_fac) {
 		mulopFactor_fac.struct = mulopFactor_fac.getFactor().struct;
@@ -279,72 +323,46 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		if (left.equals(Tab.intType) && right.equals(Tab.intType)) {
 			mulopFactor_mul.struct = Tab.intType;
 		} else {
-			report_error("Mnozenje sa neint vrednostima: " + mulopFactor_mul, mulopFactor_mul);
+			report_error("Mnozenje sa neint vrednostima", mulopFactor_mul);
 			mulopFactor_mul.struct = Tab.noType;
 		}
 	}
-	
+
+	// ---------------------EXPR---------------------
 	@Override
 	public void visit(Expr_term expr_term) {
 		expr_term.struct = expr_term.getAddOpTerm().struct;
 	}
-	
+
 	@Override
 	public void visit(Expr_mint expr_mint) {
-		if(!expr_mint.getAddOpTerm().struct.equals(Tab.intType)) {
-			report_error("Negacija neint vrednosti: "+expr_mint,expr_mint);
-			expr_mint.struct=Tab.noType;
-		}
-		else {
-			expr_mint.struct=expr_mint.getAddOpTerm().struct;
+		if (!expr_mint.getAddOpTerm().struct.equals(Tab.intType)) {
+			report_error("Negacija neint vrednosti: " + expr_mint, expr_mint);
+			expr_mint.struct = Tab.noType;
+		} else {
+			expr_mint.struct = expr_mint.getAddOpTerm().struct;
 		}
 	}
-	
+
 	@Override
 	public void visit(Expr_des expr_des) {
-		Obj left=Tab.find(expr_des.getDesignator().obj.getName());
-		Obj right=Tab.find(expr_des.getDesignator1().obj.getName());
-		if(left==Tab.noObj || right==Tab.noObj) {
-			report_error("Pristup nedefinisanoj promenljivi: ", expr_des);
-			expr_des.struct=Tab.noType;
-		}
-		else if(left.getKind()!=Obj.Meth){
-			report_error("Leva strana map mora biti metoda",expr_des);
-			expr_des.struct=Tab.noType;
-		}
-		else if(!left.getType().equals(Tab.intType) ) {
-			report_error("Metoda mora biti tipa int",expr_des);
-			expr_des.struct=Tab.noType;
-		}
-		else if(left.getLevel()!=1) {
-			report_error("Metoda mora imati tacno jedan parametar",expr_des);
-			expr_des.struct=Tab.noType;
-		}
-		else if(right.getType().getKind()!=Struct.Array) {
-			report_error("Argument mora biti niz",expr_des);
-			expr_des.struct=Tab.noType;
-		}
-		else if(right.getType().getElemType()!=Tab.intType) {
-			report_error("Niz mora int",expr_des);
-			expr_des.struct=Tab.noType;
-		}
-		else {
-			boolean flag=false;
-			for(Obj loc:left.getLocalSymbols()) {
-				if (loc.getFpPos()==1 && loc.getType()==Tab.intType) {
-					flag=true;
-				}
-			}
-			if(!flag) {
-				report_error("Parametar mora biti tipa int",expr_des);
-				expr_des.struct=Tab.noType;
-			}
-			else {
-				expr_des.struct=Tab.intType;
-			}
+		intMethodsReferenced.add(expr_des.getI1());
+		Obj right = Tab.find(expr_des.getDesignator().obj.getName());
+		if (right == Tab.noObj) {
+			report_error("Pristup nedefinisanoj promenljivi", expr_des);
+			expr_des.struct = Tab.noType;
+		} else if (right.getType().getKind() != Struct.Array) {
+			report_error("Argument mora biti niz", expr_des);
+			expr_des.struct = Tab.noType;
+		} else if (!right.getType().getElemType().equals(Tab.intType)) {
+			report_error("Niz mora biti tipa int", expr_des);
+			expr_des.struct = Tab.noType;
+		} else {
+			expr_des.struct = Tab.intType;
 		}
 	}
-	
+
+	// ---------------------DESIGNATOR---------------------
 	@Override
 	public void visit(Designator_var designator_var) {
 		Obj varObj = Tab.find(designator_var.getI1());
@@ -386,6 +404,88 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		}
 	}
 
+	// ---------------------DESIGNATOR STATEMENT---------------------
+	@Override
+	public void visit(DesignatorStatement_assigexpr designatorStatement_assigexpr) {
+		int kind = designatorStatement_assigexpr.getDesignator().obj.getKind();
+		if (kind != Obj.Var && kind != Obj.Elem) {
+			report_error("Dodela u neadekvatnu promenljivu: " + designatorStatement_assigexpr.getDesignator(),
+					designatorStatement_assigexpr);
+		} else if (!designatorStatement_assigexpr.getExpr().struct
+				.assignableTo(designatorStatement_assigexpr.getDesignator().obj.getType())) {
+			report_error(
+					"Neadekvatna dodela vrednosti u promenljivu: "
+							+ designatorStatement_assigexpr.getDesignator().obj.getName(),
+					designatorStatement_assigexpr);
+		}
+	}
+
+	@Override
+	public void visit(DesignatorStatement_inc designatorStatement_inc) {
+		int kind = designatorStatement_inc.getDesignator().obj.getKind();
+		if (kind != Obj.Var && kind != Obj.Elem) {
+			report_error("INC neadekvatne promenljive: " + designatorStatement_inc.getDesignator(),
+					designatorStatement_inc);
+		} else if (!designatorStatement_inc.getDesignator().obj.getType().equals(Tab.intType)) {
+			report_error("INC neint vrednosti: " + designatorStatement_inc.getDesignator().obj.getName(),
+					designatorStatement_inc);
+		}
+	}
+
+	@Override
+	public void visit(DesignatorStatement_dec designatorStatement_dec) {
+		int kind = designatorStatement_dec.getDesignator().obj.getKind();
+		if (kind != Obj.Var && kind != Obj.Elem) {
+			report_error("DEC neadekvatne promenljive: " + designatorStatement_dec.getDesignator(),
+					designatorStatement_dec);
+		} else if (!designatorStatement_dec.getDesignator().obj.getType().equals(Tab.intType)) {
+			report_error("DEC neint vrednosti: " + designatorStatement_dec.getDesignator().obj.getName(),
+					designatorStatement_dec);
+		}
+	}
+
+	@Override
+	public void visit(DesignatorMeth designatorMeth) {
+		methodsReferenced.add(designatorMeth.getI1());
+	}
+
+	@Override
+	public void visit(DesignatorStatement_assign designatorStatement_assigndes) {
+		int type1 = designatorStatement_assigndes.getDesignator().obj.getType().getKind();
+		int type2 = designatorStatement_assigndes.getDesignator1().obj.getType().getKind();
+		int type3 = designatorStatement_assigndes.getDesignator2().obj.getType().getKind();
+		if (type1 != Struct.Enum || type2 != Struct.Enum || type3 != Struct.Enum) {
+			report_error("Union operacija sa neskupovima", designatorStatement_assigndes);
+		}
+	}
+
+	// ---------------------STATEMENT---------------------
+	@Override
+	public void visit(Statement_ret statement_ret) {
+		returnHappened = true;
+	}
+
+	@Override
+	public void visit(Statement_rd statement_rd) {
+		int kind = statement_rd.getDesignator().obj.getKind();
+		Struct type = statement_rd.getDesignator().obj.getType();
+		if (kind != Obj.Var && kind != Obj.Elem) {
+			report_error("Read neadekvatne promenljive: " + statement_rd.getDesignator(), statement_rd);
+		} else if (!type.equals(Tab.intType) && !type.equals(boolType) && !type.equals(Tab.charType)) {
+			report_error("Read neint/char/bool vrednosti: " + statement_rd.getDesignator().obj.getName(), statement_rd);
+		}
+	}
+
+	@Override
+	public void visit(Statement_pr statement_pr) {
+		Struct type = statement_pr.getExpr().struct;
+		if (!type.equals(Tab.intType) && !type.equals(Tab.charType) && !type.equals(boolType)
+				&& type.getKind() != Struct.Enum) {
+			report_error("Print neadekvatne promenljive", statement_pr);
+		}
+	}
+
+	// ---------------------TYPE---------------------
 	@Override
 	public void visit(Type type) {
 		Obj typeObj = Tab.find(type.getI1());
