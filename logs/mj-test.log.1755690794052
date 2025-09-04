@@ -1,0 +1,57 @@
+INFO  13:49:43,816 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  13:49:43,921 - #6 program
+INFO  13:49:43,922 - #2 test302
+INFO  13:49:43,922 - #9 const
+INFO  13:49:43,925 - #2 int
+INFO  13:49:43,925 - #2 pi
+INFO  13:49:43,927 - #11 =
+INFO  13:49:43,927 - #3 3
+INFO  13:49:43,927 - #10 ;
+INFO  13:49:43,929 - #7 {
+INFO  13:49:43,931 - #17 void
+INFO  13:49:43,934 - #2 Main
+INFO  13:49:43,935 - #15 (
+INFO  13:49:43,935 - #16 )
+INFO  13:49:43,937 - #7 {
+INFO  13:49:43,938 - #8 }
+INFO  13:49:43,940 - #8 }
+INFO  13:49:43,943 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_con(
+    ConVarDecList_epsilon(
+    ) [ConVarDecList_epsilon]
+    ConDecList(
+      Type(
+       int
+      ) [Type]
+      ConDecl(
+       pi
+        Constant_n(
+         3
+        ) [Constant_n]
+      ) [ConDecl]
+      ConDeclMore_e(
+      ) [ConDeclMore_e]
+    ) [ConDecList]
+  ) [ConVarDecList_con]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       Main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_e(
+      ) [VarDecOpt_e]
+      StatementOpt_e(
+      ) [StatementOpt_e]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  13:49:43,950 - ===================================
+INFO  13:49:43,967 - ===================================
+INFO  13:49:43,968 - Parsiranje uspesno zavrseno!

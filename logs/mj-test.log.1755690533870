@@ -1,0 +1,37 @@
+INFO  13:48:22,744 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  13:48:22,867 - #6 program
+INFO  13:48:22,867 - #2 test302
+INFO  13:48:22,868 - #9 const
+INFO  13:48:22,870 - #2 int
+INFO  13:48:22,871 - #2 pi
+INFO  13:48:22,872 - #11 =
+INFO  13:48:22,872 - #3 3
+INFO  13:48:22,873 - #10 ;
+INFO  13:48:22,875 - #7 {
+INFO  13:48:22,877 - #8 }
+INFO  13:48:22,881 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_con(
+    ConVarDecList_epsilon(
+    ) [ConVarDecList_epsilon]
+    ConDecList(
+      Type(
+       int
+      ) [Type]
+      ConDecl(
+       pi
+        Constant_n(
+         3
+        ) [Constant_n]
+      ) [ConDecl]
+      ConDeclMore_e(
+      ) [ConDeclMore_e]
+    ) [ConDecList]
+  ) [ConVarDecList_con]
+  MethodDecList_e(
+  ) [MethodDecList_e]
+) [Program]
+INFO  13:48:22,887 - ===================================
+INFO  13:48:22,903 - ===================================

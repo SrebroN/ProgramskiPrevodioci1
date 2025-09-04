@@ -1,0 +1,79 @@
+INFO  14:09:20,847 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  14:09:20,912 - #6 program
+INFO  14:09:20,912 - #2 test302
+INFO  14:09:20,912 - #9 const
+INFO  14:09:20,914 - #2 int
+INFO  14:09:20,914 - #2 pi
+INFO  14:09:20,916 - #11 =
+INFO  14:09:20,916 - #5 a
+INFO  14:09:20,916 - #10 ;
+INFO  14:09:20,919 - #9 const
+INFO  14:09:20,920 - #2 int
+INFO  14:09:20,920 - #2 g
+INFO  14:09:20,920 - #11 =
+INFO  14:09:20,920 - #3 33
+INFO  14:09:20,920 - #10 ;
+INFO  14:09:20,920 - #7 {
+INFO  14:09:20,920 - #17 void
+INFO  14:09:20,921 - #2 Main
+INFO  14:09:20,922 - #15 (
+INFO  14:09:20,922 - #16 )
+INFO  14:09:20,923 - #7 {
+INFO  14:09:20,924 - #8 }
+INFO  14:09:20,925 - #8 }
+INFO  14:09:20,930 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_con(
+    ConVarDecList_con(
+      ConVarDecList_epsilon(
+      ) [ConVarDecList_epsilon]
+      ConDecList(
+        Type(
+         int
+        ) [Type]
+        ConDecl(
+         pi
+          Constant_c(
+           a
+          ) [Constant_c]
+        ) [ConDecl]
+        ConDeclMore_e(
+        ) [ConDeclMore_e]
+      ) [ConDecList]
+    ) [ConVarDecList_con]
+    ConDecList(
+      Type(
+       int
+      ) [Type]
+      ConDecl(
+       g
+        Constant_n(
+         33
+        ) [Constant_n]
+      ) [ConDecl]
+      ConDeclMore_e(
+      ) [ConDeclMore_e]
+    ) [ConDecList]
+  ) [ConVarDecList_con]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       Main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_e(
+      ) [VarDecOpt_e]
+      StatementOpt_e(
+      ) [StatementOpt_e]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  14:09:20,930 - ===================================
+ERROR 14:09:20,939 - Neadekvatna dodela konstanti: pi na liniji 5
+INFO  14:09:20,940 - ===================================
+ERROR 14:09:20,940 - Parsiranje NIJE uspesno zavrseno

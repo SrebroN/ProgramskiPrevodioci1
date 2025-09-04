@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 18/7/2025 14:21:48
+// 2/8/2025 20:47:24
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -10,16 +10,14 @@ public class VarDecList implements SyntaxNode {
     private SyntaxNode parent;
     private int line;
     private Type Type;
-    private String I2;
-    private Brackets Brackets;
+    private VarDec VarDec;
     private VarDecMore VarDecMore;
 
-    public VarDecList (Type Type, String I2, Brackets Brackets, VarDecMore VarDecMore) {
+    public VarDecList (Type Type, VarDec VarDec, VarDecMore VarDecMore) {
         this.Type=Type;
         if(Type!=null) Type.setParent(this);
-        this.I2=I2;
-        this.Brackets=Brackets;
-        if(Brackets!=null) Brackets.setParent(this);
+        this.VarDec=VarDec;
+        if(VarDec!=null) VarDec.setParent(this);
         this.VarDecMore=VarDecMore;
         if(VarDecMore!=null) VarDecMore.setParent(this);
     }
@@ -32,20 +30,12 @@ public class VarDecList implements SyntaxNode {
         this.Type=Type;
     }
 
-    public String getI2() {
-        return I2;
+    public VarDec getVarDec() {
+        return VarDec;
     }
 
-    public void setI2(String I2) {
-        this.I2=I2;
-    }
-
-    public Brackets getBrackets() {
-        return Brackets;
-    }
-
-    public void setBrackets(Brackets Brackets) {
-        this.Brackets=Brackets;
+    public void setVarDec(VarDec VarDec) {
+        this.VarDec=VarDec;
     }
 
     public VarDecMore getVarDecMore() {
@@ -78,20 +68,20 @@ public class VarDecList implements SyntaxNode {
 
     public void childrenAccept(Visitor visitor) {
         if(Type!=null) Type.accept(visitor);
-        if(Brackets!=null) Brackets.accept(visitor);
+        if(VarDec!=null) VarDec.accept(visitor);
         if(VarDecMore!=null) VarDecMore.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(Type!=null) Type.traverseTopDown(visitor);
-        if(Brackets!=null) Brackets.traverseTopDown(visitor);
+        if(VarDec!=null) VarDec.traverseTopDown(visitor);
         if(VarDecMore!=null) VarDecMore.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(Type!=null) Type.traverseBottomUp(visitor);
-        if(Brackets!=null) Brackets.traverseBottomUp(visitor);
+        if(VarDec!=null) VarDec.traverseBottomUp(visitor);
         if(VarDecMore!=null) VarDecMore.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -107,11 +97,8 @@ public class VarDecList implements SyntaxNode {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        buffer.append(" "+tab+I2);
-        buffer.append("\n");
-
-        if(Brackets!=null)
-            buffer.append(Brackets.toString("  "+tab));
+        if(VarDec!=null)
+            buffer.append(VarDec.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

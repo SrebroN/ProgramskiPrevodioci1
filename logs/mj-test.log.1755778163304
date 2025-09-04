@@ -1,0 +1,64 @@
+INFO  14:09:18,790 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  14:09:18,848 - #6 program
+INFO  14:09:18,849 - #2 test302
+INFO  14:09:18,849 - #2 char
+INFO  14:09:18,851 - #2 y
+INFO  14:09:18,852 - #10 ;
+INFO  14:09:18,853 - #2 bool
+INFO  14:09:18,854 - #2 tru
+INFO  14:09:18,854 - #10 ;
+INFO  14:09:18,855 - #7 {
+INFO  14:09:18,855 - #17 void
+INFO  14:09:18,856 - #2 Main
+INFO  14:09:18,856 - #15 (
+INFO  14:09:18,856 - #16 )
+INFO  14:09:18,857 - #7 {
+INFO  14:09:18,858 - #8 }
+INFO  14:09:18,859 - #8 }
+INFO  14:09:18,862 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_var(
+    ConVarDecList_var(
+      ConVarDecList_epsilon(
+      ) [ConVarDecList_epsilon]
+      VarDecList(
+        Type(
+         char
+        ) [Type]
+        VarDec_var(
+         y
+        ) [VarDec_var]
+        VarDecMore_e(
+        ) [VarDecMore_e]
+      ) [VarDecList]
+    ) [ConVarDecList_var]
+    VarDecList(
+      Type(
+       bool
+      ) [Type]
+      VarDec_var(
+       tru
+      ) [VarDec_var]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       Main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_e(
+      ) [VarDecOpt_e]
+      StatementOpt_e(
+      ) [StatementOpt_e]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  14:09:18,862 - ===================================

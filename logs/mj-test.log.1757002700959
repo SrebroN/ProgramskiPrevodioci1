@@ -1,0 +1,29 @@
+INFO  18:18:17,116 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  18:18:17,193 - #6 program
+INFO  18:18:17,194 - #2 test301
+INFO  18:18:17,194 - #9 const
+INFO  18:18:17,196 - #2 int
+INFO  18:18:17,196 - #2 nula
+INFO  18:18:17,197 - #11 =
+INFO  18:18:17,197 - #3 0
+INFO  18:18:17,197 - #10 ;
+INFO  18:18:17,200 - #9 const
+INFO  18:18:17,201 - #2 int
+INFO  18:18:17,201 - #2 jedan
+INFO  18:18:17,202 - #11 =
+INFO  18:18:17,202 - #3 1
+INFO  18:18:17,202 - #10 ;
+INFO  18:18:17,202 - #9 const
+INFO  18:18:17,202 - #2 int
+INFO  18:18:17,202 - #2 pet
+INFO  18:18:17,202 - #11 =
+INFO  18:18:17,202 - #3 5
+INFO  18:18:17,203 - #10 ;
+INFO  18:18:17,203 - #2 int
+INFO  18:18:17,203 - #2 niz
+INFO  18:18:17,203 - #13 [
+INFO  18:18:17,204 - #14 ]
+INFO  18:18:17,204 - #13 [
+ERROR 18:18:17,204 - 
+Sintaksna greska na liniji 9
+ERROR 18:18:17,204 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 9

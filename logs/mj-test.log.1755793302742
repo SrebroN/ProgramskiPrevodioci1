@@ -1,0 +1,149 @@
+INFO  18:21:30,340 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  18:21:30,394 - #6 program
+INFO  18:21:30,394 - #2 test302
+INFO  18:21:30,394 - #9 const
+INFO  18:21:30,396 - #2 int
+INFO  18:21:30,396 - #2 pi
+INFO  18:21:30,397 - #11 =
+INFO  18:21:30,397 - #3 3
+INFO  18:21:30,397 - #10 ;
+INFO  18:21:30,399 - #2 char
+INFO  18:21:30,400 - #2 a
+INFO  18:21:30,400 - #10 ;
+INFO  18:21:30,401 - #2 int
+INFO  18:21:30,402 - #2 b
+INFO  18:21:30,402 - #13 [
+INFO  18:21:30,402 - #14 ]
+INFO  18:21:30,402 - #10 ;
+INFO  18:21:30,403 - #2 bool
+INFO  18:21:30,403 - #2 tru
+INFO  18:21:30,403 - #10 ;
+INFO  18:21:30,403 - #7 {
+INFO  18:21:30,403 - #17 void
+INFO  18:21:30,404 - #2 main
+INFO  18:21:30,410 - #15 (
+INFO  18:21:30,411 - #16 )
+INFO  18:21:30,412 - #7 {
+INFO  18:21:30,413 - #8 }
+INFO  18:21:30,414 - #2 bool
+INFO  18:21:30,415 - #2 fls
+INFO  18:21:30,415 - #15 (
+INFO  18:21:30,415 - #16 )
+INFO  18:21:30,415 - #7 {
+INFO  18:21:30,415 - #8 }
+INFO  18:21:30,415 - #2 bool
+INFO  18:21:30,416 - #2 fls
+INFO  18:21:30,416 - #15 (
+INFO  18:21:30,416 - #16 )
+INFO  18:21:30,416 - #7 {
+INFO  18:21:30,416 - #8 }
+INFO  18:21:30,416 - #8 }
+INFO  18:21:30,418 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_var(
+    ConVarDecList_var(
+      ConVarDecList_var(
+        ConVarDecList_con(
+          ConVarDecList_epsilon(
+          ) [ConVarDecList_epsilon]
+          ConDecList(
+            Type(
+             int
+            ) [Type]
+            ConDecl(
+             pi
+              Constant_n(
+               3
+              ) [Constant_n]
+            ) [ConDecl]
+            ConDeclMore_e(
+            ) [ConDeclMore_e]
+          ) [ConDecList]
+        ) [ConVarDecList_con]
+        VarDecList(
+          Type(
+           char
+          ) [Type]
+          VarDec_var(
+           a
+          ) [VarDec_var]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList]
+      ) [ConVarDecList_var]
+      VarDecList(
+        Type(
+         int
+        ) [Type]
+        VarDec_arr(
+         b
+        ) [VarDec_arr]
+        VarDecMore_e(
+        ) [VarDecMore_e]
+      ) [VarDecList]
+    ) [ConVarDecList_var]
+    VarDecList(
+      Type(
+       bool
+      ) [Type]
+      VarDec_var(
+       tru
+      ) [VarDec_var]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_m(
+    MethodDecList_m(
+      MethodDecList_m(
+        MethodDecList_e(
+        ) [MethodDecList_e]
+        MethodDecl(
+          MethodSignAndName_Void(
+           main
+          ) [MethodSignAndName_Void]
+          FormParsOpt_e(
+          ) [FormParsOpt_e]
+          VarDecOpt_e(
+          ) [VarDecOpt_e]
+          StatementOpt_e(
+          ) [StatementOpt_e]
+        ) [MethodDecl]
+      ) [MethodDecList_m]
+      MethodDecl(
+        MethodSignAndName_Type(
+          Type(
+           bool
+          ) [Type]
+         fls
+        ) [MethodSignAndName_Type]
+        FormParsOpt_e(
+        ) [FormParsOpt_e]
+        VarDecOpt_e(
+        ) [VarDecOpt_e]
+        StatementOpt_e(
+        ) [StatementOpt_e]
+      ) [MethodDecl]
+    ) [MethodDecList_m]
+    MethodDecl(
+      MethodSignAndName_Type(
+        Type(
+         bool
+        ) [Type]
+       fls
+      ) [MethodSignAndName_Type]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_e(
+      ) [VarDecOpt_e]
+      StatementOpt_e(
+      ) [StatementOpt_e]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  18:21:30,418 - ===================================
+ERROR 18:21:30,426 - Dvostruka definicija metode: fls na liniji 15
+INFO  18:21:30,427 - ===================================
+ERROR 18:21:30,427 - Parsiranje NIJE uspesno zavrseno

@@ -1,0 +1,56 @@
+INFO  13:48:53,882 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  13:48:53,962 - #6 program
+INFO  13:48:53,963 - #2 test302
+INFO  13:48:53,963 - #9 const
+INFO  13:48:53,965 - #2 int
+INFO  13:48:53,965 - #2 pi
+INFO  13:48:53,966 - #11 =
+INFO  13:48:53,966 - #3 3
+INFO  13:48:53,966 - #10 ;
+INFO  13:48:53,969 - #7 {
+INFO  13:48:53,970 - #17 void
+INFO  13:48:53,971 - #2 Main
+INFO  13:48:53,972 - #15 (
+INFO  13:48:53,972 - #16 )
+INFO  13:48:53,974 - #7 {
+INFO  13:48:53,975 - #8 }
+INFO  13:48:53,976 - #8 }
+INFO  13:48:53,980 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_con(
+    ConVarDecList_epsilon(
+    ) [ConVarDecList_epsilon]
+    ConDecList(
+      Type(
+       int
+      ) [Type]
+      ConDecl(
+       pi
+        Constant_n(
+         3
+        ) [Constant_n]
+      ) [ConDecl]
+      ConDeclMore_e(
+      ) [ConDeclMore_e]
+    ) [ConDecList]
+  ) [ConVarDecList_con]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       Main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_e(
+      ) [VarDecOpt_e]
+      StatementOpt_e(
+      ) [StatementOpt_e]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  13:48:53,981 - ===================================
+INFO  13:48:53,993 - ===================================

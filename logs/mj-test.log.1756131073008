@@ -1,0 +1,31 @@
+INFO  16:11:00,741 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  16:11:00,800 - #6 program
+INFO  16:11:00,801 - #2 test302
+INFO  16:11:00,801 - #2 int
+INFO  16:11:00,802 - #2 i
+INFO  16:11:00,803 - #10 ;
+INFO  16:11:00,804 - #2 bool
+INFO  16:11:00,805 - #2 ibool
+INFO  16:11:00,806 - #10 ;
+INFO  16:11:00,806 - #2 int
+INFO  16:11:00,806 - #2 niz2
+INFO  16:11:00,806 - #10 ;
+INFO  16:11:00,806 - #2 int
+INFO  16:11:00,806 - #2 niz
+INFO  16:11:00,806 - #13 [
+INFO  16:11:00,806 - #14 ]
+INFO  16:11:00,806 - #10 ;
+INFO  16:11:00,807 - #2 int
+INFO  16:11:00,807 - #2 a
+INFO  16:11:00,807 - #10 ;
+INFO  16:11:00,807 - #7 {
+INFO  16:11:00,807 - #17 void
+INFO  16:11:00,808 - #2 main
+INFO  16:11:00,814 - #15 (
+INFO  16:11:00,814 - #16 )
+INFO  16:11:00,815 - #2 int
+INFO  16:11:00,816 - #2 a
+INFO  16:11:00,816 - #7 {
+ERROR 16:11:00,816 - 
+Sintaksna greska na liniji 14
+ERROR 16:11:00,816 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 14

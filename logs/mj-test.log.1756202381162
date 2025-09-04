@@ -1,0 +1,179 @@
+INFO  11:47:05,438 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  11:47:05,502 - #6 program
+INFO  11:47:05,503 - #2 test302
+INFO  11:47:05,503 - #2 int
+INFO  11:47:05,504 - #2 i
+INFO  11:47:05,505 - #10 ;
+INFO  11:47:05,506 - #2 bool
+INFO  11:47:05,507 - #2 ibool
+INFO  11:47:05,507 - #10 ;
+INFO  11:47:05,507 - #2 int
+INFO  11:47:05,507 - #2 niz2
+INFO  11:47:05,507 - #10 ;
+INFO  11:47:05,507 - #2 int
+INFO  11:47:05,508 - #2 niz
+INFO  11:47:05,508 - #13 [
+INFO  11:47:05,508 - #14 ]
+INFO  11:47:05,508 - #10 ;
+INFO  11:47:05,508 - #2 int
+INFO  11:47:05,509 - #2 a
+INFO  11:47:05,509 - #10 ;
+INFO  11:47:05,509 - #7 {
+INFO  11:47:05,509 - #17 void
+INFO  11:47:05,510 - #2 main
+INFO  11:47:05,517 - #15 (
+INFO  11:47:05,517 - #16 )
+INFO  11:47:05,518 - #2 int
+INFO  11:47:05,519 - #2 a
+INFO  11:47:05,519 - #12 ,
+INFO  11:47:05,519 - #2 b
+INFO  11:47:05,519 - #12 ,
+INFO  11:47:05,519 - #2 c
+INFO  11:47:05,519 - #10 ;
+INFO  11:47:05,519 - #7 {
+INFO  11:47:05,520 - #45 print
+INFO  11:47:05,520 - #15 (
+INFO  11:47:05,520 - #25 -
+INFO  11:47:05,521 - #4 1
+INFO  11:47:05,521 - #16 )
+INFO  11:47:05,524 - #10 ;
+INFO  11:47:05,524 - #8 }
+INFO  11:47:05,524 - #8 }
+INFO  11:47:05,527 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_var(
+    ConVarDecList_var(
+      ConVarDecList_var(
+        ConVarDecList_var(
+          ConVarDecList_var(
+            ConVarDecList_epsilon(
+            ) [ConVarDecList_epsilon]
+            VarDecList(
+              Type(
+               int
+              ) [Type]
+              VarDec_var(
+               i
+              ) [VarDec_var]
+              VarDecMore_e(
+              ) [VarDecMore_e]
+            ) [VarDecList]
+          ) [ConVarDecList_var]
+          VarDecList(
+            Type(
+             bool
+            ) [Type]
+            VarDec_var(
+             ibool
+            ) [VarDec_var]
+            VarDecMore_e(
+            ) [VarDecMore_e]
+          ) [VarDecList]
+        ) [ConVarDecList_var]
+        VarDecList(
+          Type(
+           int
+          ) [Type]
+          VarDec_var(
+           niz2
+          ) [VarDec_var]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList]
+      ) [ConVarDecList_var]
+      VarDecList(
+        Type(
+         int
+        ) [Type]
+        VarDec_arr(
+         niz
+        ) [VarDec_arr]
+        VarDecMore_e(
+        ) [VarDecMore_e]
+      ) [VarDecList]
+    ) [ConVarDecList_var]
+    VarDecList(
+      Type(
+       int
+      ) [Type]
+      VarDec_var(
+       a
+      ) [VarDec_var]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_v(
+        VarDecOpt_e(
+        ) [VarDecOpt_e]
+        VarDecList(
+          Type(
+           int
+          ) [Type]
+          VarDec_var(
+           a
+          ) [VarDec_var]
+          VarDecMore_m(
+            VarDec_var(
+             b
+            ) [VarDec_var]
+            VarDecMore_m(
+              VarDec_var(
+               c
+              ) [VarDec_var]
+              VarDecMore_e(
+              ) [VarDecMore_e]
+            ) [VarDecMore_m]
+          ) [VarDecMore_m]
+        ) [VarDecList]
+      ) [VarDecOpt_v]
+      StatementOpt_s(
+        StatementOpt_e(
+        ) [StatementOpt_e]
+        Statement_pr(
+          Expr_mint(
+            Term(
+              Factor_bool(
+               1
+              ) [Factor_bool]
+              TermOpt_e(
+              ) [TermOpt_e]
+            ) [Term]
+            AddOpTerm_e(
+            ) [AddOpTerm_e]
+          ) [Expr_mint]
+          NumConstOpt_e(
+          ) [NumConstOpt_e]
+        ) [Statement_pr]
+      ) [StatementOpt_s]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  11:47:05,528 - ===================================
+ERROR 11:47:05,540 - Operacija sa neint vrednosti: Factor_bool(
+ 1
+) [Factor_bool] na liniji 15
+ERROR 11:47:05,541 - Negacija sa neint vrednosti: Expr_mint(
+  Term(
+    Factor_bool(
+     1
+    ) [Factor_bool]
+    TermOpt_e(
+    ) [TermOpt_e]
+  ) [Term]
+  AddOpTerm_e(
+  ) [AddOpTerm_e]
+) [Expr_mint] na liniji 15
+INFO  11:47:05,541 - ===================================
+ERROR 11:47:05,542 - Parsiranje NIJE uspesno zavrseno

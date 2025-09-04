@@ -1,0 +1,99 @@
+INFO  14:08:54,409 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  14:08:54,455 - #6 program
+INFO  14:08:54,455 - #2 test302
+INFO  14:08:54,455 - #9 const
+INFO  14:08:54,457 - #2 int
+INFO  14:08:54,457 - #2 g
+INFO  14:08:54,457 - #11 =
+INFO  14:08:54,457 - #3 33
+INFO  14:08:54,458 - #12 ,
+INFO  14:08:54,458 - #2 p
+INFO  14:08:54,459 - #11 =
+INFO  14:08:54,459 - #3 3
+INFO  14:08:54,459 - #10 ;
+INFO  14:08:54,460 - #2 char
+INFO  14:08:54,461 - #2 y
+INFO  14:08:54,461 - #10 ;
+INFO  14:08:54,462 - #2 bool
+INFO  14:08:54,462 - #2 tru
+INFO  14:08:54,463 - #10 ;
+INFO  14:08:54,463 - #7 {
+INFO  14:08:54,463 - #17 void
+INFO  14:08:54,464 - #2 Main
+INFO  14:08:54,464 - #15 (
+INFO  14:08:54,465 - #16 )
+INFO  14:08:54,466 - #7 {
+INFO  14:08:54,467 - #8 }
+INFO  14:08:54,468 - #8 }
+INFO  14:08:54,470 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_var(
+    ConVarDecList_var(
+      ConVarDecList_con(
+        ConVarDecList_epsilon(
+        ) [ConVarDecList_epsilon]
+        ConDecList(
+          Type(
+           int
+          ) [Type]
+          ConDecl(
+           g
+            Constant_n(
+             33
+            ) [Constant_n]
+          ) [ConDecl]
+          ConDeclMore_comma(
+            ConDecl(
+             p
+              Constant_n(
+               3
+              ) [Constant_n]
+            ) [ConDecl]
+            ConDeclMore_e(
+            ) [ConDeclMore_e]
+          ) [ConDeclMore_comma]
+        ) [ConDecList]
+      ) [ConVarDecList_con]
+      VarDecList(
+        Type(
+         char
+        ) [Type]
+        VarDec_var(
+         y
+        ) [VarDec_var]
+        VarDecMore_e(
+        ) [VarDecMore_e]
+      ) [VarDecList]
+    ) [ConVarDecList_var]
+    VarDecList(
+      Type(
+       bool
+      ) [Type]
+      VarDec_var(
+       tru
+      ) [VarDec_var]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       Main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_e(
+      ) [VarDecOpt_e]
+      StatementOpt_e(
+      ) [StatementOpt_e]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  14:08:54,471 - ===================================
+INFO  14:08:54,479 - ===================================
+INFO  14:08:54,479 - Parsiranje uspesno zavrseno!

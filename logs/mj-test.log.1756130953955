@@ -1,0 +1,95 @@
+INFO  16:08:58,141 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  16:08:58,199 - #6 program
+INFO  16:08:58,199 - #2 test302
+INFO  16:08:58,199 - #2 int
+INFO  16:08:58,201 - #2 i
+INFO  16:08:58,202 - #10 ;
+INFO  16:08:58,204 - #2 bool
+INFO  16:08:58,205 - #2 ibool
+INFO  16:08:58,205 - #10 ;
+INFO  16:08:58,205 - #2 int
+INFO  16:08:58,205 - #2 niz2
+INFO  16:08:58,205 - #10 ;
+INFO  16:08:58,205 - #2 int
+INFO  16:08:58,206 - #2 niz
+INFO  16:08:58,206 - #13 [
+INFO  16:08:58,206 - #14 ]
+INFO  16:08:58,206 - #10 ;
+INFO  16:08:58,206 - #2 int
+INFO  16:08:58,206 - #2 a
+INFO  16:08:58,207 - #10 ;
+INFO  16:08:58,207 - #7 {
+INFO  16:08:58,208 - #8 }
+INFO  16:08:58,211 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_var(
+    ConVarDecList_var(
+      ConVarDecList_var(
+        ConVarDecList_var(
+          ConVarDecList_var(
+            ConVarDecList_epsilon(
+            ) [ConVarDecList_epsilon]
+            VarDecList(
+              Type(
+               int
+              ) [Type]
+              VarDec_var(
+               i
+              ) [VarDec_var]
+              VarDecMore_e(
+              ) [VarDecMore_e]
+            ) [VarDecList]
+          ) [ConVarDecList_var]
+          VarDecList(
+            Type(
+             bool
+            ) [Type]
+            VarDec_var(
+             ibool
+            ) [VarDec_var]
+            VarDecMore_e(
+            ) [VarDecMore_e]
+          ) [VarDecList]
+        ) [ConVarDecList_var]
+        VarDecList(
+          Type(
+           int
+          ) [Type]
+          VarDec_var(
+           niz2
+          ) [VarDec_var]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList]
+      ) [ConVarDecList_var]
+      VarDecList(
+        Type(
+         int
+        ) [Type]
+        VarDec_arr(
+         niz
+        ) [VarDec_arr]
+        VarDecMore_e(
+        ) [VarDecMore_e]
+      ) [VarDecList]
+    ) [ConVarDecList_var]
+    VarDecList(
+      Type(
+       int
+      ) [Type]
+      VarDec_var(
+       a
+      ) [VarDec_var]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_e(
+  ) [MethodDecList_e]
+) [Program]
+INFO  16:08:58,212 - ===================================
+ERROR 16:08:58,223 - Greska, main nije deklarisan
+INFO  16:08:58,223 - ===================================
+ERROR 16:08:58,224 - Parsiranje NIJE uspesno zavrseno
