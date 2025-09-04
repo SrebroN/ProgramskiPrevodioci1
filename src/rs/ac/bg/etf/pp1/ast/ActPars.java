@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 27/7/2025 19:31:50
+// 2/8/2025 20:47:24
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -10,13 +10,10 @@ public class ActPars implements SyntaxNode {
     private SyntaxNode parent;
     private int line;
     private Expr Expr;
-    private ActParsExprOpt ActParsExprOpt;
 
-    public ActPars (Expr Expr, ActParsExprOpt ActParsExprOpt) {
+    public ActPars (Expr Expr) {
         this.Expr=Expr;
         if(Expr!=null) Expr.setParent(this);
-        this.ActParsExprOpt=ActParsExprOpt;
-        if(ActParsExprOpt!=null) ActParsExprOpt.setParent(this);
     }
 
     public Expr getExpr() {
@@ -25,14 +22,6 @@ public class ActPars implements SyntaxNode {
 
     public void setExpr(Expr Expr) {
         this.Expr=Expr;
-    }
-
-    public ActParsExprOpt getActParsExprOpt() {
-        return ActParsExprOpt;
-    }
-
-    public void setActParsExprOpt(ActParsExprOpt ActParsExprOpt) {
-        this.ActParsExprOpt=ActParsExprOpt;
     }
 
     public SyntaxNode getParent() {
@@ -57,18 +46,15 @@ public class ActPars implements SyntaxNode {
 
     public void childrenAccept(Visitor visitor) {
         if(Expr!=null) Expr.accept(visitor);
-        if(ActParsExprOpt!=null) ActParsExprOpt.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(Expr!=null) Expr.traverseTopDown(visitor);
-        if(ActParsExprOpt!=null) ActParsExprOpt.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(Expr!=null) Expr.traverseBottomUp(visitor);
-        if(ActParsExprOpt!=null) ActParsExprOpt.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -79,12 +65,6 @@ public class ActPars implements SyntaxNode {
 
         if(Expr!=null)
             buffer.append(Expr.toString("  "+tab));
-        else
-            buffer.append(tab+"  null");
-        buffer.append("\n");
-
-        if(ActParsExprOpt!=null)
-            buffer.append(ActParsExprOpt.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

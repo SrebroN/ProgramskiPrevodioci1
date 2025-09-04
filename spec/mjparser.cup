@@ -54,14 +54,14 @@ terminal IF, BREAK, CONTINUE, RETURN, READ, DO, WHILE, DOT, NEW, MAP, AND, OR, I
 
 nonterminal Program, ConVarDecList, MethodDecList, ConDecList, VarDecList, ConDecl, Constant;
 nonterminal ConDeclMore, Type, VarDecMore, MethodSignatureType, FormParsOpt;
-nonterminal FormPars, FormParsMore, MethodDecl, VarDecOpt, StatementOpt, Statement, ActPars, ActParsExprOpt, ActParsOpt;
-nonterminal CondFact, CondFactREOpt, CondTerm, CondFactArr, Condition, CondTermArr, DesignatorStatement;
-nonterminal DesignatorStatementList, Assignop, Relop, Addop, Mulop, Setop, Label, DesignatorList;
-nonterminal FactorAct, ExprOpt;
+nonterminal FormPars, FormParsMore, MethodDecl, VarDecOpt, StatementOpt, Statement, ActPars, ActParsExprOpt;
+nonterminal DesignatorStatement, ActParsList, ActParsMore, ActParsListBegin;
+nonterminal Assignop, Relop, Addop, Mulop, Setop, Label, DesignatorList;
+nonterminal FactorAct, ExprOpt, DoNonterm;
 nonterminal ConditionList, ElseStatement, NumConstOpt, ProgramName, MethodSignAndName, VarDec;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Expr, AddOpTerm, Term, MulopFactor;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct CondFact, CondTerm, Condition;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, DesignatorArrayName, DesignatorMeth;
-// DesignatorRecMore, DesignatorRecordName, DesignatorRecordArrayName;
 precedence left ELSE;
 
 Program ::= (Program) PROG ProgramName ConVarDecList OPBRACKET MethodDecList CLBRACKET;
@@ -152,16 +152,20 @@ Statement ::= 	(Statement_ds) DesignatorStatement SEMI
 				|
 				(Statement_cont) CONTINUE SEMI 
 				|
-				(Statement_ret) RETURN ExprOpt SEMI 						
+				(Statement_ret) RETURN SEMI 						
+				|
+				(Statement_retexpr) RETURN Expr SEMI 						
 				|
 				(Statement_rd) READ OPPAREN Designator CLPAREN SEMI 	
 				|
 				(Statement_pr) PRINT OPPAREN Expr NumConstOpt CLPAREN SEMI 
 				|
-				(Statement_do) DO Statement WHILE OPPAREN ConditionList CLPAREN SEMI 
+				(Statement_do) DoNonterm Statement WHILE OPPAREN ConditionList CLPAREN SEMI 
 				|
 				(Statement_st) OPBRACKET StatementOpt CLBRACKET 
 				;
+
+DoNonterm	::=(DoNonterm) DO;
 
 ElseStatement ::=	(ElseStatement_else) ELSE Statement
 					|
@@ -185,32 +189,11 @@ Designator ::= 	(Designator_var) IDENT
 				|
 				(Designator_elem) DesignatorArrayName OPSQBRACKET Expr CLSQBRACKET;
 	
-		/*		|
-  				(Designator_rec) DesignatorRecordName DesignatorRecMore
-				|
-				(Designator_rec_elem) DesignatorArrayName OPSQBRACKET Expr CLSQBRACKET DesignatorRecMore
-				;
-				
-DesignatorRecMore ::= 	(DesignatorRecMore_var) DOT IDENT 
-						|
-					 	(DesignatorRecMore_elem) DOT DesignatorRecordArrayName OPSQBRACKET Expr CLSQBRACKET 
-						|
-						(DesignatorRecMore_rec_var) DesignatorRecMore DOT IDENT
-						|
-						(DesignatorRecMore_rec_elem) DesignatorRecMore  DOT DesignatorRecordArrayName OPSQBRACKET Expr CLSQBRACKET
-						;
-
- 
-DesignatorRecordName ::= (DesignatorRecordName) IDENT;
-
-DesignatorRecordArrayName ::= (DesignatorRecordArrayName) IDENT;
-				*/
-				
 DesignatorArrayName ::= (DesignatorArrayName) IDENT;
 
 DesignatorStatement ::= (DesignatorStatement_assigexpr) Designator Assignop Expr
 						|
-						(DesignatorStatement_actpars) DesignatorMeth OPPAREN ActParsOpt CLPAREN
+						(DesignatorStatement_actpars) DesignatorMeth OPPAREN ActParsList CLPAREN
 						|
 						(DesignatorStatement_inc) Designator INC
 						|
@@ -218,51 +201,43 @@ DesignatorStatement ::= (DesignatorStatement_assigexpr) Designator Assignop Expr
 						|
 						(DesignatorStatement_assign) Designator Assignop Designator Setop Designator
 						; 
-
-DesignatorStatementList ::=	(DesignatorStatementList_aop) Assignop Expr
-							|
-							(DesignatorStatementList_actpars) OPPAREN ActParsOpt CLPAREN
-							| 
-							(DesignatorStatementList_inc) INC
-							|
-							(DesignatorStatementList_dec) DEC
-							;
 							
 DesignatorMeth	::=	(DesignatorMeth) IDENT;
 
-ActPars ::=	(ActPars) Expr ActParsExprOpt;
+ActParsList ::=	(ActParsList_par) ActParsListBegin ActPars ActParsMore
+				|
+				(ActParsList_e) ActParsListBegin
+				;
+				
+ActParsListBegin ::= (ActParsListBegin) /*epsilon*/;
 
-ActParsExprOpt ::= 	(ActParsExprOpt_exp) ActParsExprOpt COMMA Expr
-					|
-					(ActParsExprOpt_e)/*epsilon*/
-					;
+ActPars ::=	(ActPars) Expr;
+
+ActParsMore	::=	(ActParsMore_more) COMMA ActPars ActParsMore
+				|
+				(ActParsMore_e)/*epsilon*/
+				;
 					
-Condition ::= (Condition) CondTerm CondTermArr;
-
-CondTermArr ::= (CondTermArr_a) CondTermArr OR CondTerm
+Condition ::= 	(Condition_or) Condition OR CondTerm
 				|
-				(CondTermArr_e) /*epsilon*/
+				(Condition_cond) CondTerm
 				;
 
-CondTerm ::= (CondTerm) CondFact CondFactArr;
-
-CondFactArr ::= (CondFactArr_c) CondFactArr AND CondFact
+CondTerm ::= 	(CondTerm_and) CondTerm AND CondFact
 				|
-				(CondFactArr_e)/*epsilon*/
+				(CondTerm_cond) CondFact
 				;
 
-CondFact ::= (CondFact) Expr CondFactREOpt;
-
-CondFactREOpt ::=	(CondFactREOpt_re) Relop Expr
-					|
-					(CondFactREOpt_e) /*epsilon*/
-					;
+CondFact ::= 	(CondFact_rel) Expr Relop Expr
+				|
+				(CondFact_single) Expr
+				;
  
 Expr ::= 	(Expr_term) AddOpTerm
 			|
 			(Expr_mint) MINUS AddOpTerm
 			|
-			(Expr_des) IDENT MAP Designator
+			(Expr_des) Designator MAP Designator
 			;
 			
 ExprOpt ::=	(ExprOpt_exp) Expr
@@ -282,7 +257,9 @@ MulopFactor ::=	(MulopFactor_mul) MulopFactor Mulop Factor
 				(MulopFactor_fac) Factor
 				;
 					
-Factor ::= 	(Factor_des) Designator FactorAct
+Factor ::= 	(Factor_des) Designator
+			|
+			(Factor_meth) Designator OPPAREN ActParsList CLPAREN
 			|
 			(Factor_num) NUMBER
 			|
@@ -295,14 +272,9 @@ Factor ::= 	(Factor_des) Designator FactorAct
 			(Factor_expr) OPPAREN Expr CLPAREN
 			;		
 					
-FactorAct ::=	(FactorAct_fa) OPPAREN ActParsOpt CLPAREN
+FactorAct ::=	(FactorAct_fa) OPPAREN ActParsList CLPAREN
 				|
 				(FactorAct_e)/*epsilon*/
-				;
-					
-ActParsOpt ::=	(ActParsOpt_a) ActPars
-				|
-				(ActParsOpt_e)/*epsilon*/
 				;
 					
 Label ::= (Label) IDENT; 

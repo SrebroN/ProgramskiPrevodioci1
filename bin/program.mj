@@ -2,6 +2,9 @@
 
 program test302
 
+const int pet=5;
+const bool tr=true;
+
 int i;
 bool ibool;
 
@@ -13,22 +16,33 @@ set set1[];
 char charac;
 {
 int foo(int g)int c;{
-	return true;
+	return 3;
 }
 void main()int a, b;int x[];set set2,set3;{
-	foo(3);
+	if (x!=null && false || 23>3 || false)	a++;	
+	a=pet;
+	x[2]++;
+	x[1]--;
+	set2 = set2 union set3;
 	a=foo1 map x;
-	b=foo map x;
-	a=foo2 map x;
-	a=foo1 map b;
 
 }
 int foo1(int g)int c;{
-	return true;
-}
-int foo2(int g, int h)int c;{
-	return true;
-}
 
+	return 2;
+}
+int foo2(int g, int h)int c;int x[];{
+
+return 3;
+}
+int foo3(int g){
+//	return foo2(2,1);
+//	return foo2(2);
+//	return foo1(true);
+//	return foo1();
+//	return foo2(1,false);
+	return foo2(1,2);
+
+}
 }
 

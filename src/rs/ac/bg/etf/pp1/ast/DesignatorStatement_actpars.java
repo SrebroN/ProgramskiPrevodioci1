@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 27/7/2025 19:31:50
+// 2/8/2025 20:47:24
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,13 +8,13 @@ package rs.ac.bg.etf.pp1.ast;
 public class DesignatorStatement_actpars extends DesignatorStatement {
 
     private DesignatorMeth DesignatorMeth;
-    private ActParsOpt ActParsOpt;
+    private ActParsList ActParsList;
 
-    public DesignatorStatement_actpars (DesignatorMeth DesignatorMeth, ActParsOpt ActParsOpt) {
+    public DesignatorStatement_actpars (DesignatorMeth DesignatorMeth, ActParsList ActParsList) {
         this.DesignatorMeth=DesignatorMeth;
         if(DesignatorMeth!=null) DesignatorMeth.setParent(this);
-        this.ActParsOpt=ActParsOpt;
-        if(ActParsOpt!=null) ActParsOpt.setParent(this);
+        this.ActParsList=ActParsList;
+        if(ActParsList!=null) ActParsList.setParent(this);
     }
 
     public DesignatorMeth getDesignatorMeth() {
@@ -25,12 +25,12 @@ public class DesignatorStatement_actpars extends DesignatorStatement {
         this.DesignatorMeth=DesignatorMeth;
     }
 
-    public ActParsOpt getActParsOpt() {
-        return ActParsOpt;
+    public ActParsList getActParsList() {
+        return ActParsList;
     }
 
-    public void setActParsOpt(ActParsOpt ActParsOpt) {
-        this.ActParsOpt=ActParsOpt;
+    public void setActParsList(ActParsList ActParsList) {
+        this.ActParsList=ActParsList;
     }
 
     public void accept(Visitor visitor) {
@@ -39,18 +39,18 @@ public class DesignatorStatement_actpars extends DesignatorStatement {
 
     public void childrenAccept(Visitor visitor) {
         if(DesignatorMeth!=null) DesignatorMeth.accept(visitor);
-        if(ActParsOpt!=null) ActParsOpt.accept(visitor);
+        if(ActParsList!=null) ActParsList.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(DesignatorMeth!=null) DesignatorMeth.traverseTopDown(visitor);
-        if(ActParsOpt!=null) ActParsOpt.traverseTopDown(visitor);
+        if(ActParsList!=null) ActParsList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(DesignatorMeth!=null) DesignatorMeth.traverseBottomUp(visitor);
-        if(ActParsOpt!=null) ActParsOpt.traverseBottomUp(visitor);
+        if(ActParsList!=null) ActParsList.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -65,8 +65,8 @@ public class DesignatorStatement_actpars extends DesignatorStatement {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(ActParsOpt!=null)
-            buffer.append(ActParsOpt.toString("  "+tab));
+        if(ActParsList!=null)
+            buffer.append(ActParsList.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
