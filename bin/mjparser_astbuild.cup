@@ -103,7 +103,10 @@ nonterminal ElseStatement ElseStatement;
 nonterminal NumConstOpt NumConstOpt;
 nonterminal ProgramName ProgramName;
 nonterminal MethodSignAndName MethodSignAndName;
+nonterminal DesignatorRecMore DesignatorRecMore;
 nonterminal DesignatorArrayName DesignatorArrayName;
+nonterminal DesignatorRecordName DesignatorRecordName;
+nonterminal DesignatorRecordArrayName DesignatorRecordArrayName;
 
 precedence left ELSE;
 
@@ -220,16 +223,31 @@ ConditionList ::= 	(ConditionList_con) Condition:C1 {: RESULT=new ConditionList_
 					(ConditionList_e) {: RESULT=new ConditionList_e(); :}/*epsilon*/
 					;
 
-Designator ::= 	(Designator) IDENT:I1 DesignatorList:D2 {: RESULT=new Designator(I1, D2); RESULT.setLine(I1left); :};
+					
+Designator ::= 	(Designator_var) IDENT:I1 {: RESULT=new Designator_var(I1); RESULT.setLine(I1left); :}
+				|
+				(Designator_elem) DesignatorArrayName:D1 OPSQBRACKET Expr:E2 CLSQBRACKET {: RESULT=new Designator_elem(D1, E2); RESULT.setLine(D1left); :}
+				|
+				(Designator_rec) DesignatorRecordName:D1 DesignatorRecMore:D2 {: RESULT=new Designator_rec(D1, D2); RESULT.setLine(D1left); :}
+				|
+				(Designator_rec_elem) DesignatorArrayName:D1 OPSQBRACKET Expr:E2 CLSQBRACKET DesignatorRecMore:D3 {: RESULT=new Designator_rec_elem(D1, E2, D3); RESULT.setLine(D1left); :}
+				;
+				
+DesignatorRecMore ::= 	(DesignatorRecMore_var) DOT IDENT:I1 {: RESULT=new DesignatorRecMore_var(I1); RESULT.setLine(I1left); :} 
+						|
+					 	(DesignatorRecMore_elem) DOT DesignatorRecordArrayName:D1 OPSQBRACKET Expr:E2 CLSQBRACKET {: RESULT=new DesignatorRecMore_elem(D1, E2); RESULT.setLine(D1left); :} 
+						|
+						(DesignatorRecMore_rec_var) DesignatorRecMore:D1 DOT IDENT:I2 {: RESULT=new DesignatorRecMore_rec_var(D1, I2); RESULT.setLine(D1left); :}
+						|
+						(DesignatorRecMore_rec_elem) DesignatorRecMore:D1  DOT DesignatorRecordArrayName:D2 OPSQBRACKET Expr:E3 CLSQBRACKET {: RESULT=new DesignatorRecMore_rec_elem(D1, D2, E3); RESULT.setLine(D1left); :}
+						;
 
-DesignatorList ::=	(DesignatorList_id) DesignatorList:D1 DOT IDENT:I2 {: RESULT=new DesignatorList_id(D1, I2); RESULT.setLine(D1left); :} 
-					|
-					(DesignatorList_exp) DesignatorList:D1 OPSQBRACKET Expr:E2 CLSQBRACKET {: RESULT=new DesignatorList_exp(D1, E2); RESULT.setLine(D1left); :}
-					|
-					(DesignatorList_e) {: RESULT=new DesignatorList_e(); :}/*epsilon*/
-					;
+DesignatorArrayName ::= (DesignatorArrayName) IDENT:I1 {: RESULT=new DesignatorArrayName(I1); RESULT.setLine(I1left); :};
+ 
+DesignatorRecordName ::= (DesignatorRecordName) IDENT:I1 {: RESULT=new DesignatorRecordName(I1); RESULT.setLine(I1left); :};
 
-DesignatorArrayName ::=	(DesignatorArrayName) IDENT:I1 {: RESULT=new DesignatorArrayName(I1); RESULT.setLine(I1left); :};
+DesignatorRecordArrayName ::= (DesignatorRecordArrayName) IDENT:I1 {: RESULT=new DesignatorRecordArrayName(I1); RESULT.setLine(I1left); :};
+						
 
 DesignatorStatement ::= (DesignatorStatement_ds) Designator:D1 DesignatorStatementList:D2 {: RESULT=new DesignatorStatement_ds(D1, D2); RESULT.setLine(D1left); :}
 						|
@@ -244,7 +262,8 @@ DesignatorStatementList ::=	(DesignatorStatementList_aop) Assignop:A1 Expr:E2 {:
 							|
 							(DesignatorStatementList_dec) DEC {: RESULT=new DesignatorStatementList_dec(); :}
 							;
- 
+							
+
 ActPars ::=	(ActPars) Expr:E1 ActParsExprOpt:A2 {: RESULT=new ActPars(E1, A2); RESULT.setLine(E1left); :};
 
 ActParsExprOpt ::= 	(ActParsExprOpt_exp) ActParsExprOpt:A1 COMMA Expr:E2 {: RESULT=new ActParsExprOpt_exp(A1, E2); RESULT.setLine(A1left); :}
