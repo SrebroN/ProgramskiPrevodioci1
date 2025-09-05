@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 2/8/2025 20:47:24
+// 5/8/2025 23:43:36
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,13 +8,10 @@ package rs.ac.bg.etf.pp1.ast;
 public class Statement_pr extends Statement {
 
     private Expr Expr;
-    private NumConstOpt NumConstOpt;
 
-    public Statement_pr (Expr Expr, NumConstOpt NumConstOpt) {
+    public Statement_pr (Expr Expr) {
         this.Expr=Expr;
         if(Expr!=null) Expr.setParent(this);
-        this.NumConstOpt=NumConstOpt;
-        if(NumConstOpt!=null) NumConstOpt.setParent(this);
     }
 
     public Expr getExpr() {
@@ -25,32 +22,21 @@ public class Statement_pr extends Statement {
         this.Expr=Expr;
     }
 
-    public NumConstOpt getNumConstOpt() {
-        return NumConstOpt;
-    }
-
-    public void setNumConstOpt(NumConstOpt NumConstOpt) {
-        this.NumConstOpt=NumConstOpt;
-    }
-
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
 
     public void childrenAccept(Visitor visitor) {
         if(Expr!=null) Expr.accept(visitor);
-        if(NumConstOpt!=null) NumConstOpt.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(Expr!=null) Expr.traverseTopDown(visitor);
-        if(NumConstOpt!=null) NumConstOpt.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(Expr!=null) Expr.traverseBottomUp(visitor);
-        if(NumConstOpt!=null) NumConstOpt.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -61,12 +47,6 @@ public class Statement_pr extends Statement {
 
         if(Expr!=null)
             buffer.append(Expr.toString("  "+tab));
-        else
-            buffer.append(tab+"  null");
-        buffer.append("\n");
-
-        if(NumConstOpt!=null)
-            buffer.append(NumConstOpt.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

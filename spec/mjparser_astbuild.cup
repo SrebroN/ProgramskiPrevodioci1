@@ -60,7 +60,6 @@ nonterminal VarDecList VarDecList;
 nonterminal ConDecl ConDecl;
 nonterminal Constant Constant;
 nonterminal ConDeclMore ConDeclMore;
-nonterminal Type Type;
 nonterminal VarDecMore VarDecMore;
 nonterminal MethodSignatureType MethodSignatureType;
 nonterminal FormParsOpt FormParsOpt;
@@ -90,11 +89,11 @@ nonterminal ConditionList ConditionList;
 nonterminal ElseStatement ElseStatement;
 nonterminal NumConstOpt NumConstOpt;
 nonterminal ProgramName ProgramName;
-nonterminal MethodSignAndName MethodSignAndName;
 nonterminal VarDec VarDec;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Expr, AddOpTerm, Term, MulopFactor;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct CondFact, CondTerm, Condition;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct CondFact, CondTerm, Condition, Type;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, DesignatorArrayName, DesignatorMeth;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj MethodSignAndName;
 precedence left ELSE;
 
 Program ::= (Program) PROG ProgramName:P1 ConVarDecList:C2 OPBRACKET MethodDecList:M3 CLBRACKET {: RESULT=new Program(P1, C2, M3); RESULT.setLine(P1left); :};
@@ -191,7 +190,9 @@ Statement ::= 	(Statement_ds) DesignatorStatement:D1 SEMI {: RESULT=new Statemen
 				|
 				(Statement_rd) READ OPPAREN Designator:D1 CLPAREN SEMI {: RESULT=new Statement_rd(D1); RESULT.setLine(D1left); :} 	
 				|
-				(Statement_pr) PRINT OPPAREN Expr:E1 NumConstOpt:N2 CLPAREN SEMI {: RESULT=new Statement_pr(E1, N2); RESULT.setLine(E1left); :} 
+				(Statement_pr) PRINT OPPAREN Expr:E1 CLPAREN SEMI {: RESULT=new Statement_pr(E1); RESULT.setLine(E1left); :} 
+				|				
+				(Statement_prnum) PRINT OPPAREN Expr:E1 COMMA NUMBER:N2 CLPAREN SEMI {: RESULT=new Statement_prnum(E1, N2); RESULT.setLine(E1left); :} 
 				|
 				(Statement_do) DoNonterm:D1 Statement:S2 WHILE OPPAREN ConditionList:C3 CLPAREN SEMI {: RESULT=new Statement_do(D1, S2, C3); RESULT.setLine(D1left); :} 
 				|

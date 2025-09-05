@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 2/8/2025 20:47:24
+// 5/8/2025 23:43:36
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -10,6 +10,8 @@ public abstract class MethodSignAndName implements SyntaxNode {
     private SyntaxNode parent;
 
     private int line;
+
+    public rs.etf.pp1.symboltable.concepts.Obj obj = null;
 
     public SyntaxNode getParent() {
         return parent;

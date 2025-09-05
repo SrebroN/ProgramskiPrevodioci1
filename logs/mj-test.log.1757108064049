@@ -1,0 +1,154 @@
+INFO  23:09:49,080 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  23:09:49,134 - #6 program
+INFO  23:09:49,134 - #2 test302
+INFO  23:09:49,134 - #9 const
+INFO  23:09:49,135 - #2 int
+INFO  23:09:49,136 - #2 pi
+INFO  23:09:49,136 - #11 =
+INFO  23:09:49,137 - #3 3
+INFO  23:09:49,137 - #10 ;
+INFO  23:09:49,139 - #2 int
+INFO  23:09:49,140 - #2 x
+INFO  23:09:49,140 - #12 ,
+INFO  23:09:49,140 - #2 y
+INFO  23:09:49,140 - #10 ;
+INFO  23:09:49,141 - #2 char
+INFO  23:09:49,142 - #2 c
+INFO  23:09:49,142 - #10 ;
+INFO  23:09:49,143 - #7 {
+INFO  23:09:49,143 - #17 void
+INFO  23:09:49,144 - #2 main
+INFO  23:09:49,144 - #15 (
+INFO  23:09:49,144 - #16 )
+INFO  23:09:49,145 - #2 int
+INFO  23:09:49,152 - #2 a
+INFO  23:09:49,152 - #12 ,
+INFO  23:09:49,152 - #2 b
+INFO  23:09:49,152 - #10 ;
+INFO  23:09:49,152 - #2 char
+INFO  23:09:49,152 - #2 c
+INFO  23:09:49,152 - #10 ;
+INFO  23:09:49,153 - #7 {
+INFO  23:09:49,153 - #45 print
+INFO  23:09:49,154 - #15 (
+INFO  23:09:49,155 - #2 pi
+INFO  23:09:49,155 - #16 )
+INFO  23:09:49,155 - #10 ;
+INFO  23:09:49,155 - #8 }
+INFO  23:09:49,156 - #8 }
+INFO  23:09:49,158 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_var(
+    ConVarDecList_var(
+      ConVarDecList_con(
+        ConVarDecList_epsilon(
+        ) [ConVarDecList_epsilon]
+        ConDecList(
+          Type(
+           int
+          ) [Type]
+          ConDecl(
+           pi
+            Constant_n(
+             3
+            ) [Constant_n]
+          ) [ConDecl]
+          ConDeclMore_e(
+          ) [ConDeclMore_e]
+        ) [ConDecList]
+      ) [ConVarDecList_con]
+      VarDecList(
+        Type(
+         int
+        ) [Type]
+        VarDec_var(
+         x
+        ) [VarDec_var]
+        VarDecMore_m(
+          VarDec_var(
+           y
+          ) [VarDec_var]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecMore_m]
+      ) [VarDecList]
+    ) [ConVarDecList_var]
+    VarDecList(
+      Type(
+       char
+      ) [Type]
+      VarDec_var(
+       c
+      ) [VarDec_var]
+      VarDecMore_e(
+      ) [VarDecMore_e]
+    ) [VarDecList]
+  ) [ConVarDecList_var]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_v(
+        VarDecOpt_v(
+          VarDecOpt_e(
+          ) [VarDecOpt_e]
+          VarDecList(
+            Type(
+             int
+            ) [Type]
+            VarDec_var(
+             a
+            ) [VarDec_var]
+            VarDecMore_m(
+              VarDec_var(
+               b
+              ) [VarDec_var]
+              VarDecMore_e(
+              ) [VarDecMore_e]
+            ) [VarDecMore_m]
+          ) [VarDecList]
+        ) [VarDecOpt_v]
+        VarDecList(
+          Type(
+           char
+          ) [Type]
+          VarDec_var(
+           c
+          ) [VarDec_var]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList]
+      ) [VarDecOpt_v]
+      StatementOpt_s(
+        StatementOpt_e(
+        ) [StatementOpt_e]
+        Statement_pr(
+          Expr_term(
+            AddOpTerm_term(
+              Term(
+                MulopFactor_fac(
+                  Factor_des(
+                    Designator_var(
+                     pi
+                    ) [Designator_var]
+                  ) [Factor_des]
+                ) [MulopFactor_fac]
+              ) [Term]
+            ) [AddOpTerm_term]
+          ) [Expr_term]
+        ) [Statement_pr]
+      ) [StatementOpt_s]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  23:09:49,158 - ===================================
+INFO  23:09:49,169 - Upotreba simbola: pi Kind: 0 na liniji 12
+INFO  23:09:49,169 - ===================================
+INFO  23:09:49,175 - Parsiranje uspesno zavrseno!

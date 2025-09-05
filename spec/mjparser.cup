@@ -53,15 +53,16 @@ terminal VOID, EQUAL, NOTEQUAL, GREATER, GREATEREQUAL, LESS, LESSEQUAL, PLUS, MI
 terminal IF, BREAK, CONTINUE, RETURN, READ, DO, WHILE, DOT, NEW, MAP, AND, OR, INC, DEC, ELSE, PRINT, COLON;
 
 nonterminal Program, ConVarDecList, MethodDecList, ConDecList, VarDecList, ConDecl, Constant;
-nonterminal ConDeclMore, Type, VarDecMore, MethodSignatureType, FormParsOpt;
+nonterminal ConDeclMore, VarDecMore, MethodSignatureType, FormParsOpt;
 nonterminal FormPars, FormParsMore, MethodDecl, VarDecOpt, StatementOpt, Statement, ActPars, ActParsExprOpt;
 nonterminal DesignatorStatement, ActParsList, ActParsMore, ActParsListBegin;
 nonterminal Assignop, Relop, Addop, Mulop, Setop, Label, DesignatorList;
 nonterminal FactorAct, ExprOpt, DoNonterm;
-nonterminal ConditionList, ElseStatement, NumConstOpt, ProgramName, MethodSignAndName, VarDec;
+nonterminal ConditionList, ElseStatement, NumConstOpt, ProgramName, VarDec;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Expr, AddOpTerm, Term, MulopFactor;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct CondFact, CondTerm, Condition;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct CondFact, CondTerm, Condition, Type;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, DesignatorArrayName, DesignatorMeth;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj MethodSignAndName;
 precedence left ELSE;
 
 Program ::= (Program) PROG ProgramName ConVarDecList OPBRACKET MethodDecList CLBRACKET;
@@ -158,7 +159,9 @@ Statement ::= 	(Statement_ds) DesignatorStatement SEMI
 				|
 				(Statement_rd) READ OPPAREN Designator CLPAREN SEMI 	
 				|
-				(Statement_pr) PRINT OPPAREN Expr NumConstOpt CLPAREN SEMI 
+				(Statement_pr) PRINT OPPAREN Expr CLPAREN SEMI 
+				|				
+				(Statement_prnum) PRINT OPPAREN Expr COMMA NUMBER CLPAREN SEMI 
 				|
 				(Statement_do) DoNonterm Statement WHILE OPPAREN ConditionList CLPAREN SEMI 
 				|

@@ -1,0 +1,79 @@
+INFO  16:48:23,445 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  16:48:23,536 - #6 program
+INFO  16:48:23,536 - #2 test302
+INFO  16:48:23,536 - #9 const
+INFO  16:48:23,538 - #2 int
+INFO  16:48:23,538 - #2 pi
+INFO  16:48:23,540 - #11 =
+INFO  16:48:23,541 - #3 3
+INFO  16:48:23,541 - #10 ;
+INFO  16:48:23,543 - #7 {
+INFO  16:48:23,544 - #17 void
+INFO  16:48:23,545 - #2 main
+INFO  16:48:23,547 - #15 (
+INFO  16:48:23,547 - #16 )
+INFO  16:48:23,547 - #7 {
+INFO  16:48:23,549 - #45 print
+INFO  16:48:23,550 - #15 (
+INFO  16:48:23,550 - #3 1
+INFO  16:48:23,550 - #16 )
+INFO  16:48:23,553 - #10 ;
+INFO  16:48:23,553 - #8 }
+INFO  16:48:23,554 - #8 }
+INFO  16:48:23,558 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConVarDecList_con(
+    ConVarDecList_epsilon(
+    ) [ConVarDecList_epsilon]
+    ConDecList(
+      Type(
+       int
+      ) [Type]
+      ConDecl(
+       pi
+        Constant_n(
+         3
+        ) [Constant_n]
+      ) [ConDecl]
+      ConDeclMore_e(
+      ) [ConDeclMore_e]
+    ) [ConDecList]
+  ) [ConVarDecList_con]
+  MethodDecList_m(
+    MethodDecList_e(
+    ) [MethodDecList_e]
+    MethodDecl(
+      MethodSignAndName_Void(
+       main
+      ) [MethodSignAndName_Void]
+      FormParsOpt_e(
+      ) [FormParsOpt_e]
+      VarDecOpt_e(
+      ) [VarDecOpt_e]
+      StatementOpt_s(
+        StatementOpt_e(
+        ) [StatementOpt_e]
+        Statement_pr(
+          Expr_term(
+            AddOpTerm_term(
+              Term(
+                MulopFactor_fac(
+                  Factor_num(
+                   1
+                  ) [Factor_num]
+                ) [MulopFactor_fac]
+              ) [Term]
+            ) [AddOpTerm_term]
+          ) [Expr_term]
+          NumConstOpt_e(
+          ) [NumConstOpt_e]
+        ) [Statement_pr]
+      ) [StatementOpt_s]
+    ) [MethodDecl]
+  ) [MethodDecList_m]
+) [Program]
+INFO  16:48:23,558 - ===================================
+INFO  16:48:23,570 - ===================================
+INFO  16:48:23,574 - Parsiranje uspesno zavrseno!

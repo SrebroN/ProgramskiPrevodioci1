@@ -32,6 +32,8 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	private boolean returnHappened;
 	private int loopCnt = 0;
 
+	int nVars;
+
 	// LOG MESSAGES
 	public void report_error(String message, SyntaxNode info) {
 		errorDetected = true;
@@ -65,6 +67,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
 	@Override
 	public void visit(Program program) {
+		nVars=Tab.currentScope().getnVars();
 		Tab.chainLocalSymbols(currentProgram);
 		currentProgram = null;
 
@@ -163,13 +166,13 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		if (methodSignAndName_Type.getI2().equalsIgnoreCase("main")) {
 			report_error("Main mora imati type void: " + methodSignAndName_Type, methodSignAndName_Type);
 		}
-		currentMethod = Tab.insert(Obj.Meth, methodSignAndName_Type.getI2(), currentType);
+		methodSignAndName_Type.obj  = Tab.insert(Obj.Meth, methodSignAndName_Type.getI2(), currentType);
 		Tab.openScope();
 	}
 
 	@Override
 	public void visit(MethodSignAndName_Void methodSignAndName_Void) {
-		currentMethod = Tab.insert(Obj.Meth, methodSignAndName_Void.getI1(), Tab.noType);
+		methodSignAndName_Void.obj  = currentMethod = Tab.insert(Obj.Meth, methodSignAndName_Void.getI1(), Tab.noType);
 		Tab.openScope();
 		if (methodSignAndName_Void.getI1().equalsIgnoreCase("main")) {
 			mainMethod = currentMethod;
@@ -563,6 +566,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			report_error("Break van do-while petlje", statement_br);
 		}
 	}
+	
 
 	@Override
 	public void visit(Statement_cont statement_cont) {
@@ -590,7 +594,16 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			report_error("Print neadekvatne promenljive", statement_pr);
 		}
 	}
-
+	
+	@Override
+	public void visit(Statement_prnum statement_prnum) {
+		Struct type = statement_prnum.getExpr().struct;
+		if (!type.equals(Tab.intType) && !type.equals(Tab.charType) && !type.equals(boolType)
+				&& !type.equals(setType)) {
+			report_error("Print neadekvatne promenljive", statement_prnum);
+		}
+	}
+	
 	// ---------------------CONDITIONS---------------------
 	@Override
 	public void visit(Condition_cond condition_cond) {
@@ -662,11 +675,14 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		if (typeObj == Tab.noObj) {
 			report_error("Nepostojeci tip podatka: " + type.getI1(), type);
 			currentType = Tab.noType;
+			type.struct=Tab.noType;
 		} else if (typeObj.getKind() != Obj.Type) {
 			report_error("Neadekvatan tip podatka: " + type.getI1(), type);
 			currentType = Tab.noType;
+			type.struct=Tab.noType;
 		} else {
 			currentType = typeObj.getType();
+			type.struct=typeObj.getType();
 		}
 	}
 
