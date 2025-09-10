@@ -1,117 +1,231 @@
-INFO  23:52:14,025 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
-INFO  23:52:14,087 - #6 program
-INFO  23:52:14,087 - #2 test302
-INFO  23:52:14,088 - #9 const
-INFO  23:52:14,089 - #2 int
-INFO  23:52:14,089 - #2 pi
-INFO  23:52:14,090 - #11 =
-INFO  23:52:14,090 - #3 3
-INFO  23:52:14,090 - #10 ;
-INFO  23:52:14,092 - #2 int
-INFO  23:52:14,093 - #2 x
-INFO  23:52:14,093 - #12 ,
-INFO  23:52:14,094 - #2 y
-INFO  23:52:14,094 - #10 ;
-INFO  23:52:14,095 - #2 char
-INFO  23:52:14,096 - #2 c
-INFO  23:52:14,096 - #10 ;
-INFO  23:52:14,096 - #7 {
-INFO  23:52:14,096 - #17 void
-INFO  23:52:14,097 - #2 main
-INFO  23:52:14,098 - #15 (
-INFO  23:52:14,098 - #16 )
-INFO  23:52:14,099 - #2 int
-INFO  23:52:14,106 - #2 a
-INFO  23:52:14,106 - #12 ,
-INFO  23:52:14,106 - #2 b
-INFO  23:52:14,106 - #10 ;
-INFO  23:52:14,106 - #2 char
-INFO  23:52:14,106 - #2 c
-INFO  23:52:14,106 - #10 ;
-INFO  23:52:14,107 - #2 char
-INFO  23:52:14,107 - #2 cr
-INFO  23:52:14,107 - #13 [
-INFO  23:52:14,107 - #14 ]
-INFO  23:52:14,107 - #10 ;
-INFO  23:52:14,107 - #7 {
-INFO  23:52:14,107 - #2 cr
-INFO  23:52:14,108 - #11 =
-INFO  23:52:14,108 - #38 new
-INFO  23:52:14,109 - #2 char
-INFO  23:52:14,109 - #13 [
-INFO  23:52:14,109 - #3 5
-INFO  23:52:14,109 - #14 ]
-INFO  23:52:14,111 - #10 ;
-INFO  23:52:14,111 - #2 cr
-INFO  23:52:14,112 - #13 [
-INFO  23:52:14,113 - #3 1
-INFO  23:52:14,113 - #14 ]
-INFO  23:52:14,113 - #11 =
-INFO  23:52:14,113 - #5 k
-INFO  23:52:14,113 - #10 ;
-INFO  23:52:14,114 - #45 print
-INFO  23:52:14,114 - #15 (
-INFO  23:52:14,114 - #2 cr
-INFO  23:52:14,114 - #13 [
-INFO  23:52:14,114 - #3 1
-INFO  23:52:14,114 - #14 ]
-INFO  23:52:14,114 - #16 )
-INFO  23:52:14,114 - #10 ;
-INFO  23:52:14,114 - #8 }
-INFO  23:52:14,114 - #8 }
-INFO  23:52:14,117 - Program(
+INFO  12:21:26,262 - Compiling source file: C:\Users\Damjan\eclipse-workspace\MJCompiler\test\program.mj
+INFO  12:21:26,336 - #6 program
+INFO  12:21:26,336 - #2 test301
+INFO  12:21:26,337 - #9 const
+INFO  12:21:26,339 - #2 int
+INFO  12:21:26,339 - #2 nula
+INFO  12:21:26,340 - #11 =
+INFO  12:21:26,340 - #3 0
+INFO  12:21:26,340 - #10 ;
+INFO  12:21:26,342 - #9 const
+INFO  12:21:26,344 - #2 int
+INFO  12:21:26,344 - #2 jedan
+INFO  12:21:26,344 - #11 =
+INFO  12:21:26,344 - #3 1
+INFO  12:21:26,345 - #10 ;
+INFO  12:21:26,345 - #9 const
+INFO  12:21:26,345 - #2 int
+INFO  12:21:26,345 - #2 pet
+INFO  12:21:26,345 - #11 =
+INFO  12:21:26,345 - #3 5
+INFO  12:21:26,346 - #10 ;
+INFO  12:21:26,346 - #2 int
+INFO  12:21:26,346 - #26 *
+ERROR 12:21:26,346 - 
+Sintaksna greska na liniji 9
+INFO  12:21:26,346 - #10 ;
+INFO  12:21:26,346 - #2 char
+INFO  12:21:26,347 - #2 nizch
+INFO  12:21:26,348 - #13 [
+INFO  12:21:26,348 - #14 ]
+ERROR 12:21:26,348 - Oporavak od greske u VarDecu: 
+INFO  12:21:26,350 - #10 ;
+INFO  12:21:26,352 - #2 int
+INFO  12:21:26,352 - #2 a
+INFO  12:21:26,352 - #10 ;
+INFO  12:21:26,353 - #2 set
+INFO  12:21:26,353 - #2 s1
+INFO  12:21:26,353 - #12 ,
+INFO  12:21:26,353 - #2 s2
+INFO  12:21:26,353 - #12 ,
+INFO  12:21:26,353 - #2 s3
+INFO  12:21:26,353 - #10 ;
+INFO  12:21:26,354 - #7 {
+INFO  12:21:26,354 - #2 int
+INFO  12:21:26,355 - #2 foo
+INFO  12:21:26,355 - #15 (
+INFO  12:21:26,355 - #2 intniear
+INFO  12:21:26,355 - #16 )
+ERROR 12:21:26,356 - 
+Sintaksna greska na liniji 17
+INFO  12:21:26,356 - #7 {
+INFO  12:21:26,356 - #33 return
+INFO  12:21:26,356 - #3 1
+ERROR 12:21:26,357 - Oporavak od greske u FormPars: 
+INFO  12:21:26,361 - #10 ;
+INFO  12:21:26,363 - #8 }
+INFO  12:21:26,364 - #17 void
+INFO  12:21:26,365 - #2 main
+INFO  12:21:26,366 - #15 (
+INFO  12:21:26,366 - #16 )
+INFO  12:21:26,367 - #2 int
+INFO  12:21:26,367 - #2 bodovi
+INFO  12:21:26,367 - #10 ;
+INFO  12:21:26,367 - #2 int
+INFO  12:21:26,367 - #2 temp
+INFO  12:21:26,368 - #10 ;
+INFO  12:21:26,369 - #7 {
+INFO  12:21:26,369 - #2 bodovi
+INFO  12:21:26,369 - #26 *
+ERROR 12:21:26,369 - 
+Sintaksna greska na liniji 23
+INFO  12:21:26,369 - #2 hygcvj
+INFO  12:21:26,369 - #10 ;
+INFO  12:21:26,369 - #30 if
+INFO  12:21:26,369 - #15 (
+INFO  12:21:26,369 - #26 *
+ERROR 12:21:26,369 - Oporavak od greske u Designator Statemntu: 1
+ERROR 12:21:26,370 - 
+Sintaksna greska na liniji 25
+INFO  12:21:26,371 - #16 )
+INFO  12:21:26,371 - #7 {
+INFO  12:21:26,371 - #31 break
+INFO  12:21:26,371 - #10 ;
+ERROR 12:21:26,371 - Oporavak od greske u If uslovu: 
+INFO  12:21:26,372 - #8 }
+INFO  12:21:26,373 - #8 }
+INFO  12:21:26,374 - #8 }
+INFO  12:21:26,376 - Program(
   ProgramName(
-   test302
+   test301
   ) [ProgramName]
   ConVarDecList_var(
     ConVarDecList_var(
-      ConVarDecList_con(
-        ConVarDecList_epsilon(
-        ) [ConVarDecList_epsilon]
-        ConDecList(
+      ConVarDecList_var(
+        ConVarDecList_var(
+          ConVarDecList_con(
+            ConVarDecList_con(
+              ConVarDecList_con(
+                ConVarDecList_epsilon(
+                ) [ConVarDecList_epsilon]
+                ConDecList(
+                  Type(
+                   int
+                  ) [Type]
+                  ConDecl(
+                   nula
+                    Constant_n(
+                     0
+                    ) [Constant_n]
+                  ) [ConDecl]
+                  ConDeclMore_e(
+                  ) [ConDeclMore_e]
+                ) [ConDecList]
+              ) [ConVarDecList_con]
+              ConDecList(
+                Type(
+                 int
+                ) [Type]
+                ConDecl(
+                 jedan
+                  Constant_n(
+                   1
+                  ) [Constant_n]
+                ) [ConDecl]
+                ConDeclMore_e(
+                ) [ConDeclMore_e]
+              ) [ConDecList]
+            ) [ConVarDecList_con]
+            ConDecList(
+              Type(
+               int
+              ) [Type]
+              ConDecl(
+               pet
+                Constant_n(
+                 5
+                ) [Constant_n]
+              ) [ConDecl]
+              ConDeclMore_e(
+              ) [ConDeclMore_e]
+            ) [ConDecList]
+          ) [ConVarDecList_con]
+          VarDecList_error(
+          ) [VarDecList_error]
+        ) [ConVarDecList_var]
+        VarDecList_v(
           Type(
-           int
+           char
           ) [Type]
-          ConDecl(
-           pi
-            Constant_n(
-             3
-            ) [Constant_n]
-          ) [ConDecl]
-          ConDeclMore_e(
-          ) [ConDeclMore_e]
-        ) [ConDecList]
-      ) [ConVarDecList_con]
-      VarDecList(
+          VarDec_arr(
+           nizch
+          ) [VarDec_arr]
+          VarDecMore_e(
+          ) [VarDecMore_e]
+        ) [VarDecList_v]
+      ) [ConVarDecList_var]
+      VarDecList_v(
         Type(
          int
         ) [Type]
         VarDec_var(
-         x
+         a
+        ) [VarDec_var]
+        VarDecMore_e(
+        ) [VarDecMore_e]
+      ) [VarDecList_v]
+    ) [ConVarDecList_var]
+    VarDecList_v(
+      Type(
+       set
+      ) [Type]
+      VarDec_var(
+       s1
+      ) [VarDec_var]
+      VarDecMore_m(
+        VarDec_var(
+         s2
         ) [VarDec_var]
         VarDecMore_m(
           VarDec_var(
-           y
+           s3
           ) [VarDec_var]
           VarDecMore_e(
           ) [VarDecMore_e]
         ) [VarDecMore_m]
-      ) [VarDecList]
-    ) [ConVarDecList_var]
-    VarDecList(
-      Type(
-       char
-      ) [Type]
-      VarDec_var(
-       c
-      ) [VarDec_var]
-      VarDecMore_e(
-      ) [VarDecMore_e]
-    ) [VarDecList]
+      ) [VarDecMore_m]
+    ) [VarDecList_v]
   ) [ConVarDecList_var]
   MethodDecList_m(
-    MethodDecList_e(
-    ) [MethodDecList_e]
+    MethodDecList_m(
+      MethodDecList_e(
+      ) [MethodDecList_e]
+      MethodDecl(
+        MethodSignAndName_Type(
+          Type(
+           int
+          ) [Type]
+         foo
+        ) [MethodSignAndName_Type]
+        FormParsOpt_fm(
+          FormPars_err(
+          ) [FormPars_err]
+          FormParsMore_e(
+          ) [FormParsMore_e]
+        ) [FormParsOpt_fm]
+        VarDecOpt_e(
+        ) [VarDecOpt_e]
+        StatementOpt_s(
+          StatementOpt_e(
+          ) [StatementOpt_e]
+          Statement_retexpr(
+            Expr_term(
+              AddOpTerm_term(
+                Term(
+                  MulopFactor_fac(
+                    FactorNeg_fac(
+                      Factor_num(
+                       1
+                      ) [Factor_num]
+                    ) [FactorNeg_fac]
+                  ) [MulopFactor_fac]
+                ) [Term]
+              ) [AddOpTerm_term]
+            ) [Expr_term]
+          ) [Statement_retexpr]
+        ) [StatementOpt_s]
+      ) [MethodDecl]
+    ) [MethodDecList_m]
     MethodDecl(
       MethodSignAndName_Void(
        main
@@ -120,155 +234,58 @@ INFO  23:52:14,117 - Program(
       ) [FormParsOpt_e]
       VarDecOpt_v(
         VarDecOpt_v(
-          VarDecOpt_v(
-            VarDecOpt_e(
-            ) [VarDecOpt_e]
-            VarDecList(
-              Type(
-               int
-              ) [Type]
-              VarDec_var(
-               a
-              ) [VarDec_var]
-              VarDecMore_m(
-                VarDec_var(
-                 b
-                ) [VarDec_var]
-                VarDecMore_e(
-                ) [VarDecMore_e]
-              ) [VarDecMore_m]
-            ) [VarDecList]
-          ) [VarDecOpt_v]
-          VarDecList(
+          VarDecOpt_e(
+          ) [VarDecOpt_e]
+          VarDecList_v(
             Type(
-             char
+             int
             ) [Type]
             VarDec_var(
-             c
+             bodovi
             ) [VarDec_var]
             VarDecMore_e(
             ) [VarDecMore_e]
-          ) [VarDecList]
+          ) [VarDecList_v]
         ) [VarDecOpt_v]
-        VarDecList(
+        VarDecList_v(
           Type(
-           char
+           int
           ) [Type]
-          VarDec_arr(
-           cr
-          ) [VarDec_arr]
+          VarDec_var(
+           temp
+          ) [VarDec_var]
           VarDecMore_e(
           ) [VarDecMore_e]
-        ) [VarDecList]
+        ) [VarDecList_v]
       ) [VarDecOpt_v]
       StatementOpt_s(
         StatementOpt_s(
-          StatementOpt_s(
-            StatementOpt_e(
-            ) [StatementOpt_e]
-            Statement_ds(
-              DesignatorStatement_assigexpr(
-                Designator_var(
-                 cr
-                ) [Designator_var]
-                Assignop(
-                ) [Assignop]
-                Expr_term(
-                  AddOpTerm_term(
-                    Term(
-                      MulopFactor_fac(
-                        Factor_newexpr(
-                          Type(
-                           char
-                          ) [Type]
-                          Expr_term(
-                            AddOpTerm_term(
-                              Term(
-                                MulopFactor_fac(
-                                  Factor_num(
-                                   5
-                                  ) [Factor_num]
-                                ) [MulopFactor_fac]
-                              ) [Term]
-                            ) [AddOpTerm_term]
-                          ) [Expr_term]
-                        ) [Factor_newexpr]
-                      ) [MulopFactor_fac]
-                    ) [Term]
-                  ) [AddOpTerm_term]
-                ) [Expr_term]
-              ) [DesignatorStatement_assigexpr]
-            ) [Statement_ds]
-          ) [StatementOpt_s]
+          StatementOpt_e(
+          ) [StatementOpt_e]
           Statement_ds(
-            DesignatorStatement_assigexpr(
-              Designator_elem(
-                DesignatorArrayName(
-                 cr
-                ) [DesignatorArrayName]
-                Expr_term(
-                  AddOpTerm_term(
-                    Term(
-                      MulopFactor_fac(
-                        Factor_num(
-                         1
-                        ) [Factor_num]
-                      ) [MulopFactor_fac]
-                    ) [Term]
-                  ) [AddOpTerm_term]
-                ) [Expr_term]
-              ) [Designator_elem]
-              Assignop(
-              ) [Assignop]
-              Expr_term(
-                AddOpTerm_term(
-                  Term(
-                    MulopFactor_fac(
-                      Factor_char(
-                       k
-                      ) [Factor_char]
-                    ) [MulopFactor_fac]
-                  ) [Term]
-                ) [AddOpTerm_term]
-              ) [Expr_term]
-            ) [DesignatorStatement_assigexpr]
+            DesignatorStatement_error(
+            ) [DesignatorStatement_error]
           ) [Statement_ds]
         ) [StatementOpt_s]
-        Statement_pr(
-          Expr_term(
-            AddOpTerm_term(
-              Term(
-                MulopFactor_fac(
-                  Factor_des(
-                    Designator_elem(
-                      DesignatorArrayName(
-                       cr
-                      ) [DesignatorArrayName]
-                      Expr_term(
-                        AddOpTerm_term(
-                          Term(
-                            MulopFactor_fac(
-                              Factor_num(
-                               1
-                              ) [Factor_num]
-                            ) [MulopFactor_fac]
-                          ) [Term]
-                        ) [AddOpTerm_term]
-                      ) [Expr_term]
-                    ) [Designator_elem]
-                  ) [Factor_des]
-                ) [MulopFactor_fac]
-              ) [Term]
-            ) [AddOpTerm_term]
-          ) [Expr_term]
-        ) [Statement_pr]
+        Statement_if(
+          FormPars_error(
+          ) [FormPars_error]
+          Statement_st(
+            StatementOpt_s(
+              StatementOpt_e(
+              ) [StatementOpt_e]
+              Statement_br(
+              ) [Statement_br]
+            ) [StatementOpt_s]
+          ) [Statement_st]
+          ElseStatement_E(
+          ) [ElseStatement_E]
+        ) [Statement_if]
       ) [StatementOpt_s]
     ) [MethodDecl]
   ) [MethodDecList_m]
 ) [Program]
-INFO  23:52:14,117 - ===================================
-INFO  23:52:14,128 - Upotreba simbola: cr Kind: 1 na liniji 11
-INFO  23:52:14,128 - Upotreba elementa niza: cr Kind: 5 na liniji 12
-INFO  23:52:14,128 - Upotreba elementa niza: cr Kind: 5 na liniji 13
-INFO  23:52:14,128 - ===================================
-INFO  23:52:14,132 - Parsiranje uspesno zavrseno!
+INFO  12:21:26,377 - ===================================
+ERROR 12:21:26,388 - Break van do-while petlje
+INFO  12:21:26,388 - ===================================
+ERROR 12:21:26,388 - Parsiranje NIJE uspesno zavrseno

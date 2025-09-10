@@ -1,16 +1,32 @@
-//Test 302
+// Test301
 
-program test302
+program test301
 
-const int pi=3;
-int x,y;
-char c;
+const int nula = 0;
+const int jedan = 1;
+const int pet = 5;
 
+int  *;
+char nizch[];
+
+int a;
+
+set s1, s2, s3;
+	
 {
-	void main()int a,b;char c;char cr[];{
-		cr=new char[5];
-		cr[1]='k';
-		print(cr[1]);
+	int foo(intniear){
+	return 1;}
+	void main()	
+		int bodovi;
+		int temp;
+	{
+		bodovi *hygcvj;
+		
+		if( *){
+		break;
+		}
+		
 	}
 }
+
 

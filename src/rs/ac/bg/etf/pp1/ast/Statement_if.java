@@ -1,31 +1,31 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/8/2025 23:43:36
+// 10/8/2025 12:17:47
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class Statement_if extends Statement {
 
-    private Condition Condition;
+    private CondList CondList;
     private Statement Statement;
     private ElseStatement ElseStatement;
 
-    public Statement_if (Condition Condition, Statement Statement, ElseStatement ElseStatement) {
-        this.Condition=Condition;
-        if(Condition!=null) Condition.setParent(this);
+    public Statement_if (CondList CondList, Statement Statement, ElseStatement ElseStatement) {
+        this.CondList=CondList;
+        if(CondList!=null) CondList.setParent(this);
         this.Statement=Statement;
         if(Statement!=null) Statement.setParent(this);
         this.ElseStatement=ElseStatement;
         if(ElseStatement!=null) ElseStatement.setParent(this);
     }
 
-    public Condition getCondition() {
-        return Condition;
+    public CondList getCondList() {
+        return CondList;
     }
 
-    public void setCondition(Condition Condition) {
-        this.Condition=Condition;
+    public void setCondList(CondList CondList) {
+        this.CondList=CondList;
     }
 
     public Statement getStatement() {
@@ -49,20 +49,20 @@ public class Statement_if extends Statement {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(Condition!=null) Condition.accept(visitor);
+        if(CondList!=null) CondList.accept(visitor);
         if(Statement!=null) Statement.accept(visitor);
         if(ElseStatement!=null) ElseStatement.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(Condition!=null) Condition.traverseTopDown(visitor);
+        if(CondList!=null) CondList.traverseTopDown(visitor);
         if(Statement!=null) Statement.traverseTopDown(visitor);
         if(ElseStatement!=null) ElseStatement.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(Condition!=null) Condition.traverseBottomUp(visitor);
+        if(CondList!=null) CondList.traverseBottomUp(visitor);
         if(Statement!=null) Statement.traverseBottomUp(visitor);
         if(ElseStatement!=null) ElseStatement.traverseBottomUp(visitor);
         accept(visitor);
@@ -73,8 +73,8 @@ public class Statement_if extends Statement {
         buffer.append(tab);
         buffer.append("Statement_if(\n");
 
-        if(Condition!=null)
-            buffer.append(Condition.toString("  "+tab));
+        if(CondList!=null)
+            buffer.append(CondList.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

@@ -1,25 +1,25 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/8/2025 23:43:36
+// 10/8/2025 12:17:47
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class Condition_cond extends Condition {
 
-    private CondTerm CondTerm;
+    private ConditionTerm ConditionTerm;
 
-    public Condition_cond (CondTerm CondTerm) {
-        this.CondTerm=CondTerm;
-        if(CondTerm!=null) CondTerm.setParent(this);
+    public Condition_cond (ConditionTerm ConditionTerm) {
+        this.ConditionTerm=ConditionTerm;
+        if(ConditionTerm!=null) ConditionTerm.setParent(this);
     }
 
-    public CondTerm getCondTerm() {
-        return CondTerm;
+    public ConditionTerm getConditionTerm() {
+        return ConditionTerm;
     }
 
-    public void setCondTerm(CondTerm CondTerm) {
-        this.CondTerm=CondTerm;
+    public void setConditionTerm(ConditionTerm ConditionTerm) {
+        this.ConditionTerm=ConditionTerm;
     }
 
     public void accept(Visitor visitor) {
@@ -27,16 +27,16 @@ public class Condition_cond extends Condition {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(CondTerm!=null) CondTerm.accept(visitor);
+        if(ConditionTerm!=null) ConditionTerm.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(CondTerm!=null) CondTerm.traverseTopDown(visitor);
+        if(ConditionTerm!=null) ConditionTerm.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(CondTerm!=null) CondTerm.traverseBottomUp(visitor);
+        if(ConditionTerm!=null) ConditionTerm.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -45,8 +45,8 @@ public class Condition_cond extends Condition {
         buffer.append(tab);
         buffer.append("Condition_cond(\n");
 
-        if(CondTerm!=null)
-            buffer.append(CondTerm.toString("  "+tab));
+        if(ConditionTerm!=null)
+            buffer.append(ConditionTerm.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

@@ -1,0 +1,98 @@
+// generated with ast extension for cup
+// version 0.8
+// 10/8/2025 12:17:47
+
+
+package rs.ac.bg.etf.pp1.ast;
+
+public class VarDecList_v extends VarDecList {
+
+    private Type Type;
+    private VarDec VarDec;
+    private VarDecMore VarDecMore;
+
+    public VarDecList_v (Type Type, VarDec VarDec, VarDecMore VarDecMore) {
+        this.Type=Type;
+        if(Type!=null) Type.setParent(this);
+        this.VarDec=VarDec;
+        if(VarDec!=null) VarDec.setParent(this);
+        this.VarDecMore=VarDecMore;
+        if(VarDecMore!=null) VarDecMore.setParent(this);
+    }
+
+    public Type getType() {
+        return Type;
+    }
+
+    public void setType(Type Type) {
+        this.Type=Type;
+    }
+
+    public VarDec getVarDec() {
+        return VarDec;
+    }
+
+    public void setVarDec(VarDec VarDec) {
+        this.VarDec=VarDec;
+    }
+
+    public VarDecMore getVarDecMore() {
+        return VarDecMore;
+    }
+
+    public void setVarDecMore(VarDecMore VarDecMore) {
+        this.VarDecMore=VarDecMore;
+    }
+
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
+
+    public void childrenAccept(Visitor visitor) {
+        if(Type!=null) Type.accept(visitor);
+        if(VarDec!=null) VarDec.accept(visitor);
+        if(VarDecMore!=null) VarDecMore.accept(visitor);
+    }
+
+    public void traverseTopDown(Visitor visitor) {
+        accept(visitor);
+        if(Type!=null) Type.traverseTopDown(visitor);
+        if(VarDec!=null) VarDec.traverseTopDown(visitor);
+        if(VarDecMore!=null) VarDecMore.traverseTopDown(visitor);
+    }
+
+    public void traverseBottomUp(Visitor visitor) {
+        if(Type!=null) Type.traverseBottomUp(visitor);
+        if(VarDec!=null) VarDec.traverseBottomUp(visitor);
+        if(VarDecMore!=null) VarDecMore.traverseBottomUp(visitor);
+        accept(visitor);
+    }
+
+    public String toString(String tab) {
+        StringBuffer buffer=new StringBuffer();
+        buffer.append(tab);
+        buffer.append("VarDecList_v(\n");
+
+        if(Type!=null)
+            buffer.append(Type.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        if(VarDec!=null)
+            buffer.append(VarDec.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        if(VarDecMore!=null)
+            buffer.append(VarDecMore.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        buffer.append(tab);
+        buffer.append(") [VarDecList_v]");
+        return buffer.toString();
+    }
+}

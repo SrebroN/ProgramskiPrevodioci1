@@ -57,10 +57,10 @@ nonterminal ConDeclMore, VarDecMore, MethodSignatureType, FormParsOpt;
 nonterminal FormPars, FormParsMore, MethodDecl, VarDecOpt, StatementOpt, Statement, ActPars, ActParsExprOpt;
 nonterminal DesignatorStatement, ActParsList, ActParsMore, ActParsListBegin;
 nonterminal Assignop, Relop, Addop, Mulop, Setop, Label, DesignatorList;
-nonterminal FactorAct, ExprOpt, DoNonterm;
-nonterminal ConditionList, ElseStatement, NumConstOpt, ProgramName, VarDec;
+nonterminal DoNonterm, Else, While;
+nonterminal ConditionList, ElseStatement, ProgramName, VarDec;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Expr, AddOpTerm, Term, MulopFactor;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct CondFact, CondTerm, Condition, Type;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct CondFact, CondTerm, Condition, Type, FactorNeg, CondList, ConditionTerm;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, DesignatorArrayName, DesignatorMeth;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj MethodSignAndName;
 precedence left ELSE;
@@ -95,7 +95,11 @@ Constant ::= (Constant_n) NUMBER
 			(Constant_b) BOOL
 			;
 
-VarDecList ::= (VarDecList) Type VarDec VarDecMore SEMI;
+VarDecList ::= (VarDecList_v) Type VarDec VarDecMore SEMI
+				|
+				(VarDecList_error) error:e
+				{:parser.report_error("Oporavak od greske u VarDecu: ",null); :}
+				;
 
 VarDec	::=	(VarDec_var) IDENT
 			|
@@ -128,6 +132,9 @@ FormParsOpt ::= (FormParsOpt_fm) FormPars FormParsMore
 FormPars ::= 	(FormPars_var) Type IDENT
 				|
 				(FormPars_arr) Type IDENT OPSQBRACKET CLSQBRACKET
+				|
+				(FormPars_err) error:e
+				{:parser.report_error("Oporavak od greske u FormPars: ",null); :}
 				;
 
 FormParsMore ::= 	(FormParsMore_m) COMMA FormPars FormParsMore
@@ -147,7 +154,7 @@ StatementOpt ::= 	(StatementOpt_s) StatementOpt Statement
 					
 Statement ::= 	(Statement_ds) DesignatorStatement SEMI  				
 				|
-				(Statement_if) IF OPPAREN Condition CLPAREN Statement ElseStatement
+				(Statement_if) IF OPPAREN CondList CLPAREN Statement ElseStatement
 				|
 				(Statement_br) BREAK SEMI 
 				|
@@ -163,26 +170,25 @@ Statement ::= 	(Statement_ds) DesignatorStatement SEMI
 				|				
 				(Statement_prnum) PRINT OPPAREN Expr COMMA NUMBER CLPAREN SEMI 
 				|
-				(Statement_do) DoNonterm Statement WHILE OPPAREN ConditionList CLPAREN SEMI 
+				(Statement_do) DoNonterm Statement While OPPAREN ConditionList CLPAREN SEMI 
 				|
 				(Statement_st) OPBRACKET StatementOpt CLBRACKET 
 				;
 
+While ::=(While)WHILE;
+
 DoNonterm	::=(DoNonterm) DO;
 
-ElseStatement ::=	(ElseStatement_else) ELSE Statement
+ElseStatement ::=	(ElseStatement_else) Else Statement
 					|
 					(ElseStatement_E)/*epsilon*/
 					;
 
-NumConstOpt ::=	(NumConstOpt_cn) COMMA NUMBER
-				|
-				(NumConstOpt_e)/*epsilon*/
-				;
+Else ::= (Else) ELSE;
 					
-ConditionList ::= 	(ConditionList_con) Condition
+ConditionList ::= 	(ConditionList_con) CondList
 					|
-					(ConditionList_cond) Condition COMMA DesignatorStatement
+					(ConditionList_cond) CondList COMMA DesignatorStatement
 					|
 					(ConditionList_e)/*epsilon*/
 					;
@@ -195,6 +201,9 @@ Designator ::= 	(Designator_var) IDENT
 DesignatorArrayName ::= (DesignatorArrayName) IDENT;
 
 DesignatorStatement ::= (DesignatorStatement_assigexpr) Designator Assignop Expr
+						|
+						(DesignatorStatement_error) error:e
+						{:parser.report_error("Oporavak od greske u Designator Statemntu: " +eleft,null); :}
 						|
 						(DesignatorStatement_actpars) DesignatorMeth OPPAREN ActParsList CLPAREN
 						|
@@ -221,10 +230,18 @@ ActParsMore	::=	(ActParsMore_more) COMMA ActPars ActParsMore
 				(ActParsMore_e)/*epsilon*/
 				;
 					
-Condition ::= 	(Condition_or) Condition OR CondTerm
+CondList ::=	(CondList_cond) Condition
 				|
-				(Condition_cond) CondTerm
+				(FormPars_error) error:e
+				{:parser.report_error("Oporavak od greske u If uslovu: ",null); :}
 				;
+					
+Condition ::= 	(Condition_or) Condition OR ConditionTerm
+				|
+				(Condition_cond) ConditionTerm
+				;
+
+ConditionTerm ::= (ConditionTerm) CondTerm;
 
 CondTerm ::= 	(CondTerm_and) CondTerm AND CondFact
 				|
@@ -238,15 +255,9 @@ CondFact ::= 	(CondFact_rel) Expr Relop Expr
  
 Expr ::= 	(Expr_term) AddOpTerm
 			|
-			(Expr_mint) MINUS AddOpTerm
-			|
 			(Expr_des) Designator MAP Designator
 			;
 			
-ExprOpt ::=	(ExprOpt_exp) Expr
-			|
-			(ExprOpt_e) /*epsilon*/
-			;
 
 AddOpTerm ::=	(AddOpTerm_op) AddOpTerm Addop Term
 				|
@@ -255,9 +266,14 @@ AddOpTerm ::=	(AddOpTerm_op) AddOpTerm Addop Term
 
 Term ::=	(Term)  MulopFactor;
 
-MulopFactor ::=	(MulopFactor_mul) MulopFactor Mulop Factor
+MulopFactor ::=	(MulopFactor_mul) MulopFactor Mulop FactorNeg
 				|
-				(MulopFactor_fac) Factor
+				(MulopFactor_fac) FactorNeg
+				;
+					
+FactorNeg	::=	(FactorNeg_fac) Factor
+				|
+				(FactorNeg_neg) MINUS Factor
 				;
 					
 Factor ::= 	(Factor_des) Designator
@@ -274,11 +290,6 @@ Factor ::= 	(Factor_des) Designator
 			|
 			(Factor_expr) OPPAREN Expr CLPAREN
 			;		
-					
-FactorAct ::=	(FactorAct_fa) OPPAREN ActParsList CLPAREN
-				|
-				(FactorAct_e)/*epsilon*/
-				;
 					
 Label ::= (Label) IDENT; 
 

@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/8/2025 23:43:36
+// 10/8/2025 12:17:47
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,13 +9,16 @@ public class Statement_do extends Statement {
 
     private DoNonterm DoNonterm;
     private Statement Statement;
+    private While While;
     private ConditionList ConditionList;
 
-    public Statement_do (DoNonterm DoNonterm, Statement Statement, ConditionList ConditionList) {
+    public Statement_do (DoNonterm DoNonterm, Statement Statement, While While, ConditionList ConditionList) {
         this.DoNonterm=DoNonterm;
         if(DoNonterm!=null) DoNonterm.setParent(this);
         this.Statement=Statement;
         if(Statement!=null) Statement.setParent(this);
+        this.While=While;
+        if(While!=null) While.setParent(this);
         this.ConditionList=ConditionList;
         if(ConditionList!=null) ConditionList.setParent(this);
     }
@@ -36,6 +39,14 @@ public class Statement_do extends Statement {
         this.Statement=Statement;
     }
 
+    public While getWhile() {
+        return While;
+    }
+
+    public void setWhile(While While) {
+        this.While=While;
+    }
+
     public ConditionList getConditionList() {
         return ConditionList;
     }
@@ -51,6 +62,7 @@ public class Statement_do extends Statement {
     public void childrenAccept(Visitor visitor) {
         if(DoNonterm!=null) DoNonterm.accept(visitor);
         if(Statement!=null) Statement.accept(visitor);
+        if(While!=null) While.accept(visitor);
         if(ConditionList!=null) ConditionList.accept(visitor);
     }
 
@@ -58,12 +70,14 @@ public class Statement_do extends Statement {
         accept(visitor);
         if(DoNonterm!=null) DoNonterm.traverseTopDown(visitor);
         if(Statement!=null) Statement.traverseTopDown(visitor);
+        if(While!=null) While.traverseTopDown(visitor);
         if(ConditionList!=null) ConditionList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(DoNonterm!=null) DoNonterm.traverseBottomUp(visitor);
         if(Statement!=null) Statement.traverseBottomUp(visitor);
+        if(While!=null) While.traverseBottomUp(visitor);
         if(ConditionList!=null) ConditionList.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -81,6 +95,12 @@ public class Statement_do extends Statement {
 
         if(Statement!=null)
             buffer.append(Statement.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        if(While!=null)
+            buffer.append(While.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

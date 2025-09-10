@@ -1,25 +1,25 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/8/2025 23:43:36
+// 10/8/2025 12:17:47
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class ConditionList_con extends ConditionList {
 
-    private Condition Condition;
+    private CondList CondList;
 
-    public ConditionList_con (Condition Condition) {
-        this.Condition=Condition;
-        if(Condition!=null) Condition.setParent(this);
+    public ConditionList_con (CondList CondList) {
+        this.CondList=CondList;
+        if(CondList!=null) CondList.setParent(this);
     }
 
-    public Condition getCondition() {
-        return Condition;
+    public CondList getCondList() {
+        return CondList;
     }
 
-    public void setCondition(Condition Condition) {
-        this.Condition=Condition;
+    public void setCondList(CondList CondList) {
+        this.CondList=CondList;
     }
 
     public void accept(Visitor visitor) {
@@ -27,16 +27,16 @@ public class ConditionList_con extends ConditionList {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(Condition!=null) Condition.accept(visitor);
+        if(CondList!=null) CondList.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(Condition!=null) Condition.traverseTopDown(visitor);
+        if(CondList!=null) CondList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(Condition!=null) Condition.traverseBottomUp(visitor);
+        if(CondList!=null) CondList.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -45,8 +45,8 @@ public class ConditionList_con extends ConditionList {
         buffer.append(tab);
         buffer.append("ConditionList_con(\n");
 
-        if(Condition!=null)
-            buffer.append(Condition.toString("  "+tab));
+        if(CondList!=null)
+            buffer.append(CondList.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

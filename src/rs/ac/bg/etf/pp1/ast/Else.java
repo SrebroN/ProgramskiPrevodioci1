@@ -1,13 +1,31 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/8/2025 23:43:36
+// 10/8/2025 12:17:47
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class ExprOpt_e extends ExprOpt {
+public class Else implements SyntaxNode {
 
-    public ExprOpt_e () {
+    private SyntaxNode parent;
+    private int line;
+    public Else () {
+    }
+
+    public SyntaxNode getParent() {
+        return parent;
+    }
+
+    public void setParent(SyntaxNode parent) {
+        this.parent=parent;
+    }
+
+    public int getLine() {
+        return line;
+    }
+
+    public void setLine(int line) {
+        this.line=line;
     }
 
     public void accept(Visitor visitor) {
@@ -28,10 +46,10 @@ public class ExprOpt_e extends ExprOpt {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("ExprOpt_e(\n");
+        buffer.append("Else(\n");
 
         buffer.append(tab);
-        buffer.append(") [ExprOpt_e]");
+        buffer.append(") [Else]");
         return buffer.toString();
     }
 }

@@ -1,50 +1,15 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/8/2025 23:43:36
+// 10/8/2025 12:17:47
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class VarDecList implements SyntaxNode {
+public abstract class VarDecList implements SyntaxNode {
 
     private SyntaxNode parent;
+
     private int line;
-    private Type Type;
-    private VarDec VarDec;
-    private VarDecMore VarDecMore;
-
-    public VarDecList (Type Type, VarDec VarDec, VarDecMore VarDecMore) {
-        this.Type=Type;
-        if(Type!=null) Type.setParent(this);
-        this.VarDec=VarDec;
-        if(VarDec!=null) VarDec.setParent(this);
-        this.VarDecMore=VarDecMore;
-        if(VarDecMore!=null) VarDecMore.setParent(this);
-    }
-
-    public Type getType() {
-        return Type;
-    }
-
-    public void setType(Type Type) {
-        this.Type=Type;
-    }
-
-    public VarDec getVarDec() {
-        return VarDec;
-    }
-
-    public void setVarDec(VarDec VarDec) {
-        this.VarDec=VarDec;
-    }
-
-    public VarDecMore getVarDecMore() {
-        return VarDecMore;
-    }
-
-    public void setVarDecMore(VarDecMore VarDecMore) {
-        this.VarDecMore=VarDecMore;
-    }
 
     public SyntaxNode getParent() {
         return parent;
@@ -62,55 +27,11 @@ public class VarDecList implements SyntaxNode {
         this.line=line;
     }
 
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
-    }
+    public abstract void accept(Visitor visitor);
+    public abstract void childrenAccept(Visitor visitor);
+    public abstract void traverseTopDown(Visitor visitor);
+    public abstract void traverseBottomUp(Visitor visitor);
 
-    public void childrenAccept(Visitor visitor) {
-        if(Type!=null) Type.accept(visitor);
-        if(VarDec!=null) VarDec.accept(visitor);
-        if(VarDecMore!=null) VarDecMore.accept(visitor);
-    }
-
-    public void traverseTopDown(Visitor visitor) {
-        accept(visitor);
-        if(Type!=null) Type.traverseTopDown(visitor);
-        if(VarDec!=null) VarDec.traverseTopDown(visitor);
-        if(VarDecMore!=null) VarDecMore.traverseTopDown(visitor);
-    }
-
-    public void traverseBottomUp(Visitor visitor) {
-        if(Type!=null) Type.traverseBottomUp(visitor);
-        if(VarDec!=null) VarDec.traverseBottomUp(visitor);
-        if(VarDecMore!=null) VarDecMore.traverseBottomUp(visitor);
-        accept(visitor);
-    }
-
-    public String toString(String tab) {
-        StringBuffer buffer=new StringBuffer();
-        buffer.append(tab);
-        buffer.append("VarDecList(\n");
-
-        if(Type!=null)
-            buffer.append(Type.toString("  "+tab));
-        else
-            buffer.append(tab+"  null");
-        buffer.append("\n");
-
-        if(VarDec!=null)
-            buffer.append(VarDec.toString("  "+tab));
-        else
-            buffer.append(tab+"  null");
-        buffer.append("\n");
-
-        if(VarDecMore!=null)
-            buffer.append(VarDecMore.toString("  "+tab));
-        else
-            buffer.append(tab+"  null");
-        buffer.append("\n");
-
-        buffer.append(tab);
-        buffer.append(") [VarDecList]");
-        return buffer.toString();
-    }
+    public String toString() { return toString(""); }
+    public abstract String toString(String tab);
 }

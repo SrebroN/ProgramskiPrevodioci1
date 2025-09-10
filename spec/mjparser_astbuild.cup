@@ -82,16 +82,15 @@ nonterminal Mulop Mulop;
 nonterminal Setop Setop;
 nonterminal Label Label;
 nonterminal DesignatorList DesignatorList;
-nonterminal FactorAct FactorAct;
-nonterminal ExprOpt ExprOpt;
 nonterminal DoNonterm DoNonterm;
+nonterminal Else Else;
+nonterminal While While;
 nonterminal ConditionList ConditionList;
 nonterminal ElseStatement ElseStatement;
-nonterminal NumConstOpt NumConstOpt;
 nonterminal ProgramName ProgramName;
 nonterminal VarDec VarDec;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Expr, AddOpTerm, Term, MulopFactor;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct CondFact, CondTerm, Condition, Type;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct CondFact, CondTerm, Condition, Type, FactorNeg, CondList, ConditionTerm;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, DesignatorArrayName, DesignatorMeth;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj MethodSignAndName;
 precedence left ELSE;
@@ -126,7 +125,11 @@ Constant ::= (Constant_n) NUMBER:N1 {: RESULT=new Constant_n(N1); RESULT.setLine
 			(Constant_b) BOOL:B1 {: RESULT=new Constant_b(B1); RESULT.setLine(B1left); :}
 			;
 
-VarDecList ::= (VarDecList) Type:T1 VarDec:V2 VarDecMore:V3 SEMI {: RESULT=new VarDecList(T1, V2, V3); RESULT.setLine(T1left); :};
+VarDecList ::= (VarDecList_v) Type:T1 VarDec:V2 VarDecMore:V3 SEMI {: RESULT=new VarDecList_v(T1, V2, V3); RESULT.setLine(T1left); :}
+				|
+				(VarDecList_error) error:e
+				{:parser.report_error("Oporavak od greske u VarDecu: ",null); :} {: RESULT=new VarDecList_error(); :}
+				;
 
 VarDec	::=	(VarDec_var) IDENT:I1 {: RESULT=new VarDec_var(I1); RESULT.setLine(I1left); :}
 			|
@@ -159,6 +162,9 @@ FormParsOpt ::= (FormParsOpt_fm) FormPars:F1 FormParsMore:F2 {: RESULT=new FormP
 FormPars ::= 	(FormPars_var) Type:T1 IDENT:I2 {: RESULT=new FormPars_var(T1, I2); RESULT.setLine(T1left); :}
 				|
 				(FormPars_arr) Type:T1 IDENT:I2 OPSQBRACKET CLSQBRACKET {: RESULT=new FormPars_arr(T1, I2); RESULT.setLine(T1left); :}
+				|
+				(FormPars_err) error:e
+				{:parser.report_error("Oporavak od greske u FormPars: ",null); :} {: RESULT=new FormPars_err(); :}
 				;
 
 FormParsMore ::= 	(FormParsMore_m) COMMA FormPars:F1 FormParsMore:F2 {: RESULT=new FormParsMore_m(F1, F2); RESULT.setLine(F1left); :}
@@ -178,7 +184,7 @@ StatementOpt ::= 	(StatementOpt_s) StatementOpt:S1 Statement:S2 {: RESULT=new St
 					
 Statement ::= 	(Statement_ds) DesignatorStatement:D1 SEMI {: RESULT=new Statement_ds(D1); RESULT.setLine(D1left); :}  				
 				|
-				(Statement_if) IF OPPAREN Condition:C1 CLPAREN Statement:S2 ElseStatement:E3 {: RESULT=new Statement_if(C1, S2, E3); RESULT.setLine(C1left); :}
+				(Statement_if) IF OPPAREN CondList:C1 CLPAREN Statement:S2 ElseStatement:E3 {: RESULT=new Statement_if(C1, S2, E3); RESULT.setLine(C1left); :}
 				|
 				(Statement_br) BREAK SEMI {: RESULT=new Statement_br(); :} 
 				|
@@ -194,26 +200,25 @@ Statement ::= 	(Statement_ds) DesignatorStatement:D1 SEMI {: RESULT=new Statemen
 				|				
 				(Statement_prnum) PRINT OPPAREN Expr:E1 COMMA NUMBER:N2 CLPAREN SEMI {: RESULT=new Statement_prnum(E1, N2); RESULT.setLine(E1left); :} 
 				|
-				(Statement_do) DoNonterm:D1 Statement:S2 WHILE OPPAREN ConditionList:C3 CLPAREN SEMI {: RESULT=new Statement_do(D1, S2, C3); RESULT.setLine(D1left); :} 
+				(Statement_do) DoNonterm:D1 Statement:S2 While:W3 OPPAREN ConditionList:C4 CLPAREN SEMI {: RESULT=new Statement_do(D1, S2, W3, C4); RESULT.setLine(D1left); :} 
 				|
 				(Statement_st) OPBRACKET StatementOpt:S1 CLBRACKET {: RESULT=new Statement_st(S1); RESULT.setLine(S1left); :} 
 				;
 
+While ::=(While)WHILE {: RESULT=new While(); :};
+
 DoNonterm	::=(DoNonterm) DO {: RESULT=new DoNonterm(); :};
 
-ElseStatement ::=	(ElseStatement_else) ELSE Statement:S1 {: RESULT=new ElseStatement_else(S1); RESULT.setLine(S1left); :}
+ElseStatement ::=	(ElseStatement_else) Else:E1 Statement:S2 {: RESULT=new ElseStatement_else(E1, S2); RESULT.setLine(E1left); :}
 					|
 					(ElseStatement_E) {: RESULT=new ElseStatement_E(); :}/*epsilon*/
 					;
 
-NumConstOpt ::=	(NumConstOpt_cn) COMMA NUMBER:N1 {: RESULT=new NumConstOpt_cn(N1); RESULT.setLine(N1left); :}
-				|
-				(NumConstOpt_e) {: RESULT=new NumConstOpt_e(); :}/*epsilon*/
-				;
+Else ::= (Else) ELSE {: RESULT=new Else(); :};
 					
-ConditionList ::= 	(ConditionList_con) Condition:C1 {: RESULT=new ConditionList_con(C1); RESULT.setLine(C1left); :}
+ConditionList ::= 	(ConditionList_con) CondList:C1 {: RESULT=new ConditionList_con(C1); RESULT.setLine(C1left); :}
 					|
-					(ConditionList_cond) Condition:C1 COMMA DesignatorStatement:D2 {: RESULT=new ConditionList_cond(C1, D2); RESULT.setLine(C1left); :}
+					(ConditionList_cond) CondList:C1 COMMA DesignatorStatement:D2 {: RESULT=new ConditionList_cond(C1, D2); RESULT.setLine(C1left); :}
 					|
 					(ConditionList_e) {: RESULT=new ConditionList_e(); :}/*epsilon*/
 					;
@@ -226,6 +231,9 @@ Designator ::= 	(Designator_var) IDENT:I1 {: RESULT=new Designator_var(I1); RESU
 DesignatorArrayName ::= (DesignatorArrayName) IDENT:I1 {: RESULT=new DesignatorArrayName(I1); RESULT.setLine(I1left); :};
 
 DesignatorStatement ::= (DesignatorStatement_assigexpr) Designator:D1 Assignop:A2 Expr:E3 {: RESULT=new DesignatorStatement_assigexpr(D1, A2, E3); RESULT.setLine(D1left); :}
+						|
+						(DesignatorStatement_error) error:e
+						{:parser.report_error("Oporavak od greske u Designator Statemntu: " +eleft,null); :} {: RESULT=new DesignatorStatement_error(); :}
 						|
 						(DesignatorStatement_actpars) DesignatorMeth:D1 OPPAREN ActParsList:A2 CLPAREN {: RESULT=new DesignatorStatement_actpars(D1, A2); RESULT.setLine(D1left); :}
 						|
@@ -252,10 +260,18 @@ ActParsMore	::=	(ActParsMore_more) COMMA ActPars:A1 ActParsMore:A2 {: RESULT=new
 				(ActParsMore_e) {: RESULT=new ActParsMore_e(); :}/*epsilon*/
 				;
 					
-Condition ::= 	(Condition_or) Condition:C1 OR CondTerm:C2 {: RESULT=new Condition_or(C1, C2); RESULT.setLine(C1left); :}
+CondList ::=	(CondList_cond) Condition:C1 {: RESULT=new CondList_cond(C1); RESULT.setLine(C1left); :}
 				|
-				(Condition_cond) CondTerm:C1 {: RESULT=new Condition_cond(C1); RESULT.setLine(C1left); :}
+				(FormPars_error) error:e
+				{:parser.report_error("Oporavak od greske u If uslovu: ",null); :} {: RESULT=new FormPars_error(); :}
 				;
+					
+Condition ::= 	(Condition_or) Condition:C1 OR ConditionTerm:C2 {: RESULT=new Condition_or(C1, C2); RESULT.setLine(C1left); :}
+				|
+				(Condition_cond) ConditionTerm:C1 {: RESULT=new Condition_cond(C1); RESULT.setLine(C1left); :}
+				;
+
+ConditionTerm ::= (ConditionTerm) CondTerm:C1 {: RESULT=new ConditionTerm(C1); RESULT.setLine(C1left); :};
 
 CondTerm ::= 	(CondTerm_and) CondTerm:C1 AND CondFact:C2 {: RESULT=new CondTerm_and(C1, C2); RESULT.setLine(C1left); :}
 				|
@@ -269,15 +285,9 @@ CondFact ::= 	(CondFact_rel) Expr:E1 Relop:R2 Expr:E3 {: RESULT=new CondFact_rel
  
 Expr ::= 	(Expr_term) AddOpTerm:A1 {: RESULT=new Expr_term(A1); RESULT.setLine(A1left); :}
 			|
-			(Expr_mint) MINUS AddOpTerm:A1 {: RESULT=new Expr_mint(A1); RESULT.setLine(A1left); :}
-			|
 			(Expr_des) Designator:D1 MAP Designator:D2 {: RESULT=new Expr_des(D1, D2); RESULT.setLine(D1left); :}
 			;
 			
-ExprOpt ::=	(ExprOpt_exp) Expr:E1 {: RESULT=new ExprOpt_exp(E1); RESULT.setLine(E1left); :}
-			|
-			(ExprOpt_e) {: RESULT=new ExprOpt_e(); :} /*epsilon*/
-			;
 
 AddOpTerm ::=	(AddOpTerm_op) AddOpTerm:A1 Addop:A2 Term:T3 {: RESULT=new AddOpTerm_op(A1, A2, T3); RESULT.setLine(A1left); :}
 				|
@@ -286,9 +296,14 @@ AddOpTerm ::=	(AddOpTerm_op) AddOpTerm:A1 Addop:A2 Term:T3 {: RESULT=new AddOpTe
 
 Term ::=	(Term)  MulopFactor:M1 {: RESULT=new Term(M1); RESULT.setLine(M1left); :};
 
-MulopFactor ::=	(MulopFactor_mul) MulopFactor:M1 Mulop:M2 Factor:F3 {: RESULT=new MulopFactor_mul(M1, M2, F3); RESULT.setLine(M1left); :}
+MulopFactor ::=	(MulopFactor_mul) MulopFactor:M1 Mulop:M2 FactorNeg:F3 {: RESULT=new MulopFactor_mul(M1, M2, F3); RESULT.setLine(M1left); :}
 				|
-				(MulopFactor_fac) Factor:F1 {: RESULT=new MulopFactor_fac(F1); RESULT.setLine(F1left); :}
+				(MulopFactor_fac) FactorNeg:F1 {: RESULT=new MulopFactor_fac(F1); RESULT.setLine(F1left); :}
+				;
+					
+FactorNeg	::=	(FactorNeg_fac) Factor:F1 {: RESULT=new FactorNeg_fac(F1); RESULT.setLine(F1left); :}
+				|
+				(FactorNeg_neg) MINUS Factor:F1 {: RESULT=new FactorNeg_neg(F1); RESULT.setLine(F1left); :}
 				;
 					
 Factor ::= 	(Factor_des) Designator:D1 {: RESULT=new Factor_des(D1); RESULT.setLine(D1left); :}
@@ -305,11 +320,6 @@ Factor ::= 	(Factor_des) Designator:D1 {: RESULT=new Factor_des(D1); RESULT.setL
 			|
 			(Factor_expr) OPPAREN Expr:E1 CLPAREN {: RESULT=new Factor_expr(E1); RESULT.setLine(E1left); :}
 			;		
-					
-FactorAct ::=	(FactorAct_fa) OPPAREN ActParsList:A1 CLPAREN {: RESULT=new FactorAct_fa(A1); RESULT.setLine(A1left); :}
-				|
-				(FactorAct_e) {: RESULT=new FactorAct_e(); :}/*epsilon*/
-				;
 					
 Label ::= (Label) IDENT:I1 {: RESULT=new Label(I1); RESULT.setLine(I1left); :}; 
 

@@ -1,25 +1,25 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/8/2025 23:43:36
+// 10/8/2025 12:17:47
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class MulopFactor_fac extends MulopFactor {
 
-    private Factor Factor;
+    private FactorNeg FactorNeg;
 
-    public MulopFactor_fac (Factor Factor) {
-        this.Factor=Factor;
-        if(Factor!=null) Factor.setParent(this);
+    public MulopFactor_fac (FactorNeg FactorNeg) {
+        this.FactorNeg=FactorNeg;
+        if(FactorNeg!=null) FactorNeg.setParent(this);
     }
 
-    public Factor getFactor() {
-        return Factor;
+    public FactorNeg getFactorNeg() {
+        return FactorNeg;
     }
 
-    public void setFactor(Factor Factor) {
-        this.Factor=Factor;
+    public void setFactorNeg(FactorNeg FactorNeg) {
+        this.FactorNeg=FactorNeg;
     }
 
     public void accept(Visitor visitor) {
@@ -27,16 +27,16 @@ public class MulopFactor_fac extends MulopFactor {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(Factor!=null) Factor.accept(visitor);
+        if(FactorNeg!=null) FactorNeg.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(Factor!=null) Factor.traverseTopDown(visitor);
+        if(FactorNeg!=null) FactorNeg.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(Factor!=null) Factor.traverseBottomUp(visitor);
+        if(FactorNeg!=null) FactorNeg.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -45,8 +45,8 @@ public class MulopFactor_fac extends MulopFactor {
         buffer.append(tab);
         buffer.append("MulopFactor_fac(\n");
 
-        if(Factor!=null)
-            buffer.append(Factor.toString("  "+tab));
+        if(FactorNeg!=null)
+            buffer.append(FactorNeg.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

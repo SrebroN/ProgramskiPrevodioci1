@@ -67,7 +67,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
 	@Override
 	public void visit(Program program) {
-		nVars=Tab.currentScope().getnVars();
+		nVars = Tab.currentScope().getnVars();
 		Tab.chainLocalSymbols(currentProgram);
 		currentProgram = null;
 
@@ -166,13 +166,13 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		if (methodSignAndName_Type.getI2().equalsIgnoreCase("main")) {
 			report_error("Main mora imati type void: " + methodSignAndName_Type, methodSignAndName_Type);
 		}
-		methodSignAndName_Type.obj  = Tab.insert(Obj.Meth, methodSignAndName_Type.getI2(), currentType);
+		methodSignAndName_Type.obj = currentMethod = Tab.insert(Obj.Meth, methodSignAndName_Type.getI2(), currentType);
 		Tab.openScope();
 	}
 
 	@Override
 	public void visit(MethodSignAndName_Void methodSignAndName_Void) {
-		methodSignAndName_Void.obj  = currentMethod = Tab.insert(Obj.Meth, methodSignAndName_Void.getI1(), Tab.noType);
+		methodSignAndName_Void.obj = currentMethod = Tab.insert(Obj.Meth, methodSignAndName_Void.getI1(), Tab.noType);
 		Tab.openScope();
 		if (methodSignAndName_Void.getI1().equalsIgnoreCase("main")) {
 			mainMethod = currentMethod;
@@ -211,6 +211,22 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			currentMethod.setLevel(currentMethod.getLevel() + 1);
 		} else {
 			report_error("Dvostruka definicija konstante: " + formPars_arr.getI2(), formPars_arr);
+		}
+	}
+
+	// ---------------------FACTORNEG---------------------
+	@Override
+	public void visit(FactorNeg_fac factorNeg_fac) {
+		factorNeg_fac.struct = factorNeg_fac.getFactor().struct;
+	}
+
+	@Override
+	public void visit(FactorNeg_neg factorNeg_neg) {
+		if (!factorNeg_neg.getFactor().struct.equals(Tab.intType)) {
+			report_error("Negacija neint vrednosti: " , factorNeg_neg);
+			factorNeg_neg.struct = Tab.noType;
+		} else {
+			factorNeg_neg.struct = Tab.intType;
 		}
 	}
 
@@ -322,13 +338,13 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	// ---------------------MULOP---------------------
 	@Override
 	public void visit(MulopFactor_fac mulopFactor_fac) {
-		mulopFactor_fac.struct = mulopFactor_fac.getFactor().struct;
+		mulopFactor_fac.struct = mulopFactor_fac.getFactorNeg().struct;
 	}
 
 	@Override
 	public void visit(MulopFactor_mul mulopFactor_mul) {
 		Struct left = mulopFactor_mul.getMulopFactor().struct;
-		Struct right = mulopFactor_mul.getFactor().struct;
+		Struct right = mulopFactor_mul.getFactorNeg().struct;
 		if (left.equals(Tab.intType) && right.equals(Tab.intType)) {
 			mulopFactor_mul.struct = Tab.intType;
 		} else {
@@ -341,16 +357,6 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	@Override
 	public void visit(Expr_term expr_term) {
 		expr_term.struct = expr_term.getAddOpTerm().struct;
-	}
-
-	@Override
-	public void visit(Expr_mint expr_mint) {
-		if (!expr_mint.getAddOpTerm().struct.equals(Tab.intType)) {
-			report_error("Negacija neint vrednosti: " + expr_mint, expr_mint);
-			expr_mint.struct = Tab.noType;
-		} else {
-			expr_mint.struct = expr_mint.getAddOpTerm().struct;
-		}
 	}
 
 	@Override
@@ -369,7 +375,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		} else if (method.getLevel() != 1) {
 			report_error("Metoda " + method.getName() + " mora imati tacno jedan parametar", null);
 			expr_des.struct = Tab.noType;
-		}  else if (arr.getType().getKind() != Struct.Array) {
+		} else if (arr.getType().getKind() != Struct.Array) {
 			report_error("Argument mora biti niz", expr_des);
 			expr_des.struct = Tab.noType;
 		} else if (!arr.getType().getElemType().equals(Tab.intType)) {
@@ -386,8 +392,6 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			expr_des.struct = Tab.intType;
 		}
 	}
-
-	
 
 	// ---------------------DESIGNATOR---------------------
 	@Override
@@ -566,7 +570,6 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			report_error("Break van do-while petlje", statement_br);
 		}
 	}
-	
 
 	@Override
 	public void visit(Statement_cont statement_cont) {
@@ -594,7 +597,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			report_error("Print neadekvatne promenljive", statement_pr);
 		}
 	}
-	
+
 	@Override
 	public void visit(Statement_prnum statement_prnum) {
 		Struct type = statement_prnum.getExpr().struct;
@@ -603,11 +606,15 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			report_error("Print neadekvatne promenljive", statement_prnum);
 		}
 	}
-	
+
 	// ---------------------CONDITIONS---------------------
 	@Override
+	public void visit(CondList_cond condList_cond) {
+		condList_cond.struct = condList_cond.getCondition().struct;
+	}
+	@Override
 	public void visit(Condition_cond condition_cond) {
-		condition_cond.struct = condition_cond.getCondTerm().struct;
+		condition_cond.struct = condition_cond.getConditionTerm().struct;
 		if (!condition_cond.struct.equals(boolType)) {
 			report_error("Uslov nije tipa bool", condition_cond);
 		}
@@ -615,7 +622,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
 	@Override
 	public void visit(Condition_or condition_or) {
-		Struct left = condition_or.getCondTerm().struct;
+		Struct left = condition_or.getConditionTerm().struct;
 		Struct right = condition_or.getCondition().struct;
 		if (left.equals(boolType) && right.equals(boolType)) {
 			condition_or.struct = boolType;
@@ -623,7 +630,10 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			report_error("Or operacija nebool vrednosti", condition_or);
 		}
 	}
-
+	@Override
+	public void visit(ConditionTerm conditionTerm) {
+		conditionTerm.struct = conditionTerm.getCondTerm().struct;
+	}
 	@Override
 	public void visit(CondTerm_cond condTerm_cond) {
 		condTerm_cond.struct = condTerm_cond.getCondFact().struct;
@@ -675,14 +685,14 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		if (typeObj == Tab.noObj) {
 			report_error("Nepostojeci tip podatka: " + type.getI1(), type);
 			currentType = Tab.noType;
-			type.struct=Tab.noType;
+			type.struct = Tab.noType;
 		} else if (typeObj.getKind() != Obj.Type) {
 			report_error("Neadekvatan tip podatka: " + type.getI1(), type);
 			currentType = Tab.noType;
-			type.struct=Tab.noType;
+			type.struct = Tab.noType;
 		} else {
 			currentType = typeObj.getType();
-			type.struct=typeObj.getType();
+			type.struct = typeObj.getType();
 		}
 	}
 

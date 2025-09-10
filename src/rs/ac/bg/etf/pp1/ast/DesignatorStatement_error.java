@@ -1,24 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/8/2025 23:43:36
+// 10/8/2025 12:17:47
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class NumConstOpt_cn extends NumConstOpt {
+public class DesignatorStatement_error extends DesignatorStatement {
 
-    private Integer N1;
-
-    public NumConstOpt_cn (Integer N1) {
-        this.N1=N1;
-    }
-
-    public Integer getN1() {
-        return N1;
-    }
-
-    public void setN1(Integer N1) {
-        this.N1=N1;
+    public DesignatorStatement_error () {
     }
 
     public void accept(Visitor visitor) {
@@ -39,13 +28,10 @@ public class NumConstOpt_cn extends NumConstOpt {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("NumConstOpt_cn(\n");
-
-        buffer.append(" "+tab+N1);
-        buffer.append("\n");
+        buffer.append("DesignatorStatement_error(\n");
 
         buffer.append(tab);
-        buffer.append(") [NumConstOpt_cn]");
+        buffer.append(") [DesignatorStatement_error]");
         return buffer.toString();
     }
 }

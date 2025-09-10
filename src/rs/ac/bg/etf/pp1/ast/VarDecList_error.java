@@ -1,13 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/8/2025 23:43:36
+// 10/8/2025 12:17:47
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class FactorAct_e extends FactorAct {
+public class VarDecList_error extends VarDecList {
 
-    public FactorAct_e () {
+    public VarDecList_error () {
     }
 
     public void accept(Visitor visitor) {
@@ -28,10 +28,10 @@ public class FactorAct_e extends FactorAct {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("FactorAct_e(\n");
+        buffer.append("VarDecList_error(\n");
 
         buffer.append(tab);
-        buffer.append(") [FactorAct_e]");
+        buffer.append(") [VarDecList_error]");
         return buffer.toString();
     }
 }

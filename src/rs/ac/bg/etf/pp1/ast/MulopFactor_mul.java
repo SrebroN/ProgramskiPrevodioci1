@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/8/2025 23:43:36
+// 10/8/2025 12:17:47
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,15 +9,15 @@ public class MulopFactor_mul extends MulopFactor {
 
     private MulopFactor MulopFactor;
     private Mulop Mulop;
-    private Factor Factor;
+    private FactorNeg FactorNeg;
 
-    public MulopFactor_mul (MulopFactor MulopFactor, Mulop Mulop, Factor Factor) {
+    public MulopFactor_mul (MulopFactor MulopFactor, Mulop Mulop, FactorNeg FactorNeg) {
         this.MulopFactor=MulopFactor;
         if(MulopFactor!=null) MulopFactor.setParent(this);
         this.Mulop=Mulop;
         if(Mulop!=null) Mulop.setParent(this);
-        this.Factor=Factor;
-        if(Factor!=null) Factor.setParent(this);
+        this.FactorNeg=FactorNeg;
+        if(FactorNeg!=null) FactorNeg.setParent(this);
     }
 
     public MulopFactor getMulopFactor() {
@@ -36,12 +36,12 @@ public class MulopFactor_mul extends MulopFactor {
         this.Mulop=Mulop;
     }
 
-    public Factor getFactor() {
-        return Factor;
+    public FactorNeg getFactorNeg() {
+        return FactorNeg;
     }
 
-    public void setFactor(Factor Factor) {
-        this.Factor=Factor;
+    public void setFactorNeg(FactorNeg FactorNeg) {
+        this.FactorNeg=FactorNeg;
     }
 
     public void accept(Visitor visitor) {
@@ -51,20 +51,20 @@ public class MulopFactor_mul extends MulopFactor {
     public void childrenAccept(Visitor visitor) {
         if(MulopFactor!=null) MulopFactor.accept(visitor);
         if(Mulop!=null) Mulop.accept(visitor);
-        if(Factor!=null) Factor.accept(visitor);
+        if(FactorNeg!=null) FactorNeg.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(MulopFactor!=null) MulopFactor.traverseTopDown(visitor);
         if(Mulop!=null) Mulop.traverseTopDown(visitor);
-        if(Factor!=null) Factor.traverseTopDown(visitor);
+        if(FactorNeg!=null) FactorNeg.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(MulopFactor!=null) MulopFactor.traverseBottomUp(visitor);
         if(Mulop!=null) Mulop.traverseBottomUp(visitor);
-        if(Factor!=null) Factor.traverseBottomUp(visitor);
+        if(FactorNeg!=null) FactorNeg.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -85,8 +85,8 @@ public class MulopFactor_mul extends MulopFactor {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(Factor!=null)
-            buffer.append(Factor.toString("  "+tab));
+        if(FactorNeg!=null)
+            buffer.append(FactorNeg.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
