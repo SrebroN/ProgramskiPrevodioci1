@@ -363,8 +363,8 @@ public class CodeGenerator extends VisitorAdaptor {
 	
 	@Override
 	public void visit(ConditionList_e conditionList_e) {//NE RADI, IMPLEMENTIRATI !!!!!!
-		Code.putJump(0);
-	//	Code.fixup(skipThen.pop());
+		Code.putJump(doBegin.peek());
+		skipThen.push(Code.pc);
 		}
 	
 	// ---------------------CONDITIONS---------------------
@@ -395,7 +395,7 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 
 	@Override
-	public void visit(CondList condList) {
+	public void visit(CondList_cond condList_cond) {
 		Code.putJump(0);// tacno ide na then
 		skipThen.push(Code.pc-2);
 		while (!skipCond.empty()) {

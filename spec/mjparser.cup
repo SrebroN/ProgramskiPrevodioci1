@@ -232,7 +232,7 @@ ActParsMore	::=	(ActParsMore_more) COMMA ActPars ActParsMore
 					
 CondList ::=	(CondList_cond) Condition
 				|
-				(FormPars_error) error:e
+				(CondList_error) error:e
 				{:parser.report_error("Oporavak od greske u If uslovu: ",null); :}
 				;
 					

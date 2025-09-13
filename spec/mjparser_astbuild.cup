@@ -262,8 +262,8 @@ ActParsMore	::=	(ActParsMore_more) COMMA ActPars:A1 ActParsMore:A2 {: RESULT=new
 					
 CondList ::=	(CondList_cond) Condition:C1 {: RESULT=new CondList_cond(C1); RESULT.setLine(C1left); :}
 				|
-				(FormPars_error) error:e
-				{:parser.report_error("Oporavak od greske u If uslovu: ",null); :} {: RESULT=new FormPars_error(); :}
+				(CondList_error) error:e
+				{:parser.report_error("Oporavak od greske u If uslovu: ",null); :} {: RESULT=new CondList_error(); :}
 				;
 					
 Condition ::= 	(Condition_or) Condition:C1 OR ConditionTerm:C2 {: RESULT=new Condition_or(C1, C2); RESULT.setLine(C1left); :}

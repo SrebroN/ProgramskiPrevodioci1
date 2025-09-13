@@ -1,13 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 10/8/2025 12:17:47
+// 13/8/2025 0:10:55
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class FormPars_error extends CondList {
+public class CondList_error extends CondList {
 
-    public FormPars_error () {
+    public CondList_error () {
     }
 
     public void accept(Visitor visitor) {
@@ -28,10 +28,10 @@ public class FormPars_error extends CondList {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("FormPars_error(\n");
+        buffer.append("CondList_error(\n");
 
         buffer.append(tab);
-        buffer.append(") [FormPars_error]");
+        buffer.append(") [CondList_error]");
         return buffer.toString();
     }
 }
