@@ -6,13 +6,13 @@ This project implements a compiler for the MikroJava programming language. The c
 
 The compiler provides the following core functionalities:
 
-### 1.Lexical Analysis
+### 1. Lexical Analysis
 
-Implemented using Lex.
+- Implemented using Lex.
 
-Identifies language lexemes and produces a sequence of tokens from the source code.
+- Identifies language lexemes and produces a sequence of tokens from the source code.
 
-Reports lexical errors with descriptive messages.
+- Reports lexical errors with descriptive messages.
 
 Syntax Analysis (Parsing)
 
