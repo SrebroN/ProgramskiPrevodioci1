@@ -1,4 +1,4 @@
-#MikroJava Compiler
+# MikroJava Compiler
 
 English
 
@@ -6,7 +6,7 @@ This project implements a compiler for the MikroJava programming language. The c
 
 The compiler provides the following core functionalities:
 
-##1.Lexical Analysis
+## 1.Lexical Analysis
 
 Implemented using Lex.
 
