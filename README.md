@@ -4,15 +4,15 @@ This project implements a compiler for the imaginary MikroJava programming langu
 
 The compiler provides the following core functionalities:
 **1. Lexical Analysis:**
-  -Implemented using Lex.
-  -Identifies language lexemes and produces a sequence of tokens from the source code.
-  -Reports lexical errors with descriptive messages.
+-Implemented using Lex.
+-Identifies language lexemes and produces a sequence of tokens from the source code.
+-Reports lexical errors with descriptive messages.
 
 **2. Syntax Analysis (Parsing):**
-  -Implemented using CUP.
-  -Utilizes a bottom-up LALR(1) parser to check whether tokens form grammatically correct sentences according to the MikroJava grammar specification.
-  -Provides feedback on successful parsing or detailed error reports in case of syntax errors.
-  -Supports error recovery to continue parsing after encountering syntax issues.
+-Implemented using CUP.
+-Utilizes a bottom-up LALR(1) parser to check whether tokens form grammatically correct sentences according to the MikroJava grammar specification.
+-Provides feedback on successful parsing or detailed error reports in case of syntax errors.
+-Supports error recovery to continue parsing after encountering syntax issues.
 
 **3. Semantic Analysis:**
   -Performed on the Abstract Syntax Tree (AST) built during parsing.
