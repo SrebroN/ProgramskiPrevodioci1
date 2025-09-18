@@ -1,11 +1,12 @@
-MikroJava Compiler
+#MikroJava Compiler
+
 English
 
 This project implements a compiler for the MikroJava programming language. The compiler translates syntactically and semantically correct MikroJava programs into MikroJava bytecode, which is executed on the MikroJava Virtual Machine (MJVM).
 
 The compiler provides the following core functionalities:
 
-Lexical Analysis
+##1.Lexical Analysis
 
 Implemented using Lex.
 
