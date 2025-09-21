@@ -28,7 +28,7 @@ The compiler provides the following core functionalities:
 
 - Performed on the Abstract Syntax Tree (AST) built during parsing.
 
-- Uses a visitor-based approach to check declarations, type rules, scope resolution, and other semantic constraints.
+- Uses a visitor-based approach to check declarations, type rules, scope resolution, and other semantic constraints, and to generate symbol table.
 
 - Reports semantic errors with clear explanations.
 
@@ -67,7 +67,7 @@ Kompajler obuhvata sledeće osnovne funkcionalnosti:
 
 - Zasniva se na apstraktnom sintaksnom stablu (AST) koje se formira tokom parsiranja.
 
-- Implementirana kroz metode za posećivanje čvorova AST-a radi provere deklaracija, tipova, opsega i drugih semantičkih pravila.
+- Implementirana kroz metode za posećivanje čvorova AST-a radi provere deklaracija, tipova, opsega i drugih semantičkih pravila, kao i generisanje tabele simbola.
 
 - U slučaju greške, ispisuje jasne i precizne poruke.
 
